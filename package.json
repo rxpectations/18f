@@ -1,7 +1,7 @@
 {
-  "name": "openfda",
+  "name": "pwcecx-18f",
   "version": "0.1.0",
-  "description": "Bad-ass prototype using dat afrom open.fda.gov",
+  "description": "RFQ-BPA response prototype using data from openFDA",
   "author": "PwC Experience Center",
   "private": true,
   "main": "index.js",
