@@ -1,5 +1,5 @@
 {>"layouts/master" /}
 
 {<body}
-    <h1>Hello, index.js</h1>
+    <h1>Styleguide</h1>
 {/body}

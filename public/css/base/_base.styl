@@ -1,0 +1,42 @@
+// ! 18f Prototype
+// Base styles
+// Contains reset styles for base HTML elements
+
+global-reset()
+
+*
+    box-sizing: border-box
+    
+html, body 
+    font: $font-size $font-family
+    line-height: 150%
+    font-smoothing: antialiased
+
+a 
+    text-decoration: none
+    color: inherit
+
+h1, h2, h3
+    margin: 0
+    
+h1 
+    font: 700 4.25rem/1em $font-family
+
+h2
+    font: 300 2rem/1.4em $font-family 
+    margin-bottom: 40px
+
+h3
+    font: 600 1.15rem/1.2em $font-family
+    text-transform: uppercase
+
+p 
+    margin-top: 0
+    margin-bottom: 1em
+    font-size: 1.15rem
+
+a 
+    cursor: pointer
+
+@import '_fonts' 
+@import '_global'
