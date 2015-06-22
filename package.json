@@ -2,7 +2,8 @@
   "name": "openfda",
   "version": "0.1.0",
   "description": "Bad-ass prototype using dat afrom open.fda.gov",
-  "author": "PWC Experience Center",
+  "author": "PwC Experience Center",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "test": "grunt test"
