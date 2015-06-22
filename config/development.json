@@ -41,13 +41,18 @@
                             "base": "templates",
                             "i18n": "config:i18n"
                         },
-                        "css": {
-                            "module": "kraken-devtools/plugins/stylus",
-                            "files": "/css/**/*.css"
-                        },
+                        "stylus": {
+                            "module": "path:./lib/stylus",
+                            "files": "/css/**/*.css",
+                            "ext": "styl"
+                        }, 
                         "copier": {
                             "module": "kraken-devtools/plugins/copier",
                             "files": "**/*"
+                        },
+                        "browserify": {
+                            "module": "kraken-devtools-browserify",
+                            "files": "/js/**/*.js"
                         }
                     }
                 ]

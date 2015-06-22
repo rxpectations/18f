@@ -11,6 +11,13 @@ module.exports = function stylus(grunt) {
 	        options: {
 	            compress: true
 	        },
+            use: [
+              require('jeet'),
+              require('nib')
+            ],
+            paths: [
+              './node_modules/jeet/stylus'
+            ]
             files: [{
                 expand: true,
                 cwd: 'public/css',
