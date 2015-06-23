@@ -19,7 +19,7 @@
     "kraken-js": "^1.0.1",
     "localizr": "^0.1.0",
     "lodash": "^3.9.3",
-    "stylus": "^0.42.3"
+    "stylus": "^0.50.0"
   },
   "devDependencies": {
     "browserify": "^3.46.1",
@@ -28,7 +28,7 @@
     "grunt-config-dir": "^0.3.2",
     "grunt-contrib-clean": "^0.5.0",
     "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-stylus": "^0.13.2",
+    "grunt-contrib-stylus": "^0.21.0",
     "grunt-copy-to": "0.0.10",
     "grunt-dustjs": "^1.2.0",
     "grunt-localizr": "^0.1.0",

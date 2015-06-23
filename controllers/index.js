@@ -16,8 +16,7 @@ module.exports = function (router) {
         
         // Use path.normalize for consistent paths 
         // across Windows and OS
-        res.render(path.normalize('styleguide'), model.Styleguide());
-        
+        res.render(path.normalize('styleguide'), model.Styleguide());        
         
     });
     router.get('/', function (req, res) {

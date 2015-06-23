@@ -1,5 +1,12 @@
 {>"layouts/master" /}
 
 {<body}
-    <h1>Hello, index.js</h1>
+	<section class="app-search">
+    	<h1><a href="/">18F</a></h1>
+    	<p class="sub-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id libero quis augue ullamcorper tincidunt. Praesent et ligula in nisi fermentum imperdiet. Etiam molestie lorem sit amet magna laoreet, non suscipit mauris iaculis.</p>
+    	<div class="search-bar">
+    		<input type="text" placeholder="Search drug or Diagnosis" id="apiSearch" />
+    		<button type="submit" id="apiSearchSubmit"><i class="fa fa-search"></i></button>
+    	</div>
+    </section>
 {/body}
