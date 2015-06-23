@@ -9,23 +9,33 @@ module.exports = function (browser) {
   // browser.sendKeyUp = sendKeyUp;
 
   /**
-  * Getting the data from back end
+  * Visit a page in the browser
   * @param string page
   * @param boolean local
   */
-  function visit (page, local) {
-    var location = page;
+  function visit (options, cb) {
+    var location = options.url;
 
-    if(local) {
-      location = config.baseURL + page;
+    if(options.local) {
+      location = config.baseURL + options.url;
     }
 
     console.log(location);
+    return browser.url(location).call(cb);
+  };
 
-    return browser.visit(location);
+  /**
+  * Search for a term using the Search bar
+  * @param string term
+  */
+  function search (term, cb) {
+    browser.waitFor('#apiSearch', 2000, function () {
+      browser.setValue('#apiSearch', term, cb);
+   });
   };
 
   return {
-    visit: visit
+    visit: visit,
+    search: search
   };
 };

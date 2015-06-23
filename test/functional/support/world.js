@@ -3,13 +3,16 @@
 var config = require('./config')
 var makeUI = require('./ui');
 var Q = require('q');
-var Browser = require('zombie');
+var webdriverjs = require('webdriverio');
 
 module.exports = function (done) {
   try {
-    var browser = new Browser({
-      site: config.baseURL
+    var browser = webdriverjs.remote({
+      desiredCapabilities: config.desiredCapabilities,
+      logLevel: 'silent'
     });
+
+    browser.init();
 
     var ui = makeUI(browser);
 
