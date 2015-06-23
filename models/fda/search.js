@@ -1,14 +1,20 @@
 'use strict';
 
 
-var FDASearchModel = function (searchTerm, searchMode) {
+module.exports = function FDASearchModel() {
     return {
         name: 'search',
-        description: 'desc',
-        toQueryString: function () {
-
-        }
+        description: 'desc'
     };
 };
 
-module.exports = new FDASearchModel(term, mode);
+/*
+var FDASearchModel = function () {
+    return {
+        name: 'search',
+        description: 'desc'
+    };
+};
+
+module.exports = new FDASearchModel();
+*/
