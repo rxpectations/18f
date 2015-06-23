@@ -30,7 +30,9 @@ module.exports = function (browser) {
   */
   function search (term, cb) {
     browser.waitFor('#apiSearch', 2000, function () {
-      browser.setValue('#apiSearch', term, cb);
+      browser.setValue('#apiSearch', term, function() {
+        browser.click('#apiSearchSubmit', cb);
+      });
    });
   };
 
