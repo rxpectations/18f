@@ -17,6 +17,6 @@ module.exports = function IndexModel() {
     return {
         Styleguide: Styleguide,
         Index: Index
-    }
-    
+    };
+
 };
