@@ -1,5 +1,6 @@
 'use strict';
 
+//@TODO: IMPLEMENT
 var FDASearchModel = function (requestQueryData) {
 	var DEFAULT_LIMIT = 10;
     var term = requestQueryData.term;
