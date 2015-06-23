@@ -17,8 +17,6 @@ module.exports = function (router) {
     		//query: model.query() //doesn't format with querystring
     	};
     	var formattedUrl = url.format(options);
-console.log('formattedUrl:' + formattedUrl);
-console.log('searchquerystring:' + options.query);
     	
     	var fdaReq = https.get(formattedUrl, function(searchRes) {
 			if (searchRes.statusCode == 200) {	
