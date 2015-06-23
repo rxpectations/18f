@@ -1,9 +1,14 @@
 {>"layouts/master" /}
 
 {<body}
+	<header class="logo">
+		<h1>RxPectations</h1>
+	</header>
+
 	<section class="app-search">
-    	<h1><a href="/">18F</a></h1>
-    	<p class="sub-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id libero quis augue ullamcorper tincidunt. Praesent et ligula in nisi fermentum imperdiet. Etiam molestie lorem sit amet magna laoreet, non suscipit mauris iaculis.</p>
+		<h2>Be informed, take action, get connected.</h2>
+
+    	<p class="sub-text">Discover common side effects to FDA approved prescription drugs etc etc etc.</p>
     	<div class="search-bar">
     		<input type="text" placeholder="Search drug or Diagnosis" id="apiSearch" />
     		<button type="submit" id="apiSearchSubmit"><i class="fa fa-search"></i></button>
