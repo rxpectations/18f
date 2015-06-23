@@ -108,4 +108,11 @@
 	    	</div>
     	</div>
     </section>
+
+    <h2>Active Filters</h2>
+    <ul class="active-filters">
+    	<li>Filter 1</li>
+    	<li>Filter 2</li>
+    	<li>Filter 3</li>
+    </ul>
 {/body}
