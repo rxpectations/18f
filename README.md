@@ -31,6 +31,7 @@ npm start
 
 Alternately, you can run the process with **nodemon** to continously watch for file changes and automatically restart the server
 ```
+npm install nodemon -g
 nodemon server.js
 ```
 
