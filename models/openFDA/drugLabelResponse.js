@@ -15,10 +15,12 @@ var DrugLabelModel = function (searchResponse) {
                     if (responseObject.results[idx].openfda.brand_name !== undefined &&
                         brandNames.indexOf(responseObject.results[idx].openfda.brand_name + '') === -1) {
                         brandNames[brandNames.length] = responseObject.results[idx].openfda.brand_name + '';
+                    //@TODO: replace with .toString()
                     }
                     if (responseObject.results[idx].openfda.generic_name !== undefined &&
                         genericNames.indexOf(responseObject.results[idx].openfda.generic_name + '') === -1) {
                         genericNames[genericNames.length] = responseObject.results[idx].openfda.generic_name + '';
+                    //@TODO: replace with .toString()
                     }
                 } 
             }
