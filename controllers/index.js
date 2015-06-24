@@ -20,11 +20,21 @@ module.exports = function (router) {
         
     });
     router.get('/', function (req, res) {
-        
         // Use path.normalize for consistent paths 
         // across Windows and OS
         res.render(path.normalize('index'), model.Index());
         
+        
+    });
+
+    // Dyanmic routing example
+    router.get('/:pagename', function (req, res) {
+        // Access the route parameter
+        console.log(req.params.pagename);
+
+        // Use path.normalize for consistent paths 
+        // across Windows and OS
+        res.render(path.normalize('styleguide'), model.Styleguide());        
         
     });
 

@@ -46,17 +46,39 @@
                             "files": "/css/**/*.css",
                             "ext": "styl"
                         }, 
-                        "copier": {
-                            "module": "kraken-devtools/plugins/copier",
-                            "files": "**/*"
-                        },
                         "browserify": {
                             "module": "kraken-devtools-browserify",
                             "files": "/js/**/*.js"
+                        },
+                        "copier": {
+                            "module": "kraken-devtools/plugins/copier",
+                            "files": "**/*"
                         }
+                        
                     }
                 ]
             }
         }
+    },
+
+    "integrations": {
+        "openFDA": {
+            "apiKey": "fWo3VYTbToPaLcFem1T9ZJqqNHNmetmU3peGa1BF",
+            "hostname": "api.fda.gov",
+            "endpoints": {
+                "drug": {
+                    "label": "/drug/label.json",
+                    "event": "/drug/event.json",
+                    "enforcement": "/drug/enforcement"
+                },
+                "device": {
+                    "event": "/device/event.json",
+                    "enforcement": "/device/enforcement"
+                },
+                "food": {
+                    "enforcement": "/food/enforcement"
+                }
+            }
+        } 
     }
 }
