@@ -10,7 +10,7 @@
     <ul>
         {#results}
             {#brandNames}
-                <li><a href=""><h3>{.}</h3></a></li>
+                <li><a href="/events/{.}"><h3>{.}</h3></a></li>
             {/brandNames}
             {#genericNames}
                 <li><a href=""><h3>{.}</h3></a></li>
