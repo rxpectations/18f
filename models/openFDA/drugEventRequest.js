@@ -17,11 +17,11 @@ var FDASearchModel = function (requestQueryData) {
         }
 
     	if (mode && mode === 'name') {
-			nameSearchValue = 'patient.drug.medicinalproduct:' + drug + '+' + 
+			nameSearchValue = 'patient.drug.medicinalproduct:' + drug + '+' +
                 'patient.drug.openfda.brand_name:' + drug + '+' +
                 'patient.drug.openfda.generic_name:' + drug;
     	} else if (mode && mode === 'code') {
-    		nameSearchValue = 'patient.drug.openfda.package_ndc:' + drug + '+' + 
+    		nameSearchValue = 'patient.drug.openfda.package_ndc:' + drug + '+' +
                 'patient.drug.openfda.spl_id:' + drug;
     	} else {
             // leave empty
