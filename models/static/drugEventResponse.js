@@ -6,15 +6,15 @@
       "events": [
         {
           "name": "tunnel vision",
-          "count": 300
+          "total": 300
         },
         {
           "name": "",
-          "count": 30
+          "total": 30
         },
         {
           "name": "headache",
-          "count": 10
+          "total": 10
         }
       ]
     }, 
@@ -24,15 +24,15 @@
       "events": [
         {
           "name": "dizzy",
-          "count": 70
+          "total": 70
         },
         {
           "name": "vomitting",
-          "count": 40
+          "total": 40
         },
         {
           "name": "death",
-          "count": 2
+          "total": 2
         }
       ]
     }

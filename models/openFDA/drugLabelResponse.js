@@ -26,9 +26,11 @@ var DrugLabelModel = function (searchResponse) {
     })();
 
     return {
-        labelsFound: hitCount,
-        brandNames: brandNames,
-        genericNames: genericNames
+        rawTotal: hitCount,
+        results: {
+            brandNames: brandNames,
+            genericNames: genericNames
+        }
     };
 };
 
