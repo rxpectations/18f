@@ -17,7 +17,7 @@ function IndexModel() {
     return {
         Styleguide: Styleguide,
         Index: Index
-    }    
+    };
 }
 
 module.exports = IndexModel;

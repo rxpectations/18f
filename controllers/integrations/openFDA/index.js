@@ -20,24 +20,24 @@ module.exports = function (router) {
     	
         console.time('openFDA [label search]');
     	var fdaReq = https.get(formattedUrl, function(searchRes) {
-			if (searchRes.statusCode == 200) {	
+			if (searchRes.statusCode === 200) {	
 		        searchRes.setEncoding('utf8');
                 var body = '';
 
-				searchRes.on("data", function(chunk) {
-                    body += chunk
+				searchRes.on('data', function(chunk) {
+                    body += chunk;
                     //res.send(chunk);
 				});
 
-                searchRes.on("end", function() {
+                searchRes.on('end', function() {
                     var drugLabels = new drugLabelResponse(body);
 
                     res.send(drugLabels);
                     console.timeEnd('openFDA [label search]');
                 });
 			} else {
-                if (searchRes.statusCode == 404) {
-                    searchRes.on("data", function(chunk) {
+                if (searchRes.statusCode === 404) {
+                    searchRes.on('data', function(chunk) {
                         res.send('"error": { "code": "NOT_FOUND", "message": "No matches found!"}');
                         console.timeEnd('openFDA [label search]');
                     });
