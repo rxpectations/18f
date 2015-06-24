@@ -3,10 +3,8 @@
 //@TODO: IMPLEMENT
 var DrugLabelModel = function (searchResponse) {
     var responseObject = JSON.parse(searchResponse);
-    var hitCount = (responseObject.meta.results.limit < responseObject.meta.results.total) ? 
-        responseObject.meta.results.limit : responseObject.meta.results.total;   //@TODO: handle 100+
-    var brandNames = []; 
-    var genericNames = [];
+
+    var drugEvents = [];
 
     (function toArrays() {
         if (hitCount > 1) {

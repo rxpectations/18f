@@ -7,9 +7,10 @@ var FDASearchModel = function (requestQueryData) {
     var mode = requestQueryData.mode;
     var year = requestQueryData.year;
 
-    function toSearchQueryString() {
+    function toSearchQueryString(useCount) {
     	var nameSearchValue = '';
-        var timeSearchValue = '[2004-01-01+TO+2005-01-01]';
+        var timeSearchValue = '';
+        var countValue = (useCount) ? '&count=patient.reaction.reactionmeddrapt.exact' : '';
 
         if (!mode || mode === undefined) {
             mode = 'name';
@@ -44,16 +45,25 @@ var FDASearchModel = function (requestQueryData) {
             //@wARN results slightly different if date string have dashes
         }
 
+        //@TDOO: add ?api_key=yourAPIKeyHere
     	return '?search=(' + nameSearchValue + ')+AND+(' + timeSearchValue + ')' + 
-            '&limit=' + DEFAULT_LIMIT +
-            '&count=patient.reaction.reactionmeddrapt.exact';
+            '&limit=' + DEFAULT_LIMIT + countValue;
+    }
+
+    function toTotalsSearchQueryString() {
+        return toSearchQueryString(false);
+    }
+
+    function toEventsSearchQueryString() {
+        return toSearchQueryString(true);
     }
 
     return {
         drug: drug,
         mode: mode,
         year: year,
-        query: toSearchQueryString
+        totalsQuery: toTotalsSearchQueryString,
+        eventsQuery: toEventsSearchQueryString
     };
 };
 
