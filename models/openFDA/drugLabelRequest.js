@@ -12,9 +12,12 @@ var FDASearchModel = function (requestQueryData) {
 			  searchValue = 'openfda.brand_name:' + term + '+' + 'openfda.generic_name:' + term;
     	} else if (mode && mode === 'use') {
     		searchValue = 'purpose:' + term + '+' + 'indications_and_usage:' + term;
+    	} else if (mode && mode == 'all') {
+            searchValue = 'purpose:' + term + '+' + 'indications_and_usage:' + term + '+' + 
+                'openfda.brand_name:' + term + '+' + 'openfda.generic_name:' + term;    
     	} else {
 
-    	}
+        }
 
     	return '?search=' + searchValue + '&limit=' + DEFAULT_LIMIT;
     }
