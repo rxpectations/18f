@@ -1,7 +1,7 @@
 /**
- * Search
+ * Search Results
  * ====
- * This module will render the search component
+ * This module will render the search results component
  */
 
 /* Module dependencies */
@@ -10,12 +10,12 @@ var $ = window.jQuery = require('jquery');
 var dust = require('dustjs-helpers');
 
 /**
- * Create new instance of Chart
+ * Create new instance of SearchResults
  * @param element
  * @constructor
  * @param rawData
  */
-var Search = function Chart(element) {
+var SearchResults = function SearchResults(element) {
 
   this.$el = $(element);
   
@@ -25,16 +25,16 @@ var Search = function Chart(element) {
 };
 
 /**
- *  Initialize the chart with basic attributes
+ *  Initialize the search results with basic attributes
  * 
  */
-Search.prototype.init = function() {
+SearchResults.prototype.init = function() {
   
 }
 /**
  * Bind to relevant DOM events
  */
-Search.prototype.bind = function() {
+SearchResults.prototype.bind = function() {
   this.$el.find('#apiSearch').bind('keyup', this.keyupEvent.bind(this));
 };
 
@@ -42,7 +42,7 @@ Search.prototype.bind = function() {
  * Fired on element emitting 'keyup' event
  * @param {Object} e
  */
-Search.prototype.keyupEvent = function(e) {
+SearchResults.prototype.keyupEvent = function(e) {
   var self = this;
   if(this.timer) {
     clearTimeout(this.timer);
@@ -70,7 +70,7 @@ Search.prototype.keyupEvent = function(e) {
  * updates result pane.
  * @param  {object} response Raw HTTP response data
  */
-Search.prototype.success = function(response) {
+SearchResults.prototype.success = function(response) {
 
   var self = this;
   console.log(response);
@@ -84,7 +84,7 @@ Search.prototype.success = function(response) {
  * @param  {Object} ajaxOptions
  * @param  {Object} thrownError Instance of Error
  */
-Search.prototype.error = function(xhr, ajaxOptions, thrownError) {
+SearchResults.prototype.error = function(xhr, ajaxOptions, thrownError) {
   console.error(xhr.status);
   console.error(thrownError);
   $('body').trigger('search.rx', response);
