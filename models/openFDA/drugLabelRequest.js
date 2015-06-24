@@ -1,6 +1,6 @@
 'use strict';
 
-var FDASearchModel = function (requestQueryData) {
+var FDASearchModel = function (requestQueryData, apiKey) {
 	var DEFAULT_LIMIT = 10;
     var term = requestQueryData.term;
     var mode = requestQueryData.mode;
@@ -24,7 +24,7 @@ var FDASearchModel = function (requestQueryData) {
         }
 
         //@TDOO: add ?api_key=yourAPIKeyHere
-    	return '?search=' + searchValue + '&limit=' + DEFAULT_LIMIT;
+    	return '?search=' + searchValue + '&limit=' + DEFAULT_LIMIT + '&api_key=' + apiKey;
     }
 
     return {

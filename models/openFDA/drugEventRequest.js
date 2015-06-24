@@ -1,16 +1,18 @@
 'use strict';
 
 //@TODO: IMPLEMENT
-var FDASearchModel = function (requestQueryData) {
+var FDASearchModel = function (requestQueryData, apiKey) {
 	var DEFAULT_LIMIT = 10;
     var drug = requestQueryData.drug;
     var mode = requestQueryData.mode;
     var year = requestQueryData.year;
+    var apiKey = apiKey;
 
     function toSearchQueryString(useCount) {
     	var nameSearchValue = '';
         var timeSearchValue = 'receiptdate:';
         var countValue = (useCount) ? '&count=patient.reaction.reactionmeddrapt.exact' : '';
+        var apiKeyValue = (apiKey !== undefined && apiKey !== '') ? '&api_key=' + apiKey : '';
 
         if (!mode || mode === undefined) {
             mode = 'name';
@@ -47,7 +49,7 @@ var FDASearchModel = function (requestQueryData) {
 
         //@TDOO: add ?api_key=yourAPIKeyHere
     	return '?search=(' + nameSearchValue + ')+AND+(' + timeSearchValue + ')' + 
-            '&limit=' + DEFAULT_LIMIT + countValue;
+            '&limit=' + DEFAULT_LIMIT + countValue + apiKeyValue;
     }
 
     function toTotalsSearchQueryString() {

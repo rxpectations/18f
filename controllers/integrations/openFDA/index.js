@@ -14,7 +14,9 @@ module.exports = function (router) {
      * Drug Label Search
      */
     router.get('/', function (req, res) {
-    	var model = new drugLabelRequest(req.query);
+        var apiKey = req.app.kraken.get('integrations').openFDA.apiKey;
+
+    	var model = new drugLabelRequest(req.query, apiKey);
     	var options = { 
     		protocol: 'https:', 
     		hostname: req.app.kraken.get('integrations').openFDA.hostname, //'api.fda.gov', 
@@ -119,6 +121,8 @@ console.log(formattedUrl);
                     });
                 } else {
                     console.timeEnd('openFDA [event multi-year search]');
+console.log(searchRes);
+//@TODO: handle 429 and other errors in this multi-async request
                     res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
 
                 } //@TODO: handle other non-OK response
@@ -137,7 +141,9 @@ console.log(formattedUrl);
      * Drug Events Search
      */
     router.get('/eventsByYear', function (req, res) {
-        var model = new drugEventRequest(req.query);
+        var apiKey = req.app.kraken.get('integrations').openFDA.apiKey;
+
+        var model = new drugEventRequest(req.query, apiKey);
         var options = { 
             protocol: 'https:', 
             hostname: req.app.kraken.get('integrations').openFDA.hostname, //'api.fda.gov', 
@@ -190,6 +196,8 @@ console.log(formattedUrl);
                     combineEventReplies(model.year, body1, body2, res);
                 });
             } else {
+console.log(searchRes);
+//@TODO: handle 429 and other errors in this multi-async request
                 res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
 
             } //@TODO: handle other non-OK response
@@ -243,6 +251,8 @@ console.log(formattedUrl);
                     combineEventReplies(model.year, body1, body2, res);              
                 });
             } else {
+console.log(searchRes);
+//@TODO: handle 429 and other errors in this multi-async request
                 res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
 
             } //@TODO: handle other non-OK response
