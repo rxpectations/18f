@@ -1,0 +1,67 @@
+{>"layouts/interior" /}
+
+{<body}
+	<header>
+		<h1>Prednisone Generic</h1>
+	</header>
+
+    <section class="user-tools">
+        <ul class="active-filters">
+            <li>Filter 1</li>
+            <li>Filter 2</li>
+            <li>Filter 3</li>
+        </ul>
+        <a href="" class="filter-toggle">Filter <i class="fa fa-caret-down"></i></a>
+    </section>
+
+	<section class="total-reports">
+        <p>Chart goes here</p>
+    </section>
+
+    <section class="reported-reations">
+        <a href="" class="view-toggle ui-btn">View All</a>
+        <div class="view-toggle top">            
+
+            <p>Chart goes here</p>
+
+            <p>Out of 33,345 reported reactions, 100 were Nauesa</p>
+            
+        </div>
+        <div class="view-toggle all">
+            <h2>Prednisone</h2>
+            <p>Chart goes here</p>
+        </div>
+
+        <a href="" class="ui-btn">Report a Reaction</a>
+    </section>
+
+    <section class="recalls">
+        <h3>Recalls</h3>
+        <p><strong>There were 5 recalls associated with this drug.</strong></p>
+        <p>Talk to your health care provider or more information on how this can affect your use of this drug.</p>
+    </section>
+
+    <section class="supporting-content">
+        <article class="panel">
+            <h4>About Prendisone Generic</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat... <a href="" class="read-more">Read More</a></p>
+        </article>
+        <article class="panel">
+            <h4>Side Effects</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat... <a href="" class="read-more">Read More</a></p>
+        </article>
+        <article class="panel">
+            <h4>News & Updates</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat... <a href="" class="read-more">Read More</a></p>
+        </article>
+        <article class="panel">
+            <h4>Resources & Community</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat... <a href="" class="read-more">Read More</a></p>
+        </article>
+        <article class="panel">
+            <h4>Social</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat... <a href="" class="read-more">Read More</a></p>
+        </article>
+    </section>
+
+{/body}
