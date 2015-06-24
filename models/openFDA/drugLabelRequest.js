@@ -8,7 +8,7 @@ var FDASearchModel = function (requestQueryData) {
     function toSearchQueryString() {
     	var searchValue = '';
 
-        if (!mode || mode == undefined) {
+        if (!mode || mode === undefined) {
             mode = 'name';
         }
 
@@ -16,7 +16,7 @@ var FDASearchModel = function (requestQueryData) {
 			  searchValue = 'openfda.brand_name:' + term + '+' + 'openfda.generic_name:' + term;
     	} else if (mode === 'use') {
     		searchValue = 'purpose:' + term + '+' + 'indications_and_usage:' + term;
-    	} else if (mode == 'all') {
+    	} else if (mode === 'all') {
             searchValue = 'purpose:' + term + '+' + 'indications_and_usage:' + term + '+' + 
                 'openfda.brand_name:' + term + '+' + 'openfda.generic_name:' + term;    
     	} else {

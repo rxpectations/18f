@@ -48,7 +48,7 @@ module.exports = function (router) {
                     console.timeEnd('openFDA [label search]');
                 });
             } else {
-                res.send({ "error": { "code": searchRes.statusCode, "message": "Unexpected Error" } });
+                res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
 
 			} //@TODO: handle other non-OK response
 
@@ -98,7 +98,7 @@ module.exports = function (router) {
                     console.timeEnd('openFDA [event search]');
                 });
             } else {
-                res.send({ "error": { "code": searchRes.statusCode, "message": "Unexpected Error" } });
+                res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
 
             } //@TODO: handle other non-OK response
 
