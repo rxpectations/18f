@@ -20,12 +20,8 @@ module.exports = function (router) {
     	
         console.time('openFDA [label search]');
     	var fdaReq = https.get(formattedUrl, function(searchRes) {
-<<<<<<< HEAD
-			if (searchRes.statusCode === 200) {	
-=======
             var body = '';
-			if (searchRes.statusCode == 200) {	
->>>>>>> origin/dev
+			if (searchRes.statusCode === 200) {	
 		        searchRes.setEncoding('utf8');
                 //var body = '';
 
@@ -41,21 +37,15 @@ module.exports = function (router) {
                     console.timeEnd('openFDA [label search]');
                 });
 			} else {
-<<<<<<< HEAD
                 if (searchRes.statusCode === 404) {
                     searchRes.on('data', function(chunk) {
-                        res.send('"error": { "code": "NOT_FOUND", "message": "No matches found!"}');
-=======
-                if (searchRes.statusCode == 404) {
-                    searchRes.on("data", function(chunk) {
                         body += chunk;
                         //res.send('"error": { "code": "NOT_FOUND", "message": "No matches found!"}');
                         //console.timeEnd('openFDA [label search]');
                     });
 
-                    searchRes.on("end", function() {
+                    searchRes.on('end', function() {
                         res.send(body);
->>>>>>> origin/dev
                         console.timeEnd('openFDA [label search]');
                     });
                 }
