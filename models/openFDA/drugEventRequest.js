@@ -16,11 +16,11 @@ var FDASearchModel = function (requestQueryData) {
         }
 
     	if (mode && mode === 'name') {
-			nameSearchValue = 'patient.drug.medicinalproduct:' + drug + '+' + 
+			nameSearchValue = 'patient.drug.medicinalproduct:' + drug + '+' +
                 'patient.drug.openfda.brand_name:' + drug + '+' +
                 'patient.drug.openfda.generic_name:' + drug;
     	} else if (mode && mode === 'code') {
-    		nameSearchValue = 'patient.drug.openfda.package_ndc:' + drug + '+' + 
+    		nameSearchValue = 'patient.drug.openfda.package_ndc:' + drug + '+' +
                 'patient.drug.openfda.spl_id:' + drug;
     	} else {
             // leave empty
@@ -28,11 +28,11 @@ var FDASearchModel = function (requestQueryData) {
 
         var currentDate = new Date();
         var currentYear = currentDate.getFullYear();
-        if (!year || year == undefined) {
+        if (!year || year === undefined) {
             year = currentYear;
         }
 
-        if (year == currentYear) {
+        if (year === currentYear) {
             var mm = (currentDate.getMonth()+1).toString();
             var dd = currentDate.getDate().toString();
             mm = (mm.length === 2) ? mm : '0' + mm;
@@ -44,7 +44,7 @@ var FDASearchModel = function (requestQueryData) {
             //@wARN results slightly different if date string have dashes
         }
 
-    	return '?search=(' + nameSearchValue + ')+AND+(' + timeSearchValue + ')' + 
+    	return '?search=(' + nameSearchValue + ')+AND+(' + timeSearchValue + ')' +
             '&limit=' + DEFAULT_LIMIT +
             '&count=patient.reaction.reactionmeddrapt.exact';
     }
