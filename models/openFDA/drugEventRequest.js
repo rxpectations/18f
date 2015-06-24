@@ -2,7 +2,7 @@
 
 //@TODO: IMPLEMENT
 var FDASearchModel = function (requestQueryData) {
-	var DEFAULT_LIMIT = 100;
+	var DEFAULT_LIMIT = 10;
     var drug = requestQueryData.drug;
     var mode = requestQueryData.mode;
     var year = requestQueryData.year;
@@ -23,8 +23,26 @@ var FDASearchModel = function (requestQueryData) {
     		nameSearchValue = 'patient.drug.openfda.package_ndc:' + drug + '+' + 
                 'patient.drug.openfda.spl_id:' + drug;
     	} else {
-
+            // leave empty
     	}
+
+        var currentDate = new Date();
+        var currentYear = currentDate.getFullYear();
+        if (!year || year == undefined) {
+            year = currentYear;
+        }
+
+        if (year == currentYear) {
+            var mm = (currentDate.getMonth()+1).toString();
+            var dd = currentDate.getDate().toString();
+            mm = (mm.length === 2) ? mm : '0' + mm;
+            dd = (dd.length === 2) ? dd : '0' + dd;
+
+            timeSearchValue = '[' + year + '0101+TO+' + year + mm + dd + ']'; //e.g. [20140101+TO+20141231]
+        } else {
+            timeSearchValue = '[' + year + '0101+TO+' + year + '1231]'; //e.g. [20140101+TO+20141231]
+            //@
+        }
 
     	return '?search=(' + nameSearchValue + ')+AND+(' + timeSearchValue + ')' + 
             '&limit=' + DEFAULT_LIMIT +
