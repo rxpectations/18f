@@ -1,6 +1,9 @@
 <header class="search-item">
     <h2>{term}</h2>
-    <p class="result-number">{rawTotal} Results</p>
+    <p class="result-number">
+        {#error}No results found{/error}
+        {#resultsTotal}{.} Results{/resultsTotal}
+    </p>
 </header>
 
 <section class="search-results">

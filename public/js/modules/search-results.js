@@ -57,6 +57,15 @@ SearchResults.prototype.bind = function() {
  */
 SearchResults.prototype.update = function(e, eventData) {
   var self = this;
+  //Transform rawData
+  if (eventData.hasOwnProperty('results')) {
+    var resultsCount = 0;
+    for (var r in eventData.results) {
+      resultsCount += eventData.results[r].length;
+    }
+  }
+
+  eventData.resultsTotal = resultsCount;
   dust.render('search-results', eventData, function(err, out){
     if(err) console.error(err);
     self.$el.html(out);
