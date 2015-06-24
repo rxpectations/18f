@@ -43,25 +43,27 @@ Search.prototype.bind = function() {
  */
 Search.prototype.keyupEvent = function(e) {
   var self = this;
+  self.term = $(e.currentTarget).val();
   if(this.timer) {
     clearTimeout(this.timer);
   }
 
   this.timer = setTimeout(function() {
     // Create url
-    self.term = $(e.currentTarget).val();
+    
     var route = '/integrations/openFDA/?term='+self.term+'&mode=all';
     console.log('make request after 250 milliseconds of typing');
     console.log(route);
-    
-    $.ajax({
-      url: route || '/',
-      type: 'get',
-      dataType: 'json',
-      contentType: 'application/json; charset=utf-8',
-      success: self.success.bind(self),
-      error: self.error.bind(self)
-    });
+    if  (self.term.length >= 3) {
+      $.ajax({
+        url: route || '/',
+        type: 'get',
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        success: self.success.bind(self),
+        error: self.error.bind(self)
+      });
+    }
   }, 250);
   
 };
