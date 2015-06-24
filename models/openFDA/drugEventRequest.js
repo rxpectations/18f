@@ -9,10 +9,10 @@ var FDASearchModel = function (requestQueryData) {
     function toSearchQueryString() {
     	var searchValue = '';
 
-    	if (mode && mode == 'name') {
-			searchValue = "openfda.brand_name:" + term + "+" + "openfda.generic_name:" + term;
-    	} else if (mode && mode == 'use') {
-    		searchValue = "purpose:" + term + "+" + "indications_and_usage:" + term;
+    	if (mode && mode === 'name') {
+			searchValue = 'openfda.brand_name:' + term + '+' + 'openfda.generic_name:' + term;
+    	} else if (mode && mode === 'use') {
+    		searchValue = 'purpose:' + term + '+' + 'indications_and_usage:' + term;
     	} else {
 
     	}

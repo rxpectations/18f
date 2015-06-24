@@ -17,7 +17,7 @@ module.exports = function stylus(grunt) {
             ],
             paths: [
               './node_modules/jeet/stylus'
-            ]
+			],
             files: [{
                 expand: true,
                 cwd: 'public/css',
