@@ -1,0 +1,17 @@
+<header class="search-item">
+    <h2>{term}</h2>
+    <p class="result-number">{rawTotal} Results</p>
+</header>
+
+<section class="search-results">
+    <ul>
+        {#results}
+            {#brandNames}
+                <li><a href=""><h3>{.}</h3></a></li>
+            {/brandNames}
+            {#genericNames}
+                <li><a href=""><h3>{.}</h3></a></li>
+            {/genericNames}
+        {/results}
+    </ul>
+</section>

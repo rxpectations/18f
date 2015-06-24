@@ -7,7 +7,9 @@
 /* Module dependencies */
 
 var $ = window.jQuery = require('jquery');
-var dust = require('dustjs-helpers');
+var dust = require('dustjs-linkedin');
+require('../../../node_modules/dustjs-linkedin/lib/compiler.js');
+
 
 /**
  * Create new instance of SearchResults
@@ -17,64 +19,48 @@ var dust = require('dustjs-helpers');
  */
 var SearchResults = function SearchResults(element) {
 
-  this.$el = $(element);
-  
+  this.$el = $(element);  
   this.init();
-  
   this.bind();
 };
 
 /**
- *  Initialize the search results with basic attributes
- * 
+ * Initialize Search Results. This will prepare the dust template
  */
 SearchResults.prototype.init = function() {
-  
-}
+  var self = this;
+  $.ajax({
+    url: '/dust/getTemplate?path=modules/search-results',
+    type: 'get',
+    success: self.loadTemplate.bind(self),
+    error: self.error.bind(self)
+  });
+};
+
+SearchResults.prototype.loadTemplate = function(data, status, xhr) {
+  console.log('loadTemplate');
+  this.compiledTemplate = dust.compile(data, 'search-results'); 
+  dust.loadSource(this.compiledTemplate);
+};
+
+
 /**
  * Bind to relevant DOM events
  */
 SearchResults.prototype.bind = function() {
-  this.$el.find('#apiSearch').bind('keyup', this.keyupEvent.bind(this));
+  $('body').bind('search.rx', this.update.bind(this));
 };
 
 /**
- * Fired on element emitting 'keyup' event
+ * Fired on element emitting 'search.rx' event
  * @param {Object} e
  */
-SearchResults.prototype.keyupEvent = function(e) {
+SearchResults.prototype.update = function(e, eventData) {
   var self = this;
-  if(this.timer) {
-    clearTimeout(this.timer);
-  }
-
-  this.timer = setTimeout(function() {
-    // Create url
-    var route = '/integrations/openFDA/?term='+$(e.currentTarget).val()+'&mode=all';
-    console.log('make request after 250 milliseconds of typing');
-    console.log(route);
-    
-    $.ajax({
-      url: route || '/',
-      type: 'get',
-      dataType: 'json',
-      contentType: 'application/json; charset=utf-8',
-      success: self.success.bind(self),
-      error: self.error.bind(self)
-    });
-  }, 250);
-  
-};
-/**
- * Called on successful response from GET route. Emits success event and
- * updates result pane.
- * @param  {object} response Raw HTTP response data
- */
-SearchResults.prototype.success = function(response) {
-
-  var self = this;
-  console.log(response);
-  $('body').trigger('search.rx', response);
+  dust.render('search-results', eventData, function(err, out){
+    if(err) console.error(err);
+    self.$el.html(out);
+  });
 };
 
 /**
@@ -87,8 +73,7 @@ SearchResults.prototype.success = function(response) {
 SearchResults.prototype.error = function(xhr, ajaxOptions, thrownError) {
   console.error(xhr.status);
   console.error(thrownError);
-  $('body').trigger('search.rx', response);
 
 };
 
-module.exports = Search;
+module.exports = SearchResults;
