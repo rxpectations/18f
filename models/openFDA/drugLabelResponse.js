@@ -14,13 +14,11 @@ var DrugLabelModel = function (searchResponse) {
                     // has openFDA data
                     if (responseObject.results[idx].openfda.brand_name !== undefined &&
                         brandNames.indexOf(responseObject.results[idx].openfda.brand_name + '') === -1) {
-                        brandNames[brandNames.length] = responseObject.results[idx].openfda.brand_name + '';
-                    //@TODO: replace with .toString()
+                        brandNames.push(responseObject.results[idx].openfda.brand_name.toString());
                     }
                     if (responseObject.results[idx].openfda.generic_name !== undefined &&
                         genericNames.indexOf(responseObject.results[idx].openfda.generic_name + '') === -1) {
-                        genericNames[genericNames.length] = responseObject.results[idx].openfda.generic_name + '';
-                    //@TODO: replace with .toString()
+                        genericNames.push(responseObject.results[idx].openfda.generic_name.toString());
                     }
                 } 
             }

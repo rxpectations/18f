@@ -1,4 +1,5 @@
 'use strict';
+var http = require('http');
 var https = require('https');
 var url = require('url');
 
@@ -58,6 +59,81 @@ module.exports = function (router) {
     });
 
     /*
+     * Drug Events Search by year range
+     *  @PARAM  year  start year to present
+     */
+    router.get('/eventsByYears', function (req, res) {
+        var model = new drugEventRequest(req.query);
+        var options = { 
+            protocol: 'http:', 
+            host: 'localhost:8000', //@TODO: replace with config settings
+            pathname: '/integrations/openFDA/eventsByYear/', 
+            //search: '?mode=' + model.mode + '&term=' + model.drug + '&year=' + 
+        };
+
+
+        var replyCount = 0; 
+        var repliesExpected = (new Date()).getFullYear() - model.year + 1;
+        var resultsBody = [];
+
+        console.time('openFDA [event multi-year search]');
+        for (var idx = 0; idx < repliesExpected; idx++) {
+            var year = parseInt(model.year) + idx; 
+            options.search = '?mode=' + model.mode + '&drug=' + model.drug + '&year=' + year;
+            var formattedUrl = url.format(options);
+console.log(formattedUrl);
+            var fdaReq = http.get(formattedUrl, function(searchRes) {
+                
+                var body = '';
+                if (searchRes.statusCode === 200) { 
+                    searchRes.setEncoding('utf8');
+
+                    searchRes.on('data', function(chunk) {
+                        body += chunk;
+                    });
+
+                    searchRes.on('end', function() {
+                        replyCount++;
+                        if (body !== '') {
+                            resultsBody.push(JSON.parse(body));
+                        }
+                        
+                        if (replyCount === repliesExpected) {
+                            console.timeEnd('openFDA [event multi-year search]');
+                            res.send({ results: resultsBody});
+                        }
+                    });
+                } else if (searchRes.statusCode === 404) {
+                    searchRes.on('data', function(chunk) {
+                        body += chunk;
+                    });
+
+                    searchRes.on('end', function() {
+                        resultsBody.push(body);
+
+                        replyCount++;
+                        if (replyCount === repliesExpected) {
+                            console.timeEnd('openFDA [event multi-year search]');
+                            res.send({ results: resultsBody});
+                        }
+                    });
+                } else {
+                    console.timeEnd('openFDA [event multi-year search]');
+                    res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+
+                } //@TODO: handle other non-OK response
+
+            }).on('error', function(e) {
+                console.timeEnd('openFDA [event multi-year search]');
+                console.log('ERROR: '  + e.message);
+            });
+        }
+        
+
+
+    });
+
+    /*
      * Drug Events Search
      */
     router.get('/eventsByYear', function (req, res) {
@@ -76,7 +152,7 @@ module.exports = function (router) {
         
         //req1
         console.time('openFDA [event totals search]');
-        var fdaReq = https.get(formattedUrl, function(searchRes) {
+        var fdaReq1 = https.get(formattedUrl, function(searchRes) {
             var body = '';
             if (searchRes.statusCode === 200) { 
                 searchRes.setEncoding('utf8');
@@ -103,8 +179,15 @@ module.exports = function (router) {
                 });
 
                 searchRes.on('end', function() {
-                    res.send(body);
                     console.timeEnd('openFDA [event totals search]');
+                    body1 = body;
+                    replyCount++;
+                    if (replyCount === 2) {
+                        
+                    } else {
+                        fdaReq2.abort();
+                    }
+                    combineEventReplies(model.year, body1, body2, res);
                 });
             } else {
                 res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
@@ -122,7 +205,7 @@ module.exports = function (router) {
 
         //req2
         console.time('openFDA [events search]');
-        var fdaReq = https.get(formattedUrl, function(searchRes) {
+        var fdaReq2 = https.get(formattedUrl, function(searchRes) {
             var body = '';
             if (searchRes.statusCode === 200) { 
                 searchRes.setEncoding('utf8');
@@ -149,8 +232,15 @@ module.exports = function (router) {
                 });
 
                 searchRes.on('end', function() {
-                    res.send(body);
                     console.timeEnd('openFDA [events search]');
+                    body2 = body;
+                    replyCount++;
+                    if (replyCount === 2) {
+                        
+                    } else {
+                        fdaReq1.abort();
+                    }    
+                    combineEventReplies(model.year, body1, body2, res);              
                 });
             } else {
                 res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
@@ -163,14 +253,19 @@ module.exports = function (router) {
     });
 
     function combineEventReplies(year, body1, body2, res) {
-        var bodyObject = JSON.parse(body1);
-        var total = bodyObject.meta.results.total;  
+        //console.log(body1);
+        //console.log(body2);
+        var bodyObject = (body1 !== undefined) ? JSON.parse(body1) : null;
+        var eventsObject = (body2 !== undefined) ? JSON.parse(body2) : null;
 
-        var eventsObject = JSON.parse(body2);
-        var drugEvents = eventsObject.results;  
-        //var drugEvents = new drugEventResponse(body2);
+        var total = (bodyObject === null || bodyObject.error !== undefined) ? 
+            0 : bodyObject.meta.results.total; 
 
+        var drugEvents = (eventsObject === null || eventsObject.error !== undefined) ? 
+            [] : eventsObject.results;
+       
         var responseObject = { year: year, total: total, events: drugEvents };
         res.send(responseObject);
+
     }
 };

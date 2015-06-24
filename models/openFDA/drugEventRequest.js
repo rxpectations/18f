@@ -9,7 +9,7 @@ var FDASearchModel = function (requestQueryData) {
 
     function toSearchQueryString(useCount) {
     	var nameSearchValue = '';
-        var timeSearchValue = '';
+        var timeSearchValue = 'receiptdate:';
         var countValue = (useCount) ? '&count=patient.reaction.reactionmeddrapt.exact' : '';
 
         if (!mode || mode === undefined) {
@@ -39,9 +39,9 @@ var FDASearchModel = function (requestQueryData) {
             mm = (mm.length === 2) ? mm : '0' + mm;
             dd = (dd.length === 2) ? dd : '0' + dd;
 
-            timeSearchValue = '[' + year + '0101+TO+' + year + mm + dd + ']'; //e.g. [20140101+TO+20141231]
+            timeSearchValue += '[' + year + '0101+TO+' + year + mm + dd + ']'; //e.g. [20140101+TO+20141231]
         } else {
-            timeSearchValue = '[' + year + '0101+TO+' + year + '1231]'; //e.g. [20140101+TO+20141231]
+            timeSearchValue += '[' + year + '0101+TO+' + year + '1231]'; //e.g. [20140101+TO+20141231]
             //@wARN results slightly different if date string have dashes
         }
 

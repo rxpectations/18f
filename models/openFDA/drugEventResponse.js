@@ -7,27 +7,14 @@ var DrugLabelModel = function (searchResponse) {
     var drugEvents = [];
 
     (function toArrays() {
-        if (hitCount > 1) {
-            for (var idx = 0; idx < hitCount; idx++) {
-                if (responseObject.results[idx].openfda !== undefined) {
-                    // has openFDA data
-                    if (responseObject.results[idx].openfda.brand_name !== undefined &&
-                        brandNames.indexOf(responseObject.results[idx].openfda.brand_name + '') === -1) {
-                        brandNames[brandNames.length] = responseObject.results[idx].openfda.brand_name + '';
-                    }
-                    if (responseObject.results[idx].openfda.generic_name !== undefined &&
-                        genericNames.indexOf(responseObject.results[idx].openfda.generic_name + '') === -1) {
-                        genericNames[genericNames.length] = responseObject.results[idx].openfda.generic_name + '';
-                    }
-                } 
-            }
+        //there will always be a results, otherwise API would have returned 404
+        for (var idx = 0, len = responseObject.results.length; idx < len; idx++) {
+            
         }
     })();
 
     return {
-        labelsFound: hitCount,
-        brandNames: brandNames,
-        genericNames: genericNames
+
     };
 };
 
