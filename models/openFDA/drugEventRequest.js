@@ -11,7 +11,7 @@ var FDASearchModel = function (requestQueryData) {
     	var nameSearchValue = '';
         var timeSearchValue = '[2004-01-01+TO+2005-01-01]';
 
-        if (!mode || mode == undefined) {
+        if (!mode || mode === undefined) {
             mode = 'name';
         }
 
@@ -41,7 +41,7 @@ var FDASearchModel = function (requestQueryData) {
             timeSearchValue = '[' + year + '0101+TO+' + year + mm + dd + ']'; //e.g. [20140101+TO+20141231]
         } else {
             timeSearchValue = '[' + year + '0101+TO+' + year + '1231]'; //e.g. [20140101+TO+20141231]
-            //@
+            //@wARN results slightly different if date string have dashes
         }
 
     	return '?search=(' + nameSearchValue + ')+AND+(' + timeSearchValue + ')' + 
