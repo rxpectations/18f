@@ -1,6 +1,5 @@
 var port = process.env.PORT || '8000';
-var baseurl = process.env.URL || 'http://localhost:';
-baseurl += port;
+var baseurl = process.env.URL || 'http://dev-18F.herokuapp.com';
 
 var desiredCapabilities = {
   browserName: 'phantomjs'
