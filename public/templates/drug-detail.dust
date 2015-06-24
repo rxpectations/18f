@@ -1,8 +1,10 @@
 {>"layouts/interior" /}
-
+{<title}
+Drug Name: {drugname}
+{/title}
 {<body}
 	<header>
-		<h1>Prednisone Generic</h1>
+		<h1>{drugname}</h1>
 	</header>
 
     <section class="user-tools">

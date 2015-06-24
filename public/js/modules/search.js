@@ -7,7 +7,6 @@
 /* Module dependencies */
 
 var $ = window.jQuery = require('jquery');
-var dust = require('dustjs-helpers');
 
 /**
  * Create new instance of Chart
@@ -50,7 +49,8 @@ Search.prototype.keyupEvent = function(e) {
 
   this.timer = setTimeout(function() {
     // Create url
-    var route = '/integrations/openFDA/?term='+$(e.currentTarget).val()+'&mode=name';
+    self.term = $(e.currentTarget).val();
+    var route = '/integrations/openFDA/?term='+self.term+'&mode=all';
     console.log('make request after 250 milliseconds of typing');
     console.log(route);
     
@@ -73,7 +73,8 @@ Search.prototype.keyupEvent = function(e) {
 Search.prototype.success = function(response) {
 
   var self = this;
-  console.log(response);
+  response.term = self.term;
+
   $('body').trigger('search.rx', response);
 };
 
@@ -85,7 +86,6 @@ Search.prototype.success = function(response) {
  * @param  {Object} thrownError Instance of Error
  */
 Search.prototype.error = function(xhr, ajaxOptions, thrownError) {
-  //
   console.error(xhr.status);
   console.error(thrownError);
   $('body').trigger('search.rx', response);

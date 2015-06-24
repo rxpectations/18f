@@ -19,5 +19,8 @@
         		<input type="submit" value="Search" />
         	</div>
         </form>
+        <div class="results">
+
+        </div>
     </section>
 {/body}
