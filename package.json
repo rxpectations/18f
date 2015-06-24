@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "browserify": "^3.46.1",
+    "d3": "^3.5.5",
     "grunt": "^0.4.1",
     "grunt-browserify": "^2.0.1",
     "grunt-config-dir": "^0.3.2",
@@ -33,9 +34,11 @@
     "grunt-localizr": "^0.1.0",
     "grunt-mocha-cli": "^1.5.0",
     "jeet": "^6.1.2",
+    "jquery": "^2.1.4",
     "kraken-devtools-browserify": "0.0.3",
     "mocha": "^1.18.0",
     "nib": "^1.1.0",
+    "numeral": "^1.5.3",
     "supertest": "^0.9.0"
   },
   "generator-kraken": {
