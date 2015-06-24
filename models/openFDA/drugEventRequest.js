@@ -28,11 +28,11 @@ var FDASearchModel = function (requestQueryData) {
 
         var currentDate = new Date();
         var currentYear = currentDate.getFullYear();
-        if (!year || year == undefined) {
+        if (!year || year === undefined) {
             year = currentYear;
         }
 
-        if (year == currentYear) {
+        if (year === currentYear) {
             var mm = (currentDate.getMonth()+1).toString();
             var dd = currentDate.getDate().toString();
             mm = (mm.length === 2) ? mm : '0' + mm;
