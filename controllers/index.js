@@ -20,6 +20,42 @@ module.exports = function (router) {
         
     });
 
+    router.get('/fakeData', function(req, res) {
+        var data = {
+            "results": [
+                {
+
+                    "year": "2015",
+                    "total": 0
+                },
+                {
+                    "error": 
+                    {
+                        "code": 429,
+                        "message": "Unexpected Error"
+                    }
+                },
+                {
+
+                    "year": "2013",
+                    "total": 3095
+                },
+                {
+
+                    "year": "2014",
+                    "total": 2882
+                },
+                {
+
+                    "year": "2011",
+                    "total": 2559
+                }
+            ]
+        };
+
+        res.json(data);
+    })
+
     router.get('/events/:drugname', function (req, res) {
         var drugname = req.params.drugname;
         var model = {

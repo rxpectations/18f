@@ -22,6 +22,7 @@ $(function() {
 
   $.ajax({
     url: '/integrations/openFDA/eventsByYears?drug='+$('header').data('name')+'&mode=name&year=2011',
+    //url: '/fakeData',
     type: 'get',
     beforeSend: function() {
       $('body').trigger('start.ajax');
