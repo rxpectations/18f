@@ -1,4 +1,4 @@
-# 18f
+# 18f [![Build Status](https://travis-ci.org/pwcexc/18f.svg?branch=dev)](https://travis-ci.org/pwcexc/18f)
 
 Bad-ass prototype using data from open.fda.gov.  Built using [kraken.js](http://krakenjs.com/)
 

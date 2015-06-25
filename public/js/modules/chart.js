@@ -16,15 +16,9 @@ var d3 = require('d3');
  * @constructor
  * @param rawData
  */
-var Chart = function Chart(element, rawData) {
+var Chart = function Chart(element) {
 
   this.$el = $(element);
-  this.listenEvent = this.$el.data('listenevent') || undefined;
-  if (!this.listenEvent) {
-    throw new Error(
-      'Chart require a "listenevent" data attribute'
-    );
-  }
   this.init();
   this.bind();
 };
@@ -36,17 +30,30 @@ var Chart = function Chart(element, rawData) {
 Chart.prototype.init = function() {
   this.width = this.$el.width();
   this.height = this.$el.height();
+  this._d3Configs = {};
+  this._d3Configs.parseDate = d3.time.format('%Y').parse;
 
-  this._d3Configs.x = d3.scale.ordinal()
-    .rangeRoundBands([0, this.width], 0, 0);
+  this._d3Configs.x = d3.time.scale()
+    .range([0, this.width]);
 
   this._d3Configs.y = d3.scale.linear()
-    .range([this.width, 0]);
+    .range([this.height, 0]);
+
+  this._d3Configs.color = d3.scale.category10();
 
   this._d3Configs.xAxis = d3.svg.axis()
     .scale(this._d3Configs.x)
-    .orient("top")
-    .tickSize(18,0,0);
+    .orient('bottom');
+
+  this._d3Configs.line = d3.svg.line();
+
+  this.svg = d3.select(this.$el[0])
+    .append('svg')
+        .attr('width', this.width)
+        .attr('height', this.height)
+    .append('g')
+        .attr('transform', 
+              'translate(0,0)');
 
 
 }
@@ -55,7 +62,7 @@ Chart.prototype.init = function() {
  */
 Chart.prototype.bind = function() {
 
-  $('body').bind(this.listenEvent, this.update.bind(this));
+  $('body').bind('incidentData', this.update.bind(this));
 };
 
 /**
@@ -71,10 +78,39 @@ Chart.prototype.update = function(event, data) {
     data = event;
   }
 
-  this.updateProperties(data, function onUpdateComplete() {
+  //get x domain
+  this._d3Configs.line
+    .x(function(d) { return self._d3Configs.x(d.year) })
+    .y(function(d) { return self._d3Configs.y(d.total) });
 
-    //- self.$element.slideDown();
+  this._d3Configs.color.domain(d3.keys(data.results[0]).filter(function(key) { return key !== 'year'; }));
+
+  data.results.forEach(function(d) {
+    d.year = self._d3Configs.parseDate(d.year);
   });
+/*
+  var series = color.domain().map(function(total) {
+    return {
+      total: total,
+      values: data.map(function(d) {
+        return {year: d.year, incident: +d.total };
+      })
+    };
+  });*/
+  this._d3Configs.x.domain(d3.extent(data.results, function(d){ return d.year; }));
+
+  this._d3Configs.y.domain([0, d3.max(data.results, function(d) { return d.total; })]);
+
+  this.svg.append('path')
+    .attr('class', 'line')
+    .attr('d', this._d3Configs.line(data.results));
+
+  // Add the X Axis
+  this.svg.append('g')
+    .attr('class', 'x-axis')
+    .attr('transform', 'translate(0,' + this.height + ')')
+    .call(this._d3Configs.xAxis);
+
 };
 
 /**
@@ -82,60 +118,5 @@ Chart.prototype.update = function(event, data) {
  * @param {Object}   data
  * @param {Function} callback
  */
-Chart.prototype.updateProperties = function (data, callback) {
-
-  var self = this;
-
-  // x domain will be configured using years within the dataset
-  // x.domain(data.map(function(d) { return d.fiscalYear; }));
-  self._d3Configs.x.domain();
-
-  // y domain will be configured with a range of 0 to the max in dataset
-  // y.domain([0, d3.max(data, function(d) {  return  d.total; })]);
-  self._d3Configs.y.domain();
-
-  self.svg = d3.select(self.$el)
-    .attr('width', width);
-
-  self.bar = self.svg.selectAll('a.bar-group') 
-    .data(data)
-    .enter()
-    .append('a')
-    .attr('class', 'bar-group')
-    .style('min-width', function(d) {
-      return x.rangeBand() + "px"
-    })
-    .on('click', function(d) {
-      $(this).siblings().removeClass('active');
-      $(this).addClass('active');
-      $('body').trigger('click.bc', [d]);
-    });
-
-  self.bar.append('div')
-    .attr('class', 'bar')
-    .style('height', function(d) {
-        return height - y(d.total)+ 'px';
-    })
-    .style('background-color', function(d, i) {
-        if (i >= colors.barColors.length) {
-            return colors.barColors[i- colors.barColors.length];
-        } else {
-            return colors.barColors[i]
-        }
-    });
-
-  self.bar.append('div')
-    .attr('class', 'bar-text')
-    .style('top', function(d) {
-        return '0px';
-    })
-    .text(function(d) { 
-      return format.number(d.total).toUpperCase(); 
-    });
-
-  // nextTick
-  setTimeout(function () { return callback(); }, 0);
-};
-
 
 module.exports = Chart;

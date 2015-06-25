@@ -57,16 +57,34 @@ SearchResults.prototype.bind = function() {
  */
 SearchResults.prototype.update = function(e, eventData) {
   var self = this;
+  var model = {};
   //Transform rawData
   if (eventData.hasOwnProperty('results')) {
     var resultsCount = 0;
     for (var r in eventData.results) {
       resultsCount += eventData.results[r].length;
+      model[r] = eventData.results[r].map(function(item) {
+        var obj = {};
+        obj.value = item;
+        obj.url = item.replace(/\s/g, '-');
+        return obj;
+      });
     }
+
+    model.resultsTotal = resultsCount;
   }
 
-  eventData.resultsTotal = resultsCount;
-  dust.render('search-results', eventData, function(err, out){
+  if (eventData.hasOwnProperty('term')) {
+    model.term = eventData.term;
+  }
+
+  if (eventData.hasOwnProperty('error')) {
+    model.error = eventData.error;
+  }  
+
+  
+  console.log(model);
+  dust.render('search-results', model, function(err, out){
     if(err) console.error(err);
     self.$el.html(out);
   });

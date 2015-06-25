@@ -1,9 +1,9 @@
 {>"layouts/interior" /}
 {<title}
-Drug Name: {drugname}
+{drugname} | Events
 {/title}
 {<body}
-	<header>
+	<header data-name="{drugname}">
 		<h1>{drugname}</h1>
 	</header>
 
@@ -85,7 +85,8 @@ Drug Name: {drugname}
         </div>
 
 	<section class="total-reports">
-        <p>Chart goes here</p>
+        Total incidents {#years}{@first}{.} - {/first}{@last}{.}{/last}{/years}: {totalIncidents}
+        <div class="line-chart"></div>
     </section>
 
     <section class="reported-reations">
