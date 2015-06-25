@@ -6,7 +6,6 @@ var FDASearchModel = function (requestQueryData, apiKey) {
     var drug = requestQueryData.drug;
     var mode = requestQueryData.mode;
     var year = requestQueryData.year;
-    //var apiKey = apiKey;
 
     function toSearchQueryString(useCount) {
     	var nameSearchValue = '';

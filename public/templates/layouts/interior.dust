@@ -11,7 +11,7 @@
 <body>
 <nav class="topbar">
   <ul>
-  	<li class="logo"><a href="/"><i class="fa fa-caret-left"></i> Results</a></li>
+  	<li class="logo"><a href="/">Logo</a></li>
   	<li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
   </ul>
 </nav>
