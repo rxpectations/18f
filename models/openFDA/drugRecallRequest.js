@@ -31,7 +31,7 @@ var FDASearchModel = function (requestQueryData, apiKey) {
 
         var timeSearchValue = '';
         if (year && year !== undefined) {
-            timeSearchValue = 'report_date:';
+            timeSearchValue = '+AND+(report_date:';
             var currentDate = new Date();
             var currentYear = currentDate.getFullYear();
 
@@ -41,14 +41,14 @@ var FDASearchModel = function (requestQueryData, apiKey) {
                 mm = (mm.length === 2) ? mm : '0' + mm;
                 dd = (dd.length === 2) ? dd : '0' + dd;
 
-                timeSearchValue += '[' + year + '0101+TO+' + year + mm + dd + ']'; //e.g. [20140101+TO+20141231]
+                timeSearchValue += '[' + year + '0101+TO+' + year + mm + dd + '])'; //e.g. [20140101+TO+20141231]
             } else {
-                timeSearchValue += '[' + year + '0101+TO+' + year + '1231]'; //e.g. [20140101+TO+20141231]
+                timeSearchValue += '[' + year + '0101+TO+' + year + '1231])'; //e.g. [20140101+TO+20141231]
                 //@wARN results slightly different if date string have dashes
             }
         }
 
-        return '?search=(' + nameSearchValue + ')+AND+(' + timeSearchValue + ')' + 
+        return '?search=(' + nameSearchValue + ')' + timeSearchValue + 
             '&limit=' + DEFAULT_LIMIT + /* countValue + */ apiKeyValue;
     }
 
@@ -64,8 +64,7 @@ var FDASearchModel = function (requestQueryData, apiKey) {
         drug: drug,
         mode: mode,
         year: year,
-        totalsQuery: toTotalsSearchQueryString,
-        eventsQuery: toEventsSearchQueryString
+        query: toSearchQueryString
     };
 };
 
