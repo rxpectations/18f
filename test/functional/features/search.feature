@@ -5,5 +5,5 @@ Feature: Search functionality
 
   Scenario: Search known data
     Given I want to search for known data
-    When I enter "test" into the search
-    Then I should get 10 results for "test"
+    When I enter "hero" into the search
+    Then I should get results for "hero"

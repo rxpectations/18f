@@ -1,7 +1,7 @@
 'use strict';
 
+var chai = require('chai');
+
 module.exports = {
-  startApp: function (distro, done) {
-    this.UI().visit(distro).then(done, done);
-  }
+  expect: chai.expect
 };

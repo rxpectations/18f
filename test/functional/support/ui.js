@@ -30,14 +30,24 @@ module.exports = function (browser) {
   */
   function search (term, cb) {
     browser.waitFor('#apiSearch', 2000, function () {
-      browser.setValue('#apiSearch', term, function() {
-        browser.click('#apiSearchSubmit', cb);
-      });
-   });
+      browser.setValue('#apiSearch', term, cb);
+    });
   };
+
+  function checkResults (term, cb) {
+    browser.waitFor('.search-results', 5000, function (a, b) {
+      browser.getText('.search-results', function(err, text) {
+        var exp = new RegExp(term, 'ig');
+        utils.expect(err).to.be.undefined;
+        utils.expect(text).to.match(exp);
+        cb();
+      });
+    });
+  }
 
   return {
     visit: visit,
-    search: search
+    search: search,
+    checkResults: checkResults
   };
 };
