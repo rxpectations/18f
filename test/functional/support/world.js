@@ -7,10 +7,8 @@ var webdriverjs = require('webdriverio');
 
 module.exports = function (done) {
   try {
-    var browser = webdriverjs.remote({
-      desiredCapabilities: config.desiredCapabilities,
-      logLevel: 'silent'
-    });
+
+    var browser = webdriverjs.remote(config.options);
 
     browser.init();
 

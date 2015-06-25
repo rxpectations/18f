@@ -1,11 +1,20 @@
 var port = process.env.PORT || '8000';
-var baseurl = process.env.URL || 'http://localhost:8000';//'http://dev-18F.herokuapp.com';
+var baseurl = process.env.URL || 'http://dev-18F.herokuapp.com';
 
-var desiredCapabilities = {
-  browserName: 'phantomjs'
-};
+var options = {
+  desiredCapabilities: {
+    browserName: 'chrome'
+  },
+  host: 'ondemand.saucelabs.com',
+  port: 80,
+  user: process.env.SAUCE_USERNAME,
+  key: process.env.SAUCE_ACCESS_KEY,
+  name: "PwCexc 18F",
+  public: "public",
+  logLevel: 'silent'
+}
 
 module.exports = {
   baseURL: baseurl,
-  desiredCapabilities: desiredCapabilities
+  options: options
 };
