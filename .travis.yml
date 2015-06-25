@@ -4,3 +4,4 @@ node_js:
   - "iojs"
 before_install: npm install -g grunt-cli
 install: npm install
+after_deploy: npm run cucumber
