@@ -1,0 +1,36 @@
+.icon-list
+	inline-list()
+	clearfix()
+	margin 40px 0
+
+	@media screen and (min-width: 768px)
+		margin 80px 0
+
+	li
+		text-align center
+		col(1/2, uncycle:6, cycle:2)
+
+		@media screen and (min-width: 768px)
+			col(1/6, uncycle:2, cycle:6)
+
+
+		i
+			display block
+			text-align center
+			font-size 2rem
+
+			@media screen and (min-width: 768px)
+				font-size 4rem
+
+		a
+			display block
+			text-align center
+			color $blue
+			transition color .25s
+			margin-bottom 40px
+
+			@media screen and (min-width: 768px)
+				margin-bottom 0
+
+			&:hover
+				color $blue-header

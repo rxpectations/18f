@@ -10,7 +10,7 @@
     </section>
 
     <section class="inner conditions">
-        <h2>Learn more about drubs by condition</h2>
+        <h2 class="text-center text-uppercase">Learn more about drugs by condition</h2>
         <ul class="icon-list">
             <li><a href="#">
              <i class="icon-i-respiratory"></i> Asthema
