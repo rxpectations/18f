@@ -1,6 +1,21 @@
-#wrapper
+.inner
+	padding 10px
 	max-width 1100px
 	margin 0 auto
-	
-	.inner
-		padding 10px
+	clearfix()
+
+header
+	clearfix()
+
+.col2
+	span(1/1, 0)
+
+	@media screen and (min-width: 768px)
+		span(1/2, 0)
+
+
+		&.shift-right
+			float right
+
+		&.shift-left
+			float left

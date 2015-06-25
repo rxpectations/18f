@@ -4,7 +4,7 @@
 {/title}
 {<body}
 	<header class="inner" data-name="{drugname}">
-		<h1>{drugname} Generic</h1>
+		<h1>{drugname} Test Heading</h1>
         <ul class="toolbar">
             <li class="popular"><i class="fa fa-line-chart"></i> <em>Popular this week</em></li>
             <li><a href="" class="ui-btn orange"><i class="fa fa-exclamation-triangle"></i> Report a Reaction</a></li>
@@ -81,71 +81,76 @@
         </div>
     </section>
 
-	<section class="total-reports">
-        Total incidents {#years}{@first}{.} - {/first}{@last}{.}{/last}{/years}: {totalIncidents}
-        <div class="line-chart"></div>
-    </section>
+    <div class="inner">
+        <div class="col2 shift-right">
+        	<section class="total-reports">
+                Total incidents {#years}{@first}{.} - {/first}{@last}{.}{/last}{/years}: {totalIncidents}
+                <div class="line-chart"></div>
+            </section>
 
-    <section class="graph-filters">
-        <ul>
-            <li>
-                <select id="age">
-                    <option value="age_all">All</option>
-                    <option value="">age 1</option>
-                </select>
-            </li>
-            <li>
-                <select id="weight">
-                    <option value="weight_all">All</option>
-                    <option value="">weight 1</option>
-                </select>
-            </li>
-        </ul>
-    </section>
-
-    <section class="reported-reations">
-        <a href="" class="view-toggle ui-btn">View All</a>
-        <div class="view-toggle top">            
-
-            <p>Chart goes here</p>
-
-            <p>Out of 33,345 reported reactions, 100 were Nauesa</p>
-            
-        </div>
-        <div class="view-toggle all">
-            <h2>Prednisone</h2>
-            <p>Chart goes here</p>
+            <section class="graph-filters">
+                <ul>
+                    <li>
+                        <select id="age">
+                            <option value="age_all">All</option>
+                            <option value="">age 1</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select id="weight">
+                            <option value="weight_all">All</option>
+                            <option value="">weight 1</option>
+                        </select>
+                    </li>
+                </ul>
+            </section>
         </div>
 
-        <a href="" class="ui-btn">Report a Reaction</a>
-    </section>
+        <div class="col2 shift-left">
+            <section class="reported-reations">
+                <a href="" class="view-toggle ui-btn">View All</a>
+                <div class="view-toggle top">            
+
+                    <p>Chart goes here</p>
+
+                    <p>Out of 33,345 reported reactions, 100 were Nauesa</p>
+                    
+                </div>
+                <div class="view-toggle all">
+                    <h2>Prednisone</h2>
+                    <p>Chart goes here</p>
+                </div>
+            </section>
+        </div>
+    </div>
 
     <section class="recalls">
-        <h3>Recalls</h3>
-        <p><strong>There were 5 recalls associated with this drug.</strong></p>
-        <p>Talk to your health care provider or more information on how this can affect your use of this drug.</p>
+        <div class="inner">
+            <p><strong>There were 5 recalls associated with this drug.</strong></p>
+            <p>Talk to your health care provider or more information on how this can affect your use of this drug.</p>
+        </div>
     </section>
 
-    <section class="supporting-content">
+    <section class="supporting-content inner">
         <article class="panel">
             <h4>About Prendisone Generic</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat... <a href="" class="read-more">Read More</a></p>
+            <p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat...</a></p>
         </article>
         <article class="panel">
             <h4>Side Effects</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat... <a href="" class="read-more">Read More</a></p>
+            <p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat...</a></p>
         </article>
         <article class="panel">
             <h4>News & Updates</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat... <a href="" class="read-more">Read More</a></p>
+            <p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat...</a></p>
         </article>
         <article class="panel">
             <h4>Resources & Community</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat... <a href="" class="read-more">Read More</a></p>
+            <p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat...</a></p>
         </article>
         <article class="panel">
             <h4>Social</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat... <a href="" class="read-more">Read More</a></p>
+            <p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat...</a></p>
         </article>
     </section>
 

@@ -10,7 +10,7 @@
 </head>
 <body class="search-results">
 <nav class="topbar">
-  <ul>
+  <ul class="inner">
   	<li class="logo"><a href="/"><i class="fa fa-caret-left"></i> Logo</a></li>
   </ul>
 </nav>
