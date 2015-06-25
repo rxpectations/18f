@@ -84,7 +84,7 @@
     <div class="inner">
         <div class="col2 shift-right">
         	<section class="total-reports">
-                Total incidents {#years}{@first}{.} - {/first}{@last}{.}{/last}{/years}: {totalIncidents}
+                Total incidents {#years}{@first}{.} - {/first}{@last}{.}{/last}{/years}: <strong>{totalIncidents}</strong>
                 <div class="line-chart"></div>
             </section>
 
@@ -108,7 +108,6 @@
 
         <div class="col2 shift-left">
             <section class="reported-reations">
-                <a href="" class="view-toggle ui-btn">View All</a>
                 <div class="view-toggle top">            
 
                     <p>Chart goes here</p>
@@ -120,6 +119,7 @@
                     <h2>Prednisone</h2>
                     <p>Chart goes here</p>
                 </div>
+                <a href="" class="view-toggle ui-btn blue">View All</a>
             </section>
         </div>
     </div>
@@ -142,14 +142,6 @@
         </article>
         <article class="panel">
             <h4>News & Updates</h4>
-            <p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat...</a></p>
-        </article>
-        <article class="panel">
-            <h4>Resources & Community</h4>
-            <p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat...</a></p>
-        </article>
-        <article class="panel">
-            <h4>Social</h4>
             <p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat...</a></p>
         </article>
     </section>
