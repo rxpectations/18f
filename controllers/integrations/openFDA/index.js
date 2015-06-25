@@ -102,7 +102,7 @@ console.log(formattedUrl);
                         
                         if (replyCount === repliesExpected) {
                             console.timeEnd('openFDA [event multi-year search]');
-                            res.send({ results: resultsBody});
+                            res.json({ results: resultsBody});
                         }
                     });
                 } else if (searchRes.statusCode === 404) {
@@ -116,14 +116,14 @@ console.log(formattedUrl);
                         replyCount++;
                         if (replyCount === repliesExpected) {
                             console.timeEnd('openFDA [event multi-year search]');
-                            res.send({ results: resultsBody});
+                            res.json({ results: resultsBody});
                         }
                     });
                 } else {
                     console.timeEnd('openFDA [event multi-year search]');
 console.log(searchRes);
 //@TODO: handle 429 and other errors in this multi-async request
-                    res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+                    res.json({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
 
                 } //@TODO: handle other non-OK response
 
