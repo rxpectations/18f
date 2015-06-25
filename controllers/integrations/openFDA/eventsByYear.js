@@ -17,15 +17,16 @@ module.exports = function (router) {
         var options = {
             protocol: 'https:',
             hostname: req.app.kraken.get('integrations').openFDA.hostname, //'api.fda.gov',
-            pathname: req.app.kraken.get('integrations').openFDA.endpoints.drug.event,
-            search: model.totalsQuery()
+            pathname: req.app.kraken.get('integrations').openFDA.endpoints.drug.event
         };
-        var formattedUrl = url.format(options);
-console.log(formattedUrl);
 
+        var formattedUrl;
         var replyCount = 0;
         var body1, body2;
 
+        options.search = model.totalsQuery();
+        formattedUrl = url.format(options);
+        console.log(formattedUrl);
         //req1
         console.time('openFDA [event totals search]');
         var fdaReq1 = https.get(formattedUrl, function(searchRes) {
@@ -35,42 +36,32 @@ console.log(formattedUrl);
             searchRes.on('data', function(chunk) {
                 body += chunk;
             });
+            
+            searchRes.on('end', function() {
+                console.timeEnd('openFDA [event totals search]');
+                body1 = body;
+                replyCount++;
 
-            if (searchRes.statusCode === 200) {
-                searchRes.on('end', function() {
-                    //var drugEvents = new drugEventResponse(body);
-
-                    //res.json(drugEvents);
-                    //res.json(body);
-                    console.timeEnd('openFDA [event totals search]');
-                    body1 = body;
-                    replyCount++;
+                if (searchRes.statusCode === 200) {
                     if (replyCount === 2) {
                         combineEventReplies(model.year, body1, body2, res);
                     }
-                });
-            } else if (searchRes.statusCode === 404) {
-                searchRes.on('end', function() {
-                    console.timeEnd('openFDA [event totals search]');
-                    body1 = body;
-                    replyCount++;
-                    if (replyCount === 2) {
-
-                    } else {
+                } else if (searchRes.statusCode === 404) {
+                    //no results found
+                    if (replyCount !== 2) {
+                        //cancel second request if active
                         fdaReq2.abort();
                     }
                     combineEventReplies(model.year, body1, body2, res);
-                });
-            } else {
-
-//@TODO: handle 429 and other errors in this multi-async request
-                if (replyCount !== 2) {
-                    fdaReq2.abort();
+                } else if (searchRes.statusCode === 429) {
+                    //rate-limited
+                } else {
+                    if (replyCount !== 2) {
+                        fdaReq2.abort();
+                    }
+                    res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
                 }
-                res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
-
-            } //@TODO: handle other non-OK response
-
+            });
         }).on('error', function(e) {
             console.log('ERROR: '  + e.message);
         });
@@ -79,7 +70,6 @@ console.log(formattedUrl);
         options.search = model.eventsQuery();
         formattedUrl = url.format(options);
         console.log(formattedUrl);
-
         //req2
         console.time('openFDA [events search]');
         var fdaReq2 = https.get(formattedUrl, function(searchRes) {
@@ -89,39 +79,32 @@ console.log(formattedUrl);
             searchRes.on('data', function(chunk) {
                 body += chunk;
             });
+            
+            searchRes.on('end', function() {
+                console.timeEnd('openFDA [events search]');
+                body2 = body;
+                replyCount++;
 
-            if (searchRes.statusCode === 200) {
-                searchRes.on('end', function() {
-                    //var drugEvents = new drugEventResponse(body);
-
-                    //res.json(drugEvents);
-                    //res.json(body);
-                    console.timeEnd('openFDA [events search]');
-                    body2 = body;
-                    replyCount++;
+                if (searchRes.statusCode === 200) {
                     if (replyCount === 2) {
                         combineEventReplies(model.year, body1, body2, res);
                     }
-                });
-            } else if (searchRes.statusCode === 404) {
-                searchRes.on('end', function() {
-                    console.timeEnd('openFDA [events search]');
-                    body2 = body;
-                    replyCount++;
+                } else if (searchRes.statusCode === 404) {
+                    //no results found
                     if (replyCount !== 2) {
+                        //cancel second request if active
                         fdaReq1.abort();
                     }
                     combineEventReplies(model.year, body1, body2, res);
-                });
-            } else {
-//@TODO: handle 429 and other errors in this multi-async request
-                if (replyCount !== 2) {
-                    fdaReq1.abort();
-                }
-                res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
-
-            } //@TODO: handle other non-OK response
-
+                } else if (searchRes.statusCode === 429) {
+                    //rate-limited
+                } else {
+                    if (replyCount !== 2) {
+                        fdaReq1.abort();
+                    }
+                    res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+                }    
+            });
         }).on('error', function(e) {
             console.log('ERROR: '  + e.message);
         });
