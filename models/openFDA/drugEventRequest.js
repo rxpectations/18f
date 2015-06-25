@@ -6,13 +6,11 @@ var FDASearchModel = function (requestQueryData, apiKey) {
     var drug = requestQueryData.drug;
     var mode = requestQueryData.mode;
     var year = requestQueryData.year;
-    var apiKey = apiKey;
+    //var apiKey = apiKey;
 
     function toSearchQueryString(useCount) {
     	var nameSearchValue = '';
         var timeSearchValue = 'receiptdate:';
-        var countValue = (useCount) ? '&count=patient.reaction.reactionmeddrapt.exact' : '';
-        var apiKeyValue = (apiKey !== undefined && apiKey !== '') ? '&api_key=' + apiKey : '';
 
         if (!mode || mode === undefined) {
             mode = 'name';
@@ -47,7 +45,8 @@ var FDASearchModel = function (requestQueryData, apiKey) {
             //@wARN results slightly different if date string have dashes
         }
 
-        //@TDOO: add ?api_key=yourAPIKeyHere
+        var countValue = (useCount) ? '&count=patient.reaction.reactionmeddrapt.exact' : '';
+        var apiKeyValue = (apiKey !== undefined && apiKey !== '') ? '&api_key=' + apiKey : '';
     	return '?search=(' + nameSearchValue + ')+AND+(' + timeSearchValue + ')' + 
             '&limit=' + DEFAULT_LIMIT + countValue + apiKeyValue;
     }

@@ -23,8 +23,8 @@ var FDASearchModel = function (requestQueryData, apiKey) {
 
         }
 
-        //@TDOO: add ?api_key=yourAPIKeyHere
-    	return '?search=' + searchValue + '&limit=' + DEFAULT_LIMIT + '&api_key=' + apiKey;
+        var apiKeyValue = (apiKey !== undefined && apiKey !== '') ? '&api_key=' + apiKey : '';
+    	return '?search=' + searchValue + '&limit=' + DEFAULT_LIMIT + apiKeyValue;
     }
 
     return {
