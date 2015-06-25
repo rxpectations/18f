@@ -38,7 +38,7 @@ module.exports = function (router) {
                 searchRes.on('end', function() {
                     var drugLabels = new drugLabelResponse(body);
 
-                    res.send(drugLabels);
+                    res.json(drugLabels);
                     console.timeEnd('openFDA [label search]');
                 });
 			} else if (searchRes.statusCode === 404) {
@@ -47,11 +47,11 @@ module.exports = function (router) {
                 });
 
                 searchRes.on('end', function() {
-                    res.send(body);
+                    res.json(body);
                     console.timeEnd('openFDA [label search]');
                 });
             } else {
-                res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+                res.json({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
 
 			} //@TODO: handle other non-OK response
 
@@ -96,7 +96,7 @@ module.exports = function (router) {
 
                     if (replyCount === repliesExpected) {
                         console.timeEnd('openFDA [event multi-year search]');
-                        res.send({ results: resultsBody});
+                        res.json({ results: resultsBody});
                     }
                 });
             } else if (searchRes.statusCode === 404) {
@@ -110,14 +110,14 @@ module.exports = function (router) {
                     replyCount++;
                     if (replyCount === repliesExpected) {
                         console.timeEnd('openFDA [event multi-year search]');
-                        res.send({ results: resultsBody});
+                        res.json({ results: resultsBody});
                     }
                 });
             } else {
                 console.timeEnd('openFDA [event multi-year search]');
 console.log(searchRes);
 //@TODO: handle 429 and other errors in this multi-async request
-                res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+                res.json({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
 
             } //@TODO: handle other non-OK response
 
@@ -176,8 +176,8 @@ console.log(formattedUrl);
                 searchRes.on('end', function() {
                     //var drugEvents = new drugEventResponse(body);
 
-                    //res.send(drugEvents);
-                    //res.send(body);
+                    //res.json(drugEvents);
+                    //res.json(body);
                     console.timeEnd('openFDA [event totals search]');
                     body1 = body;
                     replyCount++;
@@ -204,7 +204,7 @@ console.log(formattedUrl);
             } else {
 console.log(searchRes);
 //@TODO: handle 429 and other errors in this multi-async request
-                res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+                res.json({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
 
             } //@TODO: handle other non-OK response
 
@@ -231,8 +231,8 @@ console.log(searchRes);
                 searchRes.on('end', function() {
                     //var drugEvents = new drugEventResponse(body);
 
-                    //res.send(drugEvents);
-                    //res.send(body);
+                    //res.json(drugEvents);
+                    //res.json(body);
                     console.timeEnd('openFDA [events search]');
                     body2 = body;
                     replyCount++;
@@ -259,7 +259,7 @@ console.log(searchRes);
             } else {
 console.log(searchRes);
 //@TODO: handle 429 and other errors in this multi-async request
-                res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+                res.json({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
 
             } //@TODO: handle other non-OK response
 
@@ -281,7 +281,7 @@ console.log(searchRes);
             [] : eventsObject.results;
 
         var responseObject = { year: year, total: total, events: drugEvents };
-        res.send(responseObject);
+        res.json(responseObject);
 
     }
 };
