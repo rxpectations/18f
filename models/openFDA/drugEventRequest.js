@@ -6,7 +6,6 @@ var FDASearchModel = function (requestQueryData, apiKey) {
     var drug = requestQueryData.drug;
     var mode = requestQueryData.mode;
     var year = requestQueryData.year;
-    var apiKey = apiKey;
 
     function toSearchQueryString(useCount) {
     	var nameSearchValue = '';
@@ -48,7 +47,7 @@ var FDASearchModel = function (requestQueryData, apiKey) {
         }
 
         //@TDOO: add ?api_key=yourAPIKeyHere
-    	return '?search=(' + nameSearchValue + ')+AND+(' + timeSearchValue + ')' + 
+    	return '?search=(' + nameSearchValue + ')+AND+(' + timeSearchValue + ')' +
             '&limit=' + DEFAULT_LIMIT + countValue + apiKeyValue;
     }
 
