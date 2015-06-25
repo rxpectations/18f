@@ -45,7 +45,7 @@ describe('/', function () {
         request(mock)
             .get('/integrations/openFDA/?term=5g5gh4random555thtth&mode=name')
             .expect(200)
-            .expect('Content-Type', /html/)
+            .expect('Content-Type', /application\/json/)
             .expect(/No matches found/)
             .end(function (err, res) {
                 done(err);
