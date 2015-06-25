@@ -9,11 +9,8 @@
 
 </head>
 <body>
-<nav class="topbar">
-  <ul class="inner">
-  	<li class="logo"><a href="/"><img src="/img/logo.svg" alt="Rxpecations" /></a></li>
-  	<li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-  </ul>
+<nav class="topbar home">
+  	<a href="/"><img src="/img/logo.svg" alt="Rxpecations" /></a>
 </nav>
 <div id="wrapper" class="content">
     {+body /}

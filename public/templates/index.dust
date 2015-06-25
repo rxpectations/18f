@@ -1,14 +1,40 @@
 {>"layouts/master" /}
 
 {<body}
-	<header class="logo">
-		<h1>RxPectations</h1>
-	</header>
+    <section class="hero">
+        <div class="inner">
+            <h2>Learn More About Medicine Safety</h2>
+            <h3>Weight the risks & Benefits of drugs to better manage your treatment.</h3>
+            <a href="#" class="ui-btn orange lg">Search Drugs</a>
+        </div>
+    </section>
 
+    <section class="inner conditions">
+        <h2>Learn more about drubs by condition</h2>
+        <ul class="icon-list">
+            <li><a href="#">
+             <i class="icon-i-respiratory"></i> Asthema
+            </a></li>
+            <li><a href="#">
+             <i class="icon-i-neurology"></i> Multiple Sclerosis
+            </a></li>
+            <li><a href="#">
+             <i class=".icon-i-respiratory"></i> Breast Cancer
+            </a></li>
+            <li><a href="#">
+             <i class="icon-i-mental-health"></i> Mental Health
+            </a></li>
+            <li><a href="#">
+             <i class="icon-i-diabetes-education"></i> Type 1 Diabetes
+            </a></li>
+            <li><a href="#">
+             <i class="icon-i-cardiology"></i> Heart Disease
+            </a></li>
+        </ul>
+
+        <a href="#" class="ui-btn blue lg">Find Another Condition</a>
+    </section>
 	<section class="app-search">
-		<h2>Be informed, take action, get connected.</h2>
-
-    	<p class="sub-text">Discover common side effects to FDA approved prescription drugs etc etc etc.</p>
     	<ul class="toggle">
     		<li><a class="active" href="#">Drug</a></li>
     		<li><a href="#">Diagnosis</a></li>
