@@ -3,8 +3,8 @@
 {<body}
     <section class="hero">
         <div class="inner">
-            <h2>Learn More About Medicine Safety</h2>
-            <h3>Weight the risks & Benefits of drugs to better manage your treatment.</h3>
+            <h2 class="text-uppercase">Learn More About Medicine Safety</h2>
+            <h3>Weigh the risks & Benefits of drugs to better manage your treatment.</h3>
             <a href="#" class="ui-btn orange lg">Search Drugs</a>
         </div>
     </section>
@@ -34,6 +34,7 @@
 
         <a href="#" class="ui-btn blue lg">Find Another Condition</a>
     </section>
+
 	<section class="app-search">
     	<ul class="toggle">
     		<li><a class="active" href="#">Drug</a></li>
