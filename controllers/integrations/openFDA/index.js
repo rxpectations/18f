@@ -157,7 +157,7 @@ console.log(formattedUrl);
             search: model.totalsQuery()
         };
         var formattedUrl = url.format(options);
-        console.log(formattedUrl);
+console.log(formattedUrl);
 
         var replyCount = 0;
         var body1, body2;
