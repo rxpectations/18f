@@ -9,9 +9,18 @@
 		<h2>Be informed, take action, get connected.</h2>
 
     	<p class="sub-text">Discover common side effects to FDA approved prescription drugs etc etc etc.</p>
-    	<div class="search-bar">
-    		<input type="text" placeholder="Search drug or Diagnosis" id="apiSearch" />
-    		<button type="submit" id="apiSearchSubmit"><i class="fa fa-search"></i></button>
-    	</div>
+    	<ul class="toggle">
+    		<li><a class="active" href="#">Drug</a></li>
+    		<li><a href="#">Diagnosis</a></li>
+    	</ul>
+        <form class="search">
+        	<div class="search-bar">
+        		<input type="text" placeholder="Search by Drug or Diagnosis" id="apiSearch" />
+        		<input type="submit" value="Search" />
+        	</div>
+        </form>
+        <div class="results">
+
+        </div>
     </section>
 {/body}
