@@ -16,7 +16,8 @@
         <a href="" class="filter-toggle">Filter <i class="fa fa-caret-down"></i></a>
     </section>
 
-    <div class="filter-options">
+    <section class="filter-menu">
+        <div class="filter-options">
             <h3>Gender</h3>
             <div class="inner">
                 <div class="option">
@@ -83,6 +84,7 @@
                 </div>
             </div>
         </div>
+    </section>
 
 	<section class="total-reports">
         Total incidents {#years}{@first}{.} - {/first}{@last}{.}{/last}{/years}: {totalIncidents}
