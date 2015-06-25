@@ -11,7 +11,8 @@
 <body class="search-results">
 <nav class="topbar">
   <ul class="inner">
-  	<li class="logo"><a href="/"><i class="fa fa-caret-left"></i> Logo</a></li>
+  	<li class="logo"><a href="/"><img src="/img/logo.svg" alt="Rxpecations" /></a></li>
+  	<li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
   </ul>
 </nav>
 
