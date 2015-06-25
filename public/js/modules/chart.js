@@ -89,7 +89,8 @@ Chart.prototype.update = function(event, data) {
 
   this._d3Configs.x = d3.scale.linear()
     .range([this.margin.left, this.width - this.margin.right])
-    .domain([d3.min(results, function(d) { return d.year; }), d3.max(results, function(d) { return d.year; })]);
+    //.domain([d3.min(results, function(d) { return d.year; }), d3.max(results, function(d) { return d.year; })]);
+    .domain([2011,2015]);
 
   this._d3Configs.y = d3.scale.linear()
     .range([this.height - this.margin.top, this.margin.bottom])
@@ -99,7 +100,7 @@ Chart.prototype.update = function(event, data) {
 
   this._d3Configs.xAxis = d3.svg.axis()
     .scale(this._d3Configs.x)
-    .ticks(results.length)
+    .ticks(5)
     .tickFormat(function(d) { return d;});
 
   this._d3Configs.line = d3.svg.line()

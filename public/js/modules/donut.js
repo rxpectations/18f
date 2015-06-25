@@ -1,7 +1,7 @@
 /**
- * Chart
+ * Donut
  * ====
- * This module will render the chart component and show if not
+ * This module will render the Donut component and show if not
  * already visisible.
  */
 
@@ -11,12 +11,12 @@ var $ = window.jQuery = require('jquery');
 var d3 = require('d3');
 
 /**
- * Create new instance of Chart
+ * Create new instance of Donut
  * @param element
  * @constructor
  * @param rawData
  */
-var Chart = function Chart(element) {
+var Donut = function Donut(element) {
 
   this.$el = $(element);
   this.init();
@@ -24,125 +24,136 @@ var Chart = function Chart(element) {
 };
 
 /**
- *  Initialize the chart with basic attributes
+ *  Initialize the Donut with basic attributes
  * 
  */
-Chart.prototype.init = function() {
+Donut.prototype.init = function() {
   this.width = this.$el.width();
   this.height = this.$el.height();
-  this.margin = {
-    top: 50,
-    right: 50,
-    bottom: 50,
-    left: 50
-  }
+
+  this._d3Configs = {};
+  this._d3Configs.radius = Math.min(this.width, this.height) / 2;
+  this._d3Configs.color = d3.scale.ordinal().range(d3.range(5).map(function(i) { return "c" + i; }));
+
+  this._d3Configs.donut = d3.layout.pie()
+    .sort(null)
+    .value(function(d) { return d.count });
+
+  this._d3Configs.arc = d3.svg.arc()
+    .innerRadius(this._d3Configs.radius * 0.7)
+    .outerRadius(this._d3Configs.radius);
+
+  this._d3Configs.pieTotal = 0;
   
 
   this.svg = d3.select(this.$el[0])
     .append('svg')
-        .attr('width', this.width)
-        .attr('height', this.height)
+      .attr('width', this.width)
+      .attr('height', this.height)
     .append('g')
-        .attr('transform', 
-              'translate(0,0)');
+      .attr('class', 'pie-chart')
+      .attr('transform', 
+            'translate(' + (this.width / 2) + ',' + (this.height / 2) + ')');
 
 
 }
 /**
  * Bind to relevant DOM events
  */
-Chart.prototype.bind = function() {
+Donut.prototype.bind = function() {
 
-  $('body').bind('incidentData', this.update.bind(this));
+  $('body').bind('incidentData', this.create.bind(this));
+  $(window).resize(function() {
+    this.update(this.getData());
+  });
 };
 
 /**
- * Called to update chart with new data
+ * Called to initialize data
  * @param  {Object} event Can be `data` if called directly
  * @param  {Object} data  New updated data
  */
-Chart.prototype.update = function(event, data) {
+Donut.prototype.create = function(event, data) {
 
   var self = this;
-
+  
   if (!data) {
     data = event;
   }
 
-  var results = [];
-  var years = [];
-  for (var r in data.results) {
-    if (!data.results[r].hasOwnProperty('error')) {
-      results.push(data.results[r]);
-      years.push(data.results[r].year);
-    } 
-  }
+  var results = this.formatData(data.results);
+  this.setData(results);
 
-  console.log(years);
-
-  results.sort(function(a,b) {
-    return a.year-b.year
-  });
-  console.log(results);
-
-  this._d3Configs = {};
-
-  this._d3Configs.x = d3.scale.linear()
-    .range([this.margin.left, this.width - this.margin.right])
-    .domain([d3.min(results, function(d) { return d.year; }), d3.max(results, function(d) { return d.year; })]);
-
-  this._d3Configs.y = d3.scale.linear()
-    .range([this.height - this.margin.top, this.margin.bottom])
-    .domain([d3.min(results, function(d) { return d.total; })-50, d3.max(results, function(d) { return d.total; })+50]);
-
-  this._d3Configs.color = d3.scale.category10();
-
-  this._d3Configs.xAxis = d3.svg.axis()
-    .scale(this._d3Configs.x)
-    .ticks(results.length)
-    .tickFormat(function(d) { return d;});
-
-  this._d3Configs.line = d3.svg.line()
-    .x(function(d) { console.log(self._d3Configs.x(d.year)); return self._d3Configs.x(d.year) })
-    .y(function(d) { console.log(self._d3Configs.y(d.total));  return self._d3Configs.y(d.total) });
-
-  this.circlesGroup = this.svg.append('svg:g');
-
-  this.circles = this.circlesGroup.selectAll('.data-point')
-    .data(results);
-
-  this.circles
-    .enter()
-      .append('svg:circle')
-        .attr('class', 'data-point')
-        .style('opacity', 1)
-        .attr('cx', function(d) { return self._d3Configs.x(d.year) })
-        .attr('cy', function(d) { return self._d3Configs.y(d.total) })
-        .attr('r', 4);
-        
-
-  this.svg.append('path')
-    .attr('class', 'line')
-    .attr('d', this._d3Configs.line(results));
-
-  // Add the X Axis
-  this.svg.append('g')
-    .attr('class', 'x-axis')
-    .attr('transform', 'translate(0,' + (this.height - this.margin.bottom) + ')')
-    .call(this._d3Configs.xAxis);
-
-  this.svg.selectAll('.tick').selectAll('text').each(function() {
-    if (years.indexOf(this.textContent) < 0) {
-      d3.select(this).classed('nodata', true);
-    }
-  });
+  this.update(this.getData());
 
 };
 
 /**
- * Iterates over data properties passing to updateProperty method to apply
- * @param {Object}   data
- * @param {Function} callback
+ * Called to update Donut with new data
+ * @param  {Object} data  New updated data
  */
+Donut.prototype.update = function(data) {
+  console.log(data);
+  var self = this;
+  var arcs = this.svg.selectAll('.arc')
+    .data(this._d3Configs.donut(data))
+    .enter().append('g')
+      .attr('class', 'arc');
 
-module.exports = Chart;
+  arcs.append('path')
+    .attr('d', this._d3Configs.arc)
+    .attr('class', function(d) { return self._d3Configs.color(d.data.term); });
+
+};
+
+/**
+ * Called to format events for Donut data
+ * @param {Object}   data
+ */
+Donut.prototype.formatData = function(data) {
+  //Sort data
+  data.sort(function(a,b) {return b.year-a.year});
+  //Iterate through each result in the array
+  var events = [];
+  for(var year in data) {
+    //iterate through each event 
+    console.log(data[year]);
+    if ((data[year].events !== undefined) &&
+      (data[year].events.length != 0)) {
+      events = data[year].events;
+      break;
+    }
+  }
+
+  events.sort(function(a,b) {return b.count-a.count;});
+
+  //Convert count to number if not number
+  events.forEach(function(d) {
+    d.count = +d.count;
+  });
+
+
+
+  return events.slice(0, 5);
+}
+
+
+
+/**
+ * Getter method for Donut data
+ */
+Donut.prototype.getData = function() {
+  return this.data;
+}
+
+/**
+ * Setter method for Donut data
+ * @param {Object}   data
+ */
+Donut.prototype.setData = function(data) {
+  if (!this.data) {
+    this.data = data;
+  }
+}
+
+module.exports = Donut;

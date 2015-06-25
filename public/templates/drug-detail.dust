@@ -84,7 +84,7 @@
     <div class="inner">
         <div class="col2 shift-right">
         	<section class="total-reports">
-                Total incidents {#years}{@first}{.} - {/first}{@last}{.}{/last}{/years}: <strong>{totalIncidents}</strong>
+                <p class="chart-title">Total incidents {#years}{@first}{.} - {/first}{@last}{.}{/last}{/years}: <strong>{totalIncidents}</strong></p>
                 <div class="line-chart"></div>
             </section>
 
@@ -111,11 +111,8 @@
         <div class="col2 shift-left">
             <section class="reported-reations">
                 <div class="view-toggle top">            
-
-                    <p>Chart goes here</p>
-
-                    <p>Out of 33,345 reported reactions, 100 were Nauesa</p>
-                    
+                    <p class="chart-title">Top 5 adverse reactions in 2015</p>
+                    <div class="donut-chart"></div>
                 </div>
                 <div class="view-toggle all">
                     <h2>Prednisone</h2>

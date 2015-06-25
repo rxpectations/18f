@@ -2,6 +2,7 @@
 
 var $ = require('jquery');
 var Chart = require('./modules/chart');
+var Donut = require('./modules/donut');
 
 /* When DOM ready initialize modules */
 
@@ -17,6 +18,11 @@ $(function() {
   $('.line-chart').each(function() {
 
     new Chart(this);
+  });
+
+  $('.donut-chart').each(function() {
+
+    new Donut(this);
   });
 
 
