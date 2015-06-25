@@ -3,20 +3,15 @@
 {drugname} | Events
 {/title}
 {<body}
-	<header data-name="{drugname}">
-		<h1>{drugname}</h1>
+	<header class="inner" data-name="{drugname}">
+		<h1>{drugname} Generic</h1>
+        <ul class="toolbar">
+            <li class="popular"><i class="fa fa-line-chart"></i> <em>Popular this week</em></li>
+            <li><a href="" class="ui-btn orange"><i class="fa fa-exclamation-triangle"></i> Report a Reaction</a></li>
+        </ul>
 	</header>
 
-    <section class="user-tools">
-        <ul class="active-filters">
-            <li>Filter 1</li>
-            <li>Filter 2</li>
-            <li>Filter 3</li>
-        </ul>
-        <a href="" class="filter-toggle">Filter <i class="fa fa-caret-down"></i></a>
-    </section>
-
-    <section class="filter-menu">
+    <section class="filter-menu" style="display:none">
         <div class="filter-options">
             <h3>Gender</h3>
             <div class="inner">
@@ -89,6 +84,23 @@
 	<section class="total-reports">
         Total incidents {#years}{@first}{.} - {/first}{@last}{.}{/last}{/years}: {totalIncidents}
         <div class="line-chart"></div>
+    </section>
+
+    <section class="graph-filters">
+        <ul>
+            <li>
+                <select id="age">
+                    <option value="age_all">All</option>
+                    <option value="">age 1</option>
+                </select>
+            </li>
+            <li>
+                <select id="weight">
+                    <option value="weight_all">All</option>
+                    <option value="">weight 1</option>
+                </select>
+            </li>
+        </ul>
     </section>
 
     <section class="reported-reations">
