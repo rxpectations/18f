@@ -30,13 +30,13 @@ console.log(formattedUrl);
         console.time('openFDA [event totals search]');
         var fdaReq1 = https.get(formattedUrl, function(searchRes) {
             var body = '';
+
+            searchRes.setEncoding('utf8');
+            searchRes.on('data', function(chunk) {
+                body += chunk;
+            });
+
             if (searchRes.statusCode === 200) {
-                searchRes.setEncoding('utf8');
-
-                searchRes.on('data', function(chunk) {
-                    body += chunk;
-                });
-
                 searchRes.on('end', function() {
                     //var drugEvents = new drugEventResponse(body);
 
@@ -50,10 +50,6 @@ console.log(formattedUrl);
                     }
                 });
             } else if (searchRes.statusCode === 404) {
-                searchRes.on('data', function(chunk) {
-                    body += chunk;
-                });
-
                 searchRes.on('end', function() {
                     console.timeEnd('openFDA [event totals search]');
                     body1 = body;
@@ -66,11 +62,9 @@ console.log(formattedUrl);
                     combineEventReplies(model.year, body1, body2, res);
                 });
             } else {
-console.log(searchRes);
-//@TODO: handle 429 and other errors in this multi-async request
-                if (replyCount === 2) {
 
-                } else {
+//@TODO: handle 429 and other errors in this multi-async request
+                if (replyCount !== 2) {
                     fdaReq2.abort();
                 }
                 res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
@@ -90,13 +84,13 @@ console.log(searchRes);
         console.time('openFDA [events search]');
         var fdaReq2 = https.get(formattedUrl, function(searchRes) {
             var body = '';
+
+            searchRes.setEncoding('utf8');
+            searchRes.on('data', function(chunk) {
+                body += chunk;
+            });
+
             if (searchRes.statusCode === 200) {
-                searchRes.setEncoding('utf8');
-
-                searchRes.on('data', function(chunk) {
-                    body += chunk;
-                });
-
                 searchRes.on('end', function() {
                     //var drugEvents = new drugEventResponse(body);
 
@@ -110,27 +104,18 @@ console.log(searchRes);
                     }
                 });
             } else if (searchRes.statusCode === 404) {
-                searchRes.on('data', function(chunk) {
-                    body += chunk;
-                });
-
                 searchRes.on('end', function() {
                     console.timeEnd('openFDA [events search]');
                     body2 = body;
                     replyCount++;
-                    if (replyCount === 2) {
-
-                    } else {
+                    if (replyCount !== 2) {
                         fdaReq1.abort();
                     }
                     combineEventReplies(model.year, body1, body2, res);
                 });
             } else {
-console.log(searchRes);
 //@TODO: handle 429 and other errors in this multi-async request
-                if (replyCount === 2) {
-
-                } else {
+                if (replyCount !== 2) {
                     fdaReq1.abort();
                 }
                 res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
