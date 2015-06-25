@@ -204,7 +204,7 @@ console.log(formattedUrl);
             } else {
 console.log(searchRes);
 //@TODO: handle 429 and other errors in this multi-async request
-                res.json({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+                res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
 
             } //@TODO: handle other non-OK response
 
@@ -259,7 +259,7 @@ console.log(searchRes);
             } else {
 console.log(searchRes);
 //@TODO: handle 429 and other errors in this multi-async request
-                res.json({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+                res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
 
             } //@TODO: handle other non-OK response
 
@@ -281,7 +281,7 @@ console.log(searchRes);
             [] : eventsObject.results;
 
         var responseObject = { year: year, total: total, events: drugEvents };
-        res.json(responseObject);
+        res.send(responseObject);
 
     }
 };
