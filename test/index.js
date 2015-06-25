@@ -35,9 +35,6 @@ describe('/', function () {
             .get('/')
             .expect(200)
             .expect('Content-Type', /html/)
-
-                .expect(/RxPectations/)
-
             .end(function (err, res) {
                 done(err);
             });
