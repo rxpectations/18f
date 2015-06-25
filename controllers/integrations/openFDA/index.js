@@ -17,18 +17,18 @@ module.exports = function (router) {
         var apiKey = req.app.kraken.get('integrations').openFDA.apiKey;
 
     	var model = new drugLabelRequest(req.query, apiKey);
-    	var options = { 
-    		protocol: 'https:', 
-    		hostname: req.app.kraken.get('integrations').openFDA.hostname, //'api.fda.gov', 
-    		pathname: req.app.kraken.get('integrations').openFDA.endpoints.drug.label, 
+    	var options = {
+    		protocol: 'https:',
+    		hostname: req.app.kraken.get('integrations').openFDA.hostname, //'api.fda.gov',
+    		pathname: req.app.kraken.get('integrations').openFDA.endpoints.drug.label,
     		search: model.query()
     	};
     	var formattedUrl = url.format(options);
-    	
+
         console.time('openFDA [label search]');
     	var fdaReq = https.get(formattedUrl, function(searchRes) {
             var body = '';
-			if (searchRes.statusCode === 200) {	
+			if (searchRes.statusCode === 200) {
 		        searchRes.setEncoding('utf8');
 
 				searchRes.on('data', function(chunk) {
@@ -66,73 +66,78 @@ module.exports = function (router) {
      */
     router.get('/eventsByYears', function (req, res) {
         var model = new drugEventRequest(req.query);
-        var options = { 
-            protocol: 'http:', 
+        var options = {
+            protocol: 'http:',
             host: 'localhost:8000', //@TODO: replace with config settings
-            pathname: '/integrations/openFDA/eventsByYear/', 
-            //search: '?mode=' + model.mode + '&term=' + model.drug + '&year=' + 
+            pathname: '/integrations/openFDA/eventsByYear/',
+            //search: '?mode=' + model.mode + '&term=' + model.drug + '&year=' +
         };
 
 
-        var replyCount = 0; 
+        var replyCount = 0;
         var repliesExpected = (new Date()).getFullYear() - model.year + 1;
         var resultsBody = [];
 
+        var yearData = function(searchRes) {
+
+            var body = '';
+            if (searchRes.statusCode === 200) {
+                searchRes.setEncoding('utf8');
+
+                searchRes.on('data', function(chunk) {
+                    body += chunk;
+                });
+
+                searchRes.on('end', function() {
+                    replyCount++;
+                    if (body !== '') {
+                        resultsBody.push(JSON.parse(body));
+                    }
+
+                    if (replyCount === repliesExpected) {
+                        console.timeEnd('openFDA [event multi-year search]');
+                        res.send({ results: resultsBody});
+                    }
+                });
+            } else if (searchRes.statusCode === 404) {
+                searchRes.on('data', function(chunk) {
+                    body += chunk;
+                });
+
+                searchRes.on('end', function() {
+                    resultsBody.push(body);
+
+                    replyCount++;
+                    if (replyCount === repliesExpected) {
+                        console.timeEnd('openFDA [event multi-year search]');
+                        res.send({ results: resultsBody});
+                    }
+                });
+            } else {
+                console.timeEnd('openFDA [event multi-year search]');
+console.log(searchRes);
+//@TODO: handle 429 and other errors in this multi-async request
+                res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+
+            } //@TODO: handle other non-OK response
+
+        };
+
+        var yearError =  function(e) {
+            console.timeEnd('openFDA [event multi-year search]');
+            console.log('ERROR: '  + e.message);
+        };
+
         console.time('openFDA [event multi-year search]');
         for (var idx = 0; idx < repliesExpected; idx++) {
-            var year = parseInt(model.year) + idx; 
+            var year = parseInt(model.year) + idx;
             options.search = '?mode=' + model.mode + '&drug=' + model.drug + '&year=' + year;
             var formattedUrl = url.format(options);
 console.log(formattedUrl);
-            var fdaReq = http.get(formattedUrl, function(searchRes) {
-                
-                var body = '';
-                if (searchRes.statusCode === 200) { 
-                    searchRes.setEncoding('utf8');
-
-                    searchRes.on('data', function(chunk) {
-                        body += chunk;
-                    });
-
-                    searchRes.on('end', function() {
-                        replyCount++;
-                        if (body !== '') {
-                            resultsBody.push(JSON.parse(body));
-                        }
-                        
-                        if (replyCount === repliesExpected) {
-                            console.timeEnd('openFDA [event multi-year search]');
-                            res.send({ results: resultsBody});
-                        }
-                    });
-                } else if (searchRes.statusCode === 404) {
-                    searchRes.on('data', function(chunk) {
-                        body += chunk;
-                    });
-
-                    searchRes.on('end', function() {
-                        resultsBody.push(body);
-
-                        replyCount++;
-                        if (replyCount === repliesExpected) {
-                            console.timeEnd('openFDA [event multi-year search]');
-                            res.send({ results: resultsBody});
-                        }
-                    });
-                } else {
-                    console.timeEnd('openFDA [event multi-year search]');
-console.log(searchRes);
-//@TODO: handle 429 and other errors in this multi-async request
-                    res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
-
-                } //@TODO: handle other non-OK response
-
-            }).on('error', function(e) {
-                console.timeEnd('openFDA [event multi-year search]');
-                console.log('ERROR: '  + e.message);
-            });
+            var fdaReq = http.get(formattedUrl, yearData)
+            .on('error', yearError);
         }
-        
+
 
 
     });
@@ -144,10 +149,10 @@ console.log(searchRes);
         var apiKey = req.app.kraken.get('integrations').openFDA.apiKey;
 
         var model = new drugEventRequest(req.query, apiKey);
-        var options = { 
-            protocol: 'https:', 
-            hostname: req.app.kraken.get('integrations').openFDA.hostname, //'api.fda.gov', 
-            pathname: req.app.kraken.get('integrations').openFDA.endpoints.drug.event, 
+        var options = {
+            protocol: 'https:',
+            hostname: req.app.kraken.get('integrations').openFDA.hostname, //'api.fda.gov',
+            pathname: req.app.kraken.get('integrations').openFDA.endpoints.drug.event,
             search: model.totalsQuery()
         };
         var formattedUrl = url.format(options);
@@ -155,12 +160,12 @@ console.log(searchRes);
 
         var replyCount = 0;
         var body1, body2;
-        
+
         //req1
         console.time('openFDA [event totals search]');
         var fdaReq1 = https.get(formattedUrl, function(searchRes) {
             var body = '';
-            if (searchRes.statusCode === 200) { 
+            if (searchRes.statusCode === 200) {
                 searchRes.setEncoding('utf8');
 
                 searchRes.on('data', function(chunk) {
@@ -189,7 +194,7 @@ console.log(searchRes);
                     body1 = body;
                     replyCount++;
                     if (replyCount === 2) {
-                        
+
                     } else {
                         fdaReq2.abort();
                     }
@@ -215,7 +220,7 @@ console.log(searchRes);
         console.time('openFDA [events search]');
         var fdaReq2 = https.get(formattedUrl, function(searchRes) {
             var body = '';
-            if (searchRes.statusCode === 200) { 
+            if (searchRes.statusCode === 200) {
                 searchRes.setEncoding('utf8');
 
                 searchRes.on('data', function(chunk) {
@@ -244,11 +249,11 @@ console.log(searchRes);
                     body2 = body;
                     replyCount++;
                     if (replyCount === 2) {
-                        
+
                     } else {
                         fdaReq1.abort();
-                    }    
-                    combineEventReplies(model.year, body1, body2, res);              
+                    }
+                    combineEventReplies(model.year, body1, body2, res);
                 });
             } else {
 console.log(searchRes);
@@ -268,12 +273,12 @@ console.log(searchRes);
         var bodyObject = (body1 !== undefined) ? JSON.parse(body1) : null;
         var eventsObject = (body2 !== undefined) ? JSON.parse(body2) : null;
 
-        var total = (bodyObject === null || bodyObject.error !== undefined) ? 
-            0 : bodyObject.meta.results.total; 
+        var total = (bodyObject === null || bodyObject.error !== undefined) ?
+            0 : bodyObject.meta.results.total;
 
-        var drugEvents = (eventsObject === null || eventsObject.error !== undefined) ? 
+        var drugEvents = (eventsObject === null || eventsObject.error !== undefined) ?
             [] : eventsObject.results;
-       
+
         var responseObject = { year: year, total: total, events: drugEvents };
         res.send(responseObject);
 
