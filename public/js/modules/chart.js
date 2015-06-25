@@ -30,22 +30,13 @@ var Chart = function Chart(element) {
 Chart.prototype.init = function() {
   this.width = this.$el.width();
   this.height = this.$el.height();
-  this._d3Configs = {};
-  this._d3Configs.parseDate = d3.time.format('%Y').parse;
-
-  this._d3Configs.x = d3.time.scale()
-    .range([0, this.width]);
-
-  this._d3Configs.y = d3.scale.linear()
-    .range([this.height, 0]);
-
-  this._d3Configs.color = d3.scale.category10();
-
-  this._d3Configs.xAxis = d3.svg.axis()
-    .scale(this._d3Configs.x)
-    .orient('bottom');
-
-  this._d3Configs.line = d3.svg.line();
+  this.margin = {
+    top: 50,
+    right: 50,
+    bottom: 50,
+    left: 50
+  }
+  
 
   this.svg = d3.select(this.$el[0])
     .append('svg')
@@ -78,38 +69,73 @@ Chart.prototype.update = function(event, data) {
     data = event;
   }
 
-  //get x domain
-  this._d3Configs.line
-    .x(function(d) { return self._d3Configs.x(d.year) })
-    .y(function(d) { return self._d3Configs.y(d.total) });
+  var results = [];
+  var years = [];
+  for (var r in data.results) {
+    if (!data.results[r].hasOwnProperty('error')) {
+      results.push(data.results[r]);
+      years.push(data.results[r].year);
+    } 
+  }
 
-  this._d3Configs.color.domain(d3.keys(data.results[0]).filter(function(key) { return key !== 'year'; }));
+  console.log(years);
 
-  data.results.forEach(function(d) {
-    d.year = self._d3Configs.parseDate(d.year);
+  results.sort(function(a,b) {
+    return a.year-b.year
   });
-/*
-  var series = color.domain().map(function(total) {
-    return {
-      total: total,
-      values: data.map(function(d) {
-        return {year: d.year, incident: +d.total };
-      })
-    };
-  });*/
-  this._d3Configs.x.domain(d3.extent(data.results, function(d){ return d.year; }));
+  console.log(results);
 
-  this._d3Configs.y.domain([0, d3.max(data.results, function(d) { return d.total; })]);
+  this._d3Configs = {};
+
+  this._d3Configs.x = d3.scale.linear()
+    .range([this.margin.left, this.width - this.margin.right])
+    .domain([d3.min(results, function(d) { return d.year; }), d3.max(results, function(d) { return d.year; })]);
+
+  this._d3Configs.y = d3.scale.linear()
+    .range([this.height - this.margin.top, this.margin.bottom])
+    .domain([d3.min(results, function(d) { return d.total; })-50, d3.max(results, function(d) { return d.total; })+50]);
+
+  this._d3Configs.color = d3.scale.category10();
+
+  this._d3Configs.xAxis = d3.svg.axis()
+    .scale(this._d3Configs.x)
+    .ticks(results.length)
+    .tickFormat(function(d) { return d;});
+
+  this._d3Configs.line = d3.svg.line()
+    .x(function(d) { console.log(self._d3Configs.x(d.year)); return self._d3Configs.x(d.year) })
+    .y(function(d) { console.log(self._d3Configs.y(d.total));  return self._d3Configs.y(d.total) });
+
+  this.circlesGroup = this.svg.append('svg:g');
+
+  this.circles = this.circlesGroup.selectAll('.data-point')
+    .data(results);
+
+  this.circles
+    .enter()
+      .append('svg:circle')
+        .attr('class', 'data-point')
+        .style('opacity', 1)
+        .attr('cx', function(d) { return self._d3Configs.x(d.year) })
+        .attr('cy', function(d) { return self._d3Configs.y(d.total) })
+        .attr('r', 4);
+        
 
   this.svg.append('path')
     .attr('class', 'line')
-    .attr('d', this._d3Configs.line(data.results));
+    .attr('d', this._d3Configs.line(results));
 
   // Add the X Axis
   this.svg.append('g')
     .attr('class', 'x-axis')
-    .attr('transform', 'translate(0,' + this.height + ')')
+    .attr('transform', 'translate(0,' + (this.height - this.margin.bottom) + ')')
     .call(this._d3Configs.xAxis);
+
+  this.svg.selectAll('.tick').selectAll('text').each(function() {
+    if (years.indexOf(this.textContent) < 0) {
+      d3.select(this).classed('nodata', true);
+    }
+  });
 
 };
 
