@@ -68,6 +68,11 @@ console.log(formattedUrl);
             } else {
 console.log(searchRes);
 //@TODO: handle 429 and other errors in this multi-async request
+                if (replyCount === 2) {
+
+                } else {
+                    fdaReq2.abort();
+                }
                 res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
 
             } //@TODO: handle other non-OK response
@@ -123,6 +128,11 @@ console.log(searchRes);
             } else {
 console.log(searchRes);
 //@TODO: handle 429 and other errors in this multi-async request
+                if (replyCount === 2) {
+
+                } else {
+                    fdaReq1.abort();
+                }
                 res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
 
             } //@TODO: handle other non-OK response
