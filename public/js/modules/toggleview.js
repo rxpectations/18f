@@ -25,7 +25,11 @@ var ToggleView = function Toggle(element) {
 ToggleView.prototype.bind = function() {
   this.$elem.on('click.ToggleView', function() {
     var obj = $(this).attr('data-toggle');
-    
+    var type = $(this).attr('data-type');
+
+    $('.toggle-select li a').removeClass('active');
+
+    $('#' + type).find('a').addClass('active');    
     $('#' + obj).toggleClass('show');
   });
 
