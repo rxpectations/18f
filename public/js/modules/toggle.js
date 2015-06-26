@@ -9,11 +9,11 @@
 var $ = window.jQuery = require('jquery');
 
 /**
- * Create new instance of Toggle
+ * Create new instance of ToggleView
  * @param element
  * @constructor
  */
-var Toggle = function Toggle(element) {
+var ToggleView = function Toggle(element) {
   this.$elem = $(element);
 
   this.bind()
@@ -22,8 +22,8 @@ var Toggle = function Toggle(element) {
 /**
  * Bind to relevant DOM events
  */
-Toggle.prototype.bind = function() {
-  this.$elem.on('click.Toggle', function() {
+ToggleView.prototype.bind = function() {
+  this.$elem.on('click.ToggleView', function() {
     var obj = $(this).attr('data-toggle');
     
     $('#' + obj).toggleClass('show');
@@ -34,4 +34,4 @@ Toggle.prototype.bind = function() {
   });
 };
 
-module.exports = Toggle;
+module.exports = ToggleView;
