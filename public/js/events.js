@@ -47,26 +47,6 @@ $(function() {
       $('body').trigger('incidentData', response);
       $('body').trigger('end.ajax');
     }
-  });
-
-  $.ajax({
-    url: '/integrations/openFDA/recall?drug='+$('header').data('name')+'&mode=name',
-    //url: '/static/events',
-    type: 'get',
-    beforeSend: function beforeSend() {
-      $('body').trigger('start.ajax');
-    },
-    success: function success(response) {
-      $('body').trigger('recallData', response);
-      $('body').trigger('end.ajax');
-    },
-    error: function error(xhr, status, thrownError) {
-      var response = {'error': 'No data found'}
-      $('body').trigger('recallData', response);
-      $('body').trigger('end.ajax');
-    }
-  });
-
-  
+  }); 
 
 });

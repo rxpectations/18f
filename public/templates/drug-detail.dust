@@ -84,7 +84,7 @@
     <div class="inner">
         <div class="col2 shift-right">
         	<section class="total-reports">
-                <p class="chart-title">Total incidents {#years}{@first}{.} - {/first}{@last}{.}{/last}{/years}: <strong>{totalIncidents}</strong></p>
+                <p class="chart-title">Total incidents {#years}{@first}{.} - {/first}{@last}{.}{/last}{/years}: <strong id="totalIncidents"></strong></p>
                 <div class="line-chart"></div>
             </section>
 
@@ -111,12 +111,12 @@
         <div class="col2 shift-left">
             <section class="reported-reations">
                 <div class="view-toggle top">            
-                    <p class="chart-title">Top 5 adverse reactions in 2015</p>
+                    <p class="chart-title">Top 5 adverse reactions in <span class="adverseEventsYear"></span></p>
                     <div class="donut-chart"></div>
                     <p class="arc-selected">&nbsp;</p>
                 </div>
                 <div class="view-toggle all">
-                    <p class="chart-title">All adverse reactions in 2015</p>
+                    <p class="chart-title">All adverse reactions in <span class="adverseEventsYear"></span></p>
                     <div class="bar-chart"></div>
                 </div>
                 <a href="" class="view-toggle ui-btn blue">View All</a>
@@ -126,7 +126,7 @@
 
     <section class="recalls">
         <div class="inner">
-            <p><strong>There were 5 recalls associated with this drug.</strong></p>
+            <p><strong>There were {recalls} recalls associated with this drug.</strong></p>
             <p>Talk to your health care provider or more information on how this can affect your use of this drug.</p>
         </div>
     </section>
