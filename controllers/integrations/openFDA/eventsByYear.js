@@ -59,7 +59,8 @@ module.exports = function (router) {
                         //rate-limited
                         combineEventReplies(model.year, body1, body2, res);
                     } else {
-                        res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+                        combineEventReplies(model.year, body1, body2, res);
+                        //res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
                     }
                 }
             });
@@ -103,7 +104,8 @@ module.exports = function (router) {
                         //rate-limited
                         combineEventReplies(model.year, body1, body2, res);
                     } else {
-                        res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+                        combineEventReplies(model.year, body1, body2, res);
+                        //res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
                     }
                 }    
             });

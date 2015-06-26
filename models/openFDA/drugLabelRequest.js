@@ -2,7 +2,7 @@
 
 var FDASearchModel = function (requestQueryData, apiKey) {
 	var DEFAULT_LIMIT = 10;
-    var term = requestQueryData.term;
+    var term = requestQueryData.drug;
     var mode = requestQueryData.mode;
 
     function toSearchQueryString() {

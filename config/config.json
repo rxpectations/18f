@@ -89,6 +89,9 @@
                     "enforcement": "/food/enforcement.json"
                 }
             }
+        },
+        "feeds": {
+            "newDrugApprovals": "http://www.drugs.com/feeds/new_drug_approvals.xml"
         } 
     }
 }
