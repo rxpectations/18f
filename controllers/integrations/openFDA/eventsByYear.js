@@ -54,7 +54,7 @@ module.exports = function (router) {
 
                     if (searchRes.statusCode === 404) {
                         //no results found, send 0 as the total (instead of error)
-                        combineEventReplies(model.year, {meta: {results: {total: 0} } }, body2, res);
+                        combineEventReplies(model.year, '{"meta": {"results": {"total": 0} } }', body2, res);
                     } else if (searchRes.statusCode === 429) {
                         //rate-limited
                         combineEventReplies(model.year, body1, body2, res);
@@ -98,7 +98,7 @@ module.exports = function (router) {
 
                     if (searchRes.statusCode === 404) {
                         //no events found
-                        combineEventReplies(model.year, body1, body2, res);
+                        combineEventReplies(model.year, '{"meta": {"results": {"total": 0} } }', body2, res);
                     } else if (searchRes.statusCode === 429) {
                         //rate-limited
                         combineEventReplies(model.year, body1, body2, res);

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{+title /}</title>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -12,7 +13,7 @@
 <nav class="topbar">
   <ul class="inner">
   	<li class="logo"><a href="/"><img src="/img/logo.svg" alt="Rxpecations" /></a></li>
-  	<li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+  	<li class="search"><a href="#" class="toggle-view" data-toggle="search-toggle" data-type="Drug"><i class="fa fa-search"></i></a></li>
   </ul>
 </nav>
 
@@ -22,6 +23,24 @@
 <footer>
   <h2>This is the footer</h2>
 </footer>
-<script src="/js/{script}.js"></script>
+<section id="search-toggle" class="app-search">
+  <div class="inner">
+    <img class="logo" src="/img/logo.svg" alt="Rxpecations" />
+    <a href="#" class="close-btn toggle-view" data-toggle="search-toggle"><i class="fa fa-times"></i></a>
+
+    <ul class="toggle toggle-select">
+      <li id="Drug"><a class="active" href="#">Drug</a></li>
+      <li id="Diagnosis"><a href="#">Diagnosis</a></li>
+    </ul>
+    <form class="search">
+      <div class="search-bar">
+        <input type="text" placeholder="Search" />
+        <!-- <input type="submit" value="Search" /> -->
+      </div>
+    </form>
+    <div class="results"></div>
+  </div>
+</section>
+<script src="/js/app.js"></script>
 </body>
 </html>
