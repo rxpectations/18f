@@ -46,20 +46,21 @@ module.exports = function (router) {
                     if (replyCount === 2) {
                         combineEventReplies(model.year, body1, body2, res);
                     }
-                } else if (searchRes.statusCode === 404) {
-                    //no results found
-                    if (replyCount !== 2) {
-                        //cancel second request if active
-                        fdaReq2.abort();
-                    }
-                    combineEventReplies(model.year, body1, body2, res);
-                } else if (searchRes.statusCode === 429) {
-                    //rate-limited
                 } else {
+                    //non-OK response
                     if (replyCount !== 2) {
                         fdaReq2.abort();
                     }
-                    res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+
+                    if (searchRes.statusCode === 404) {
+                        //no results found
+        //@TODO: send 0 
+                        combineEventReplies(model.year, body1, body2, res);
+                    } else if (searchRes.statusCode === 429) {
+                        //rate-limited
+                    } else {
+                        res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+                    }
                 }
             });
         }).on('error', function(e) {
@@ -89,20 +90,20 @@ module.exports = function (router) {
                     if (replyCount === 2) {
                         combineEventReplies(model.year, body1, body2, res);
                     }
-                } else if (searchRes.statusCode === 404) {
-                    //no results found
-                    if (replyCount !== 2) {
-                        //cancel second request if active
-                        fdaReq1.abort();
-                    }
-                    combineEventReplies(model.year, body1, body2, res);
-                } else if (searchRes.statusCode === 429) {
-                    //rate-limited
                 } else {
+                    //non-OK response
                     if (replyCount !== 2) {
                         fdaReq1.abort();
                     }
-                    res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+
+                    if (searchRes.statusCode === 404) {
+                        //no events found
+                        combineEventReplies(model.year, body1, body2, res);
+                    } else if (searchRes.statusCode === 429) {
+                        //rate-limited
+                    } else {
+                        res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+                    }
                 }    
             });
         }).on('error', function(e) {
@@ -117,7 +118,7 @@ module.exports = function (router) {
         var eventsObject = (body2 !== undefined) ? JSON.parse(body2) : null;
 
         var total = (bodyObject === null || bodyObject.error !== undefined) ?
-            0 : bodyObject.meta.results.total;
+            -1 : bodyObject.meta.results.total;
 
         var drugEvents = (eventsObject === null || eventsObject.error !== undefined) ?
             [] : eventsObject.results;

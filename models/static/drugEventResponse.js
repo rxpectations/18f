@@ -36,6 +36,16 @@
           "total": 2
         }
       ]
+    },
+    {
+      "year": 2012,
+      "total": -1,
+      "events": []
+    },
+    {
+      "year": 2013,
+      "total": 0,
+      "events": []
     }
   ]
 }

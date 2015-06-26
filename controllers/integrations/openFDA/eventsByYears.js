@@ -15,7 +15,7 @@ module.exports = function (router) {
         var model = new drugEventRequest(req.query);
         var options = {
             protocol: 'http:',
-            host: 'localhost:8000', //@TODO: replace with config settings
+            host: 'localhost:' + (process.env.PORT || 8000), //@TODO: (VERIFY) replace with config settings
             pathname: '/integrations/openFDA/eventsByYear/',
             //search: '?mode=' + model.mode + '&term=' + model.drug + '&year=' +
         };
