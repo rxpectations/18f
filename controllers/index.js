@@ -6,6 +6,7 @@ var getData = require('../lib/getData');
 
 //Models
 var IndexModel = require('../models/index');
+var drugEventResponse = require('../models/static/drugEventResponse')();
 
 
 module.exports = function (router) {
@@ -20,40 +21,10 @@ module.exports = function (router) {
         
     });
 
-    router.get('/fakeData', function(req, res) {
-        var data = {
-            'results': [
-                {
+    router.get('/static/events', function(req, res) {
+        
 
-                    'year': '2015',
-                    'total': 0
-                },
-                {
-                    'error': 
-                    {
-                        'code': 429,
-                        'message': 'Unexpected Error'
-                    }
-                },
-                {
-
-                    'year': '2013',
-                    'total': 3095
-                },
-                {
-
-                    'year': '2014',
-                    'total': 2882
-                },
-                {
-
-                    'year': '2011',
-                    'total': 2559
-                }
-            ]
-        };
-
-        res.json(data);
+        res.json(drugEventResponse);
     });
 
     router.get('/events/:drugname', function (req, res) {

@@ -63,7 +63,7 @@ Donut.prototype.init = function() {
 Donut.prototype.bind = function() {
 
   $('body').bind('incidentData', this.create.bind(this));
-  $(window).resize(function() {
+  $(window).resize(function windowResize() {
     this.update(this.getData());
   });
 };

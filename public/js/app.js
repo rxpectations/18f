@@ -24,15 +24,15 @@ $(function() {
     new SearchResults(this);
   });
 
-  $('.accordion').each(function() {
+  $('.accordion').each(function instantiateAccordion() {
     var instance = new Accordion(this);
   });
 
-  $('.toggle-view').each(function() {
+  $('.toggle-view').each(function instantiateToggle() {
     var toggleview = new ToggleView(this);
   });
 
-  $('.toggle-select').each(function() {
+  $('.toggle-select').each(function instantiateToggleSelect() {
     var toggleselect = new ToggleSelect(this);
   });
   

@@ -49,10 +49,10 @@ Search.prototype.keyupEvent = function(e) {
     clearTimeout(this.timer);
   }
 
-  this.timer = setTimeout(function() {
+  this.timer = setTimeout(function setTimer() {
     // Create url
     
-    var route = '/integrations/openFDA/?term='+self.term+'&mode=all';
+    var route = '/integrations/openFDA/?drug='+self.term+'&mode=all';
     console.log('make request after 250 milliseconds of typing');
     console.log(route);
     if  (self.term.length >= 3) {

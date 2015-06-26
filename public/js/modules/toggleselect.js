@@ -25,14 +25,14 @@ var ToggleSelect = function Toggle(element) {
  * Bind to relevant DOM events
  */
 ToggleSelect.prototype.bind = function() {
-  this.$toggle.on('click.ToggleSelect', function() {
+  this.$toggle.on('click.ToggleSelect', function clickToggleSelect() {
     if(!$(this).children('a').hasClass('active')) {
   		$('.toggle-select li a').removeClass('active');
     	$(this).find('a').addClass('active');
     }
   });
 
-  this.$elem.on('click.ToggleSelect', function(e) {
+  this.$elem.on('click.ToggleSelect', function elemClickToggleSelect(e) {
     e.preventDefault();
   });
 };
