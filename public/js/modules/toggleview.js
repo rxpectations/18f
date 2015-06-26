@@ -24,19 +24,15 @@ var ToggleView = function Toggle(element) {
  */
 ToggleView.prototype.bind = function() {
   this.$elem.on('click.ToggleView', function() {
-    if($(this).hasClass('content-switch')) {
-      
-    } else {
-      var obj = $(this).attr('data-toggle');
-      var type = $(this).attr('data-type');
+    var obj = $(this).attr('data-toggle');
+    var type = $(this).attr('data-type');
 
-      if(type != "undefined") {
-        $('.toggle-select li a').removeClass('active');
-        $('#' + type).find('a').addClass('active');    
-      }
-      
-      $('#' + obj).toggleClass('show');
+    if(type != "undefined") {
+      $('.toggle-select li a').removeClass('active');
+      $('#' + type).find('a').addClass('active');    
     }
+    
+    $('#' + obj).toggleClass('show');
   });
 
   this.$elem.on('click.ToggleView', function(e) {
