@@ -27,9 +27,11 @@ ToggleView.prototype.bind = function() {
     var obj = $(this).attr('data-toggle');
     var type = $(this).attr('data-type');
 
-    $('.toggle-select li a').removeClass('active');
-
-    $('#' + type).find('a').addClass('active');    
+    if(type != "undefined") {
+      $('.toggle-select li a').removeClass('active');
+      $('#' + type).find('a').addClass('active');    
+    }
+    
     $('#' + obj).toggleClass('show');
   });
 

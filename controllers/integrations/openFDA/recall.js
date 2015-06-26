@@ -34,9 +34,6 @@ console.log(formattedUrl);
             });
 
 			if (searchRes.statusCode === 200) {	
-		        
-
-
                 searchRes.on('end', function() {
                     var drugRecalls = new drugRecallResponse(body);
 
@@ -44,8 +41,6 @@ console.log(formattedUrl);
                     console.timeEnd('openFDA [recall search]');
                 });
 			} else if (searchRes.statusCode === 404) {
-
-
                 searchRes.on('end', function() {
                     res.send(body);
                     console.timeEnd('openFDA [recall search]');
