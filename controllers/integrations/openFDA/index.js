@@ -44,7 +44,7 @@ module.exports = function (router) {
                 });
 
                 searchRes.on('end', function() {
-                    res.json(body);
+                    res.send(body);
                     console.timeEnd('openFDA [label search]');
                 });
             } else {
@@ -56,8 +56,5 @@ module.exports = function (router) {
     		console.log('ERROR: '  + e.message);
     	});
     });
-
-
-
  
 };
