@@ -28,13 +28,13 @@ var Search = function Chart(element) {
  * 
  */
 Search.prototype.init = function() {
-  
+  console.log('search init');
 }
 /**
  * Bind to relevant DOM events
  */
 Search.prototype.bind = function() {
-  this.$el.find('#apiSearch').bind('keyup', this.keyupEvent.bind(this));
+  this.$el.find('input').bind('keyup', this.keyupEvent.bind(this));
 };
 
 /**
@@ -44,6 +44,7 @@ Search.prototype.bind = function() {
 Search.prototype.keyupEvent = function(e) {
   var self = this;
   self.term = $(e.currentTarget).val();
+  console.log()
   if(this.timer) {
     clearTimeout(this.timer);
   }

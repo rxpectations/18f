@@ -102,10 +102,20 @@ Donut.prototype.update = function(data) {
 
   arcs.append('path')
     .attr('d', this._d3Configs.arc)
-    .attr('class', function(d) { return self._d3Configs.color(d.data.term); });
+    .attr('class', function(d) { return self._d3Configs.color(d.data.term); })
+    .on('mouseover', this.arcOver.bind(this))
+    .on('mouseout', this.arcOut.bind(this));
 
 };
 
+Donut.prototype.arcOver = function(d) {
+  console.log(d.data.term);
+  this.$el.siblings('.arc-selected').html(d.data.term);
+}
+
+Donut.prototype.arcOut = function(d) {
+  this.$el.siblings('.arc-selected').html('&nbsp');
+}
 /**
  * Called to format events for Donut data
  * @param {Object}   data

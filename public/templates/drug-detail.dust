@@ -113,10 +113,10 @@
                 <div class="view-toggle top">            
                     <p class="chart-title">Top 5 adverse reactions in 2015</p>
                     <div class="donut-chart"></div>
+                    <p class="arc-selected">&nbsp;</p>
                 </div>
                 <div class="view-toggle all">
-                    <h2>Prednisone</h2>
-                    <p>Chart goes here</p>
+                    <div class="bar-chart"></div>
                 </div>
                 <a href="" class="view-toggle ui-btn blue">View All</a>
             </section>
