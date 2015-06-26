@@ -85,3 +85,7 @@ build: {
     }]
 }
 ```
+
+## License
+
+Ruby on Rails is released under the [MIT License](http://www.opensource.org/licenses/MIT).
