@@ -110,7 +110,7 @@
 
         <div class="col2 shift-left">
             <section class="reported-reations">
-                <div class="view-toggle top">            
+                <div class="view-toggle top show">            
                     <p class="chart-title">Top 5 adverse reactions in 2015</p>
                     <div class="donut-chart"></div>
                     <p class="arc-selected">&nbsp;</p>
@@ -119,7 +119,7 @@
                     <p class="chart-title">All adverse reactions in 2015</p>
                     <div class="bar-chart"></div>
                 </div>
-                <a href="" class="view-toggle ui-btn blue">View All</a>
+                <a href="#" class="toggle-view content-switch ui-btn blue">View All</a>
             </section>
         </div>
     </div>
