@@ -5,7 +5,7 @@ var Chart = require('./modules/chart');
 var Search = require('./modules/search');
 var SearchResults = require('./modules/search-results');
 var Accordion = require('./modules/accordion');
-var ToggleView = require('./modules/toggle');
+var ToggleView = require('./modules/toggleview');
 
 /* When DOM ready initialize modules */
 
@@ -28,7 +28,7 @@ $(function() {
   });
 
   $('.toggle-view').each(function() {
-    var toggle = new ToggleView(this);
+    var toggleview = new ToggleView(this);
   });
   
 
