@@ -132,7 +132,7 @@ Chart.prototype.update = function(event, data) {
     .attr('transform', 'translate(0,' + (this.height - this.margin.bottom) + ')')
     .call(this._d3Configs.xAxis);
 
-  this.svg.selectAll('.tick').selectAll('text').each(function() {
+  this.svg.selectAll('.tick').selectAll('text').each(function highlightNullYear() {
     if (years.indexOf(this.textContent) < 0) {
       d3.select(this).classed('nodata', true);
     }

@@ -11,21 +11,21 @@ $(function() {
 
   /* Generic inits. These are just baselines, they have no extended logic */
 
-  $('.accordion').each(function() {
+  $('.accordion').each(function instantiateAccordion() {
     var instance = new Accordion(this);
   });
 
 
-  $('.line-chart').each(function() {
+  $('.line-chart').each(function instantiateLineChart() {
 
     new Chart(this);
   });
 
-  $('.donut-chart').each(function() {
+  $('.donut-chart').each(function instantiateDonutChart() {
 
     new Donut(this);
   });
-  $('.bar-chart').each(function() {
+  $('.bar-chart').each(function instantiateBarChart() {
 
     new Bar(this);
   });
@@ -35,14 +35,14 @@ $(function() {
     url: '/integrations/openFDA/eventsByYears?drug='+$('header').data('name')+'&mode=name&year=2011',
     //url: '/static/events',
     type: 'get',
-    beforeSend: function() {
+    beforeSend: function beforeSend() {
       $('body').trigger('start.ajax');
     },
-    success: function(response) {
+    success: function success(response) {
       $('body').trigger('incidentData', response);
       $('body').trigger('end.ajax');
     },
-    error: function(xhr, status, thrownError) {
+    error: function error(xhr, status, thrownError) {
       var response = {'error': 'No data found'}
       $('body').trigger('incidentData', response);
       $('body').trigger('end.ajax');
@@ -53,16 +53,16 @@ $(function() {
     url: '/integrations/openFDA/recall?drug='+$('header').data('name')+'&mode=name',
     //url: '/static/events',
     type: 'get',
-    beforeSend: function() {
+    beforeSend: function beforeSend() {
       $('body').trigger('start.ajax');
     },
-    success: function(response) {
-      $('body').trigger('incidentData', response);
+    success: function success(response) {
+      $('body').trigger('recallData', response);
       $('body').trigger('end.ajax');
     },
-    error: function(xhr, status, thrownError) {
+    error: function error(xhr, status, thrownError) {
       var response = {'error': 'No data found'}
-      $('body').trigger('incidentData', response);
+      $('body').trigger('recallData', response);
       $('body').trigger('end.ajax');
     }
   });

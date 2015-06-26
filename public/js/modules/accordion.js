@@ -25,8 +25,8 @@ var Accordion = function Accordion(element) {
 /**
  * Bind to relevant DOM events
  */
-Accordion.prototype.bind = function() {
-  this.$items.on('click.Accordion', function() {
+Accordion.prototype.bind = function Accordion() {
+  this.$items.on('click.Accordion', function clickAccordion() {
     var $listItem = $( this ).parent();
     if ($listItem.hasClass('active')) {
         $listItem.removeClass('active');
