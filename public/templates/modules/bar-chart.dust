@@ -1,0 +1,8 @@
+{#data}
+    <div class="bar-group cf">
+        <div class="bar" data-total="{total}"></div>
+        <div class="chart-name" >
+            {term}
+        </div>        
+    </div>
+{/data}

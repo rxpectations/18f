@@ -3,6 +3,7 @@
 var $ = require('jquery');
 var Chart = require('./modules/chart');
 var Donut = require('./modules/donut');
+var Bar = require('./modules/bar');
 
 /* When DOM ready initialize modules */
 
@@ -23,6 +24,10 @@ $(function() {
   $('.donut-chart').each(function() {
 
     new Donut(this);
+  });
+  $('.bar-chart').each(function() {
+
+    new Bar(this);
   });
 
 

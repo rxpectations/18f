@@ -37,12 +37,15 @@ SearchResults.prototype.init = function() {
   });
 };
 
+/**
+ * Fired when on ajax success event
+ * Loads dust template for search results
+ */
 SearchResults.prototype.loadTemplate = function(data, status, xhr) {
   console.log('loadTemplate');
   this.compiledTemplate = dust.compile(data, 'search-results'); 
   dust.loadSource(this.compiledTemplate);
 };
-
 
 /**
  * Bind to relevant DOM events
