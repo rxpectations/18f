@@ -116,6 +116,7 @@
                     <p class="arc-selected">&nbsp;</p>
                 </div>
                 <div class="view-toggle all">
+                    <p class="chart-title">All adverse reactions in 2015</p>
                     <div class="bar-chart"></div>
                 </div>
                 <a href="" class="view-toggle ui-btn blue">View All</a>
@@ -146,3 +147,6 @@
     </section>
 
 {/body}
+{<script}
+<script src="/js/events.js"></script>
+{/script}

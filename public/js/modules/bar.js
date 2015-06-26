@@ -21,6 +21,7 @@ require('../../../node_modules/dustjs-linkedin/lib/compiler.js');
 var Bar = function Bar(element) {
 
   this.$el = $(element);
+  this.init();
   this.bind();
 };
 
@@ -29,9 +30,10 @@ var Bar = function Bar(element) {
  * 
  */
 Bar.prototype.init = function() {
+  var self = this;
   this.width = this.$el.width();
   this.height = this.$el.height();
-
+  this._d3Configs = {};
   this._d3Configs.color = d3.scale.ordinal()
     .range(d3.range(5).map(function(i) { 
       return "c" + i; 
@@ -52,9 +54,14 @@ Bar.prototype.init = function() {
  * Loads dust template for search results
  */
 Bar.prototype.loadTemplate = function(data, status, xhr) {
+  var self = this;
   console.log('loadTemplate');
   this.compiledTemplate = dust.compile(data, 'bar-chart'); 
   dust.loadSource(this.compiledTemplate);
+
+  if (this.data) {
+    this.create(this.data);
+  }
 };
 
 /**
@@ -78,12 +85,22 @@ Bar.prototype.create = function(event, data) {
     data = event;
   }
 
-  var results = this.formatData(data.results);
-  this.setData(results);
-  this.chart = d3.select(this.$el[0]).selectAll('.bar')
-    .append('div')
-    .attr('class', 'path');
-  this.update(this.getData());
+  if (!this.data) {
+    var results = this.formatData(data.results);
+    this.setData(results);
+  }
+
+  if (this.compiledTemplate) {
+    dust.render('bar-chart', {data: this.getData()}, function(err, out){
+      if(err) console.error(err);
+      self.$el.html(out);
+    });    
+    
+    this.chart = d3.select(this.$el[0]).selectAll('.bar')
+      .append('div')
+      .attr('class', 'path');
+    this.update(this.getData());
+  }
 
 };
 
@@ -94,24 +111,23 @@ Bar.prototype.create = function(event, data) {
 Bar.prototype.update = function(data) {
   var self = this;
 
-  this._d3Configs = {};
-
   this._d3Configs.x = d3.scale.linear()
-    .range([0, this.width])
+    .range([0, this.$el.find('.bar').width()])
     .domain([0, d3.max(data, function(d) { return d.count; })]);
 
   this.chart.data(data);
 
-  this.chart.style("width", function(d) { 
-      return self._d3Configs.x(d.count) + "px";
+  this.chart.style('width', function(d) { 
+      return self._d3Configs.x(d.count) + 'px';
     })
     .attr('class', function(d, i) {
       if (i >= 5) {
-          return 'c4';
+        return 'c4';
       } else {
-          self._d3Configs.color(d.data.total);
+        return self._d3Configs.color(d.count);
       }
     })
+    .classed('path', true);
 
 };
 
@@ -137,7 +153,7 @@ Bar.prototype.formatData = function(data) {
     d.count = +d.count;
   });
 
-  return events.slice(0, 5);
+  return events;
 }
 
 /**

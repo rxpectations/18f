@@ -1,7 +1,7 @@
 {#data}
-    <div class="bar-group cf">
-        <div class="bar" data-total="{total}"></div>
-        <div class="chart-name" >
+    <div class="bar-group row">
+        <div class="bar col" data-total="{total}"></div>
+        <div class="bar-label col" >
             {term}
         </div>        
     </div>

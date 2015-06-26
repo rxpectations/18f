@@ -72,7 +72,7 @@ Chart.prototype.update = function(event, data) {
   var results = [];
   var years = [];
   for (var r in data.results) {
-    if (!data.results[r].hasOwnProperty('error')) {
+    if (!(data.results[r].total < 0)) {
       results.push(data.results[r]);
       years.push(data.results[r].year);
     } 
