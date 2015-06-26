@@ -1,5 +1,4 @@
 'use strict';
-var http = require('http');
 var https = require('https');
 var url = require('url');
 
@@ -27,12 +26,16 @@ console.log(formattedUrl);
         console.time('openFDA [recall search]');
     	var fdaReq = https.get(formattedUrl, function(searchRes) {
             var body = '';
-			if (searchRes.statusCode === 200) {	
-		        searchRes.setEncoding('utf8');
 
-				searchRes.on('data', function(chunk) {
-                    body += chunk;
-				});
+            searchRes.setEncoding('utf8');
+
+            searchRes.on('data', function(chunk) {
+                body += chunk;
+            });
+
+			if (searchRes.statusCode === 200) {	
+		        
+
 
                 searchRes.on('end', function() {
                     var drugRecalls = new drugRecallResponse(body);
@@ -41,9 +44,7 @@ console.log(formattedUrl);
                     console.timeEnd('openFDA [recall search]');
                 });
 			} else if (searchRes.statusCode === 404) {
-                searchRes.on('data', function(chunk) {
-                    body += chunk;
-                });
+
 
                 searchRes.on('end', function() {
                     res.send(body);

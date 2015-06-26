@@ -5,7 +5,7 @@
         <div class="inner">
             <h2 class="text-uppercase">Learn More About Medicine Safety</h2>
             <h3>Weigh the risks & Benefits of drugs to better manage your treatment.</h3>
-            <a href="#" class="ui-btn orange lg toggle-view" data-toggle="search-toggle">Search Drugs</a>
+            <a href="#" class="ui-btn orange lg toggle-view" data-toggle="search-toggle" data-type="Drug">Search Drugs</a>
         </div>
     </section>
 
@@ -32,7 +32,7 @@
             </a></li>
         </ul>
 
-        <a href="#" class="ui-btn blue lg">Find Another Condition</a>
+        <a href="#" class="ui-btn blue lg toggle-view" data-toggle="search-toggle" data-type="Diagnosis">Find Another Condition</a>
     </section>
 
 	<section id="search-toggle" class="app-search">
@@ -40,9 +40,9 @@
             <img class="logo" src="/img/logo.svg" alt="Rxpecations" />
             <a href="#" class="close-btn toggle-view" data-toggle="search-toggle"><i class="fa fa-times"></i></a>
 
-        	<ul class="toggle">
-        		<li><a class="active" href="#">Drug</a></li>
-        		<li><a href="#">Diagnosis</a></li>
+        	<ul class="toggle toggle-select">
+        		<li id="Drug"><a class="active" href="#">Drug</a></li>
+        		<li id="Diagnosis"><a href="#">Diagnosis</a></li>
         	</ul>
             <form class="search">
             	<div class="search-bar">

@@ -1,4 +1,4 @@
-   'use strict';
+'use strict';
 var https = require('https');
 var url = require('url');
 
@@ -53,11 +53,11 @@ module.exports = function (router) {
                     }
 
                     if (searchRes.statusCode === 404) {
-                        //no results found
-        //@TODO: send 0 
-                        combineEventReplies(model.year, body1, body2, res);
+                        //no results found, send 0 as the total (instead of error)
+                        combineEventReplies(model.year, {meta: {results: {total: 0} } }, body2, res);
                     } else if (searchRes.statusCode === 429) {
                         //rate-limited
+                        combineEventReplies(model.year, body1, body2, res);
                     } else {
                         res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
                     }
@@ -101,6 +101,7 @@ module.exports = function (router) {
                         combineEventReplies(model.year, body1, body2, res);
                     } else if (searchRes.statusCode === 429) {
                         //rate-limited
+                        combineEventReplies(model.year, body1, body2, res);
                     } else {
                         res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
                     }
