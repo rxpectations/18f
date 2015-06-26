@@ -46,7 +46,7 @@ console.log(formattedUrl);
                     console.timeEnd('openFDA [recall search]');
                 });
             } else {
-                res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+                res.send({'error': {'code': feedRes.statusCode, 'message': 'Unexpected Error'}});
 
 			} //@TODO: handle other non-OK response
 

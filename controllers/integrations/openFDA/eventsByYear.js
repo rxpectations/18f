@@ -126,7 +126,7 @@ module.exports = function (router) {
         var drugEvents = (eventsObject === null || eventsObject.error !== undefined) ?
             [] : eventsObject.results;
 
-        var responseObject = { year: year, total: total, events: drugEvents };
+        var responseObject = {year: year, total: total, events: drugEvents};
         res.send(responseObject);
 
     }

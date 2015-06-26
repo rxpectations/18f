@@ -22,10 +22,16 @@ module.exports = function (router) {
 			feedRes.on('end', function() {
 				console.timeEnd('feeds [new drug approvals]');
 				if (feedRes.statusCode === 200) {
-
-                    res.send(body);
+					var parseString = require('xml2js').parseString;
+					parseString(body, function (err, result) {
+					    if (err) {
+					    	res.json({'error': {'code': feedRes.statusCode, 'message': 'Unexpected Error'}});
+					    } else {
+					    	res.json({articles: result.rss.channel[0].item});
+						}
+					});
 	            } else {
-	                res.json({ 'error': { 'code': feedRes.statusCode, 'message': 'Unexpected Error' } });
+	                res.json({'error': {'code': feedRes.statusCode, 'message': 'Unexpected Error'}});
 				} 
 			});
     	}).on('error', function(e) {

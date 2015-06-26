@@ -48,7 +48,7 @@ module.exports = function (router) {
                     console.timeEnd('openFDA [label search]');
                 });
             } else {
-                res.json({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+                res.json({'error': {'code': feedRes.statusCode, 'message': 'Unexpected Error'}});
 
 			} //@TODO: handle other non-OK response
 
