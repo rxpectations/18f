@@ -5,7 +5,7 @@
         <div class="inner">
             <h2 class="text-uppercase">Learn More About Medicine Safety</h2>
             <h3>Weigh the risks & Benefits of drugs to better manage your treatment.</h3>
-            <a href="#" class="ui-btn orange lg">Search Drugs</a>
+            <a href="#" class="ui-btn orange lg toggle-view" data-toggle="search-toggle">Search Drugs</a>
         </div>
     </section>
 
@@ -19,7 +19,7 @@
              <i class="icon-i-neurology"></i> Multiple Sclerosis
             </a></li>
             <li><a href="#">
-             <i class=".icon-i-respiratory"></i> Breast Cancer
+             <i class="icon-i-mammography"></i> Breast Cancer
             </a></li>
             <li><a href="#">
              <i class="icon-i-mental-health"></i> Mental Health
@@ -35,19 +35,24 @@
         <a href="#" class="ui-btn blue lg">Find Another Condition</a>
     </section>
 
-	<section class="app-search">
-    	<ul class="toggle">
-    		<li><a class="active" href="#">Drug</a></li>
-    		<li><a href="#">Diagnosis</a></li>
-    	</ul>
-        <form class="search">
-        	<div class="search-bar">
-        		<input type="text" placeholder="Search by Drug or Diagnosis" id="apiSearch" />
-        		<input type="submit" value="Search" />
-        	</div>
-        </form>
-        <div class="results">
+	<section id="search-toggle" class="app-search">
+        <div class="inner">
+            <img class="logo" src="/img/logo.svg" alt="Rxpecations" />
+            <a href="#" class="close-btn toggle-view" data-toggle="search-toggle"><i class="fa fa-times"></i></a>
 
+        	<ul class="toggle">
+        		<li><a class="active" href="#">Drug</a></li>
+        		<li><a href="#">Diagnosis</a></li>
+        	</ul>
+            <form class="search">
+            	<div class="search-bar">
+            		<input type="text" placeholder="Search" />
+            		<!-- <input type="submit" value="Search" /> -->
+            	</div>
+            </form>
+            <div class="results">
+
+            </div>
         </div>
     </section>
 {/body}
