@@ -29,7 +29,7 @@ ToggleView.prototype.bind = function() {
     $('#' + obj).toggleClass('show');
   });
 
-  this.$elem.on('click.Toggle', function(e) {
+  this.$elem.on('click.ToggleView', function(e) {
     e.preventDefault();
   });
 };
