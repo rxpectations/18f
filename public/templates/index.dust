@@ -32,7 +32,7 @@
             </a></li>
         </ul>
 
-        <a href="#" class="ui-btn blue lg">Find Another Condition</a>
+        <a href="#" class="ui-btn blue lg toggle-view" data-toggle="search-toggle">Find Another Condition</a>
     </section>
 
 	<section id="search-toggle" class="app-search">
