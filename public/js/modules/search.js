@@ -52,7 +52,7 @@ Search.prototype.keyupEvent = function(e) {
   this.timer = setTimeout(function() {
     // Create url
     
-    var route = '/integrations/openFDA/?term='+self.term+'&mode=all';
+    var route = '/integrations/openFDA/?drug='+self.term+'&mode=all';
     console.log('make request after 250 milliseconds of typing');
     console.log(route);
     if  (self.term.length >= 3) {

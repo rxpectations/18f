@@ -32,8 +32,26 @@ $(function() {
 
 
   $.ajax({
-    //url: '/integrations/openFDA/eventsByYears?drug='+$('header').data('name')+'&mode=name&year=2011',
-    url: '/static/events',
+    url: '/integrations/openFDA/eventsByYears?drug='+$('header').data('name')+'&mode=name&year=2011',
+    //url: '/static/events',
+    type: 'get',
+    beforeSend: function() {
+      $('body').trigger('start.ajax');
+    },
+    success: function(response) {
+      $('body').trigger('incidentData', response);
+      $('body').trigger('end.ajax');
+    },
+    error: function(xhr, status, thrownError) {
+      var response = {'error': 'No data found'}
+      $('body').trigger('incidentData', response);
+      $('body').trigger('end.ajax');
+    }
+  });
+
+  $.ajax({
+    url: '/integrations/openFDA/recall?drug='+$('header').data('name')+'&mode=name',
+    //url: '/static/events',
     type: 'get',
     beforeSend: function() {
       $('body').trigger('start.ajax');
