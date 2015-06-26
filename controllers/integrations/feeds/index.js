@@ -30,6 +30,8 @@ module.exports = function (router) {
 					    	res.json({articles: result.rss.channel[0].item});
 						}
 					});
+	            } else if (feedRes.statusCode >= 300 && feedRes.statusCode < 400) {
+	            	res.send(feedRes.headers[hasHeader('location', feedRes.headers)]);
 	            } else {
 	                res.json({'error': {'code': feedRes.statusCode, 'message': 'Unexpected Error'}});
 				} 
