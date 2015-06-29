@@ -54,13 +54,12 @@ module.exports = function (router) {
                     }
 
                     yearlyCounts = combineTimeseriesYearly(totalsByTime);
-                    console.log(model.drugEvent);
-                    res.json({drug: model.drug, drugEvent: model.drugEvent, yearlyCounts: yearlyCounts})
+                    res.json({drug: model.drug, drugEvent: model.drugEvent, yearlyCounts: yearlyCounts});
                 } else {
                     //non-OK response
                     if (searchRes.statusCode === 404) {
                         //no results found, send 0 as the total (instead of error)
-                        res.json({drug: model.drug, drugEvent: model.Event, yearlyCounts: []})
+                        res.json({drug: model.drug, drugEvent: model.Event, yearlyCounts: []});
                     } else if (searchRes.statusCode === 429) {
                         //rate-limited
                         console.log('RATE-LIMITED [event count search]: ' + body1);
