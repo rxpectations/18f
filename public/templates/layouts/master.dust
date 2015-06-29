@@ -34,7 +34,12 @@
     {+body /}
 </div>
 <footer>
-  <p>Photo Credit: <a href="https://imagebank.nih.gov/details.cfm?imageid=1415">Rhoda Baer</a>
+    <ul class="footer-list">
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Disclaimer</a></li>        
+    </ul>
+  <p>Photo Credit: <a href="https://imagebank.nih.gov/details.cfm?imageid=1415">Rhoda Baer</a></p>
 </footer>
 {+script /}
 </body>
