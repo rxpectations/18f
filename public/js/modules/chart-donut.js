@@ -19,6 +19,7 @@ var d3 = require('d3');
 var Donut = function Donut(element) {
 
   this.$el = $(element);
+  this.legend = (this.$el.data('legend'))?this.$el.data('legend'):false;
   this.init();
   this.bind();
 };
@@ -93,7 +94,7 @@ Donut.prototype.create = function(event, data) {
  * @param  {Object} data  New updated data
  */
 Donut.prototype.update = function(data) {
-  console.log(data);
+  
   var self = this;
   var arcs = this.svg.selectAll('.arc')
     .data(this._d3Configs.donut(data))
@@ -106,6 +107,16 @@ Donut.prototype.update = function(data) {
     .on('mouseover', this.arcOver.bind(this))
     .on('mouseout', this.arcOut.bind(this));
 
+  var legend = d3.select(this.$el[0])
+    .append('ul.legend');
+
+  legend.selectAll('.series')
+    .data(data)
+    .enter().append('li')
+    .attr('class', function(d) {
+      return self._d3Configs.color(d.term);
+    })
+    .text(function(d) {return d.term; });
 };
 
 Donut.prototype.arcOver = function(d) {
