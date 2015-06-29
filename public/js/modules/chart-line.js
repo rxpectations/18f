@@ -53,7 +53,7 @@ Line.prototype.init = function() {
  */
 Line.prototype.bind = function() {
 
-  $('body').bind('incidentData', this.update.bind(this));
+  $('body').bind('effectData', this.create.bind(this));
 };
 
 /**
@@ -61,7 +61,7 @@ Line.prototype.bind = function() {
  * @param  {Object} event Can be `data` if called directly
  * @param  {Object} data  New updated data
  */
-Line.prototype.update = function(event, data) {
+Line.prototype.create = function(event, data) {
 
   var self = this;
 
@@ -77,13 +77,9 @@ Line.prototype.update = function(event, data) {
       years.push(data.results[r].year);
     } 
   }
-
-  console.log(years);
-
   results.sort(function(a,b) {
     return a.year-b.year
   });
-  console.log(results);
 
   this._d3Configs = {};
 
@@ -107,37 +103,59 @@ Line.prototype.update = function(event, data) {
     .x(function(d) { console.log(self._d3Configs.x(d.year)); return self._d3Configs.x(d.year) })
     .y(function(d) { console.log(self._d3Configs.y(d.total));  return self._d3Configs.y(d.total) });
 
-  this.circlesGroup = this.svg.append('svg:g');
+  if (this.circlesGroup) {
+    this.update(results);
+  } else {
+    this.circlesGroup = this.svg.append('svg:g');
+    
+    this.circles = this.circlesGroup.selectAll('.data-point')
+      .data(results);
 
+    this.circles
+      .enter()
+        .append('svg:circle')
+          .attr('class', 'data-point')
+          .style('opacity', 1)
+          .attr('cx', function(d) { return self._d3Configs.x(d.year) })
+          .attr('cy', function(d) { return self._d3Configs.y(d.total) })
+          .attr('r', 4);
+          
+
+    this.svg.append('path')
+      .attr('class', 'line')
+      .attr('d', this._d3Configs.line(results));
+
+    // Add the X Axis
+    this.svg.append('g')
+      .attr('class', 'x-axis')
+      .attr('transform', 'translate(0,' + (this.height - this.margin.bottom) + ')')
+      .call(this._d3Configs.xAxis);
+
+    this.svg.selectAll('.tick').selectAll('text').each(function highlightNullYear() {
+      if (years.indexOf(this.textContent) < 0) {
+        d3.select(this).classed('nodata', true);
+      }
+    });
+  }
+
+
+};
+
+Line.prototype.update = function(data) {
+  var self = this;
+  this.svg.transition();
   this.circles = this.circlesGroup.selectAll('.data-point')
-    .data(results);
+    .data(data)
+      .attr('cx', function(d) { return self._d3Configs.x(d.year) })
+      .attr('cy', function(d) { return self._d3Configs.y(d.total) });  
 
-  this.circles
-    .enter()
-      .append('svg:circle')
-        .attr('class', 'data-point')
-        .style('opacity', 1)
-        .attr('cx', function(d) { return self._d3Configs.x(d.year) })
-        .attr('cy', function(d) { return self._d3Configs.y(d.total) })
-        .attr('r', 4);
-        
+    this.svg.select('.line')
+      .attr('d', this._d3Configs.line(data));
 
-  this.svg.append('path')
-    .attr('class', 'line')
-    .attr('d', this._d3Configs.line(results));
-
-  // Add the X Axis
-  this.svg.append('g')
-    .attr('class', 'x-axis')
-    .attr('transform', 'translate(0,' + (this.height - this.margin.bottom) + ')')
-    .call(this._d3Configs.xAxis);
-
-  this.svg.selectAll('.tick').selectAll('text').each(function highlightNullYear() {
-    if (years.indexOf(this.textContent) < 0) {
-      d3.select(this).classed('nodata', true);
-    }
-  });
-
+    // Add the X Axis
+    this.svg.select('.x-axis')
+      .attr('transform', 'translate(0,' + (this.height - this.margin.bottom) + ')')
+      .call(this._d3Configs.xAxis);
 };
 
 /**

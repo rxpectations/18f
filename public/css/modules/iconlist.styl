@@ -1,10 +1,10 @@
 .icon-list
 	inline-list()
 	clearfix()
-	margin 40px 0
+	margin 40px 0 0
 
 	@media screen and (min-width: 768px)
-		margin 60px 0 80px
+		margin 60px 0 10px
 
 	li
 		text-align center
@@ -24,6 +24,7 @@
 			background white
 			line-height 100px
 			margin 0 auto 20px
+			transition all .25s
 
 			@media screen and (min-width: 768px)
 				font-size 3.5rem
@@ -36,6 +37,7 @@
 			margin-bottom 40px
 			padding 0 20px
 			color white
+			transition color .25s
 
 			i
 				color $blue
@@ -47,3 +49,7 @@
 
 			&:hover
 				color $blue-header
+
+				i
+					background $blue-header
+					color white

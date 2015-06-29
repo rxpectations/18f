@@ -3,7 +3,7 @@
 {<body}
     <section class="hero">
         <div class="inner">
-            <h2 class="text-uppercase">Learn More About Medicine Safety</h2>
+            <h2 class="text-uppercase headline">Learn More About Medicine Safety</h2>
             <h3>Weigh the risks & Benefits of drugs to better manage your treatment.</h3>
             <a href="#" class="ui-btn orange lg toggle-view" data-toggle="search-toggle" data-type="Drug">Search Drugs</a>
         </div>
@@ -11,26 +11,26 @@
 
     <section class="data-description">
         <div class="inner">
-            <h2 class="text-uppercase text-center">Where Does This Data Come From</h2>
+            <h2 class="text-uppercase text-center headline">Where Does This Data Come From</h2>
             <div class="row cf">
                 <div class="col3">
                     
-                    <img src="http://placekitten.com/g/400/200"  alt="place kitty" />
-                    <p>This is some random text since I don't really know what kind of supporting text is going to go into this section.</p>
+                    <img src="/img/step-1.png"  alt="place kitty" />
+                    <p>Users and/or healthcare professionals submit an <a href="#">Adverse Reaction Incident Report</a> to the FDA</p>
 
                 </div>
 
                 <div class="col3">
                     
-                    <img src="http://placekitten.com/g/400/200"  alt="place kitty" />
-                    <p>This is some random text since I don't really know what kind of supporting text is going to go into this section.</p>
+                    <img src="/img/step-2.png"  alt="place kitty" />
+                    <p>The FDA removes any personal or identifying information and makes the data available via <a href="#">OpenFDA</a></p>
 
                 </div>
 
                 <div class="col3">
                     
-                    <img src="http://placekitten.com/g/400/200"  alt="place kitty" />
-                    <p>This is some random text since I don't really know what kind of supporting text is going to go into this section.</p>
+                    <img src="/img/step-3.png"  alt="place kitty" />
+                    <p>The data is presented in a friendly format so you can be better informated when talking with your healthcare provider</p>
 
                 </div> 
             </div>
@@ -39,7 +39,7 @@
 
     <section class="conditions">
         <div class="inner">
-            <h2 class="text-center text-uppercase">Learn more about drugs by condition</h2>
+            <h2 class="text-center text-uppercase headline">Learn more about drugs by condition</h2>
             <ul class="icon-list">
                 <li><a href="#">
                  <i class="icon-i-respiratory"></i> Asthema

@@ -7,7 +7,7 @@ var getDataHTTPS = require('../lib/getDataHTTPS');
 
 //Models
 var IndexModel = require('../models/index');
-var drugEventResponse = require('../models/static/drugEventResponse')();
+var drugEventResponse = require('../models/static/drugEventResponse');
 
 
 module.exports = function (router) {
@@ -22,8 +22,8 @@ module.exports = function (router) {
         
     });
 
-    router.get('/static/events', function(req, res) {        
-        res.json(drugEventResponse);
+    router.get('/static/events', function(req, res) {
+        res.json(drugEventResponse());
 
     });
 

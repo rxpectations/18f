@@ -68,23 +68,28 @@ Reactions.prototype.update = function(data) {
   var self = this;
   console.log(data);
   for (var event in data.results) {
-    this.$list.append('<li>'+data.results[event].term+'</li>');
+    this.$list.append('<li data-term="'+data.results[event].term+'">'+data.results[event].term+'</li>');
   }
 
   this.$el.append(this.$list);
 
-  this.slider = this.$list.bxSlider({
+  this.slider = this.$el.find('ul').bxSlider({
     slideWidth: 100,
     minSlides: 3,
     maxSlides: 3,
     moveSlides: 1,
+    startSlide: 9,
     hideControlOnEnd: true,
-    pager:false
+    pager:false,
+    onSlideAfter: self.onSlideAfter.bind(self)
   });
 
-  
+  this.slider.goToSlide(0);
   
 };
+Reactions.prototype.onSlideAfter = function($slide, oldIndex, newIndex) {
+  $('body').trigger('termSelect.rx', {term: $slide.data('term')});
+}
 
 /**
  * Getter method for Reactions data
