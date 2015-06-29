@@ -81,8 +81,8 @@
             }
         },
         "feeds": {
-            "newDrugApprovals": "http://www.drugs.com/feeds/new_drug_approvals.xml",
-            "clinicalTrials": "http://www.drugs.com/feeds/clinical_trials.xml"
+            "new-drugs": "http://www.drugs.com/feeds/new_drug_approvals.xml",
+            "clinical-trials": "http://www.drugs.com/feeds/clinical_trials.xml"
         }  
     }
 }
