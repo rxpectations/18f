@@ -21,7 +21,7 @@ module.exports = function (router) {
     		search: model.query()
     	};
     	var formattedUrl = url.format(options);
-console.log(formattedUrl);
+        //console.log(formattedUrl);
     	
         console.time('openFDA [recall search]');
     	var fdaReq = https.get(formattedUrl, function(searchRes) {

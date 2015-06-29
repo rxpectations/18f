@@ -9,7 +9,7 @@ var FDASearchModel = function (requestQueryData, apiKey) {
 
     function toSearchQueryString(useCount, resultsLimit) {
     	var nameSearchValue = '';
-        var timeSearchValue = 'receiptdate:';
+        var timeSearchValue = '';
 
         if (!mode || mode === undefined) {
             mode = 'name';
@@ -32,15 +32,16 @@ var FDASearchModel = function (requestQueryData, apiKey) {
             year = currentYear;
         }
 
+        timeSearchValue = 'receiptdate:[' + year + '0101+TO+';
         if (year === currentYear) {
             var mm = (currentDate.getMonth()+1).toString();
             var dd = currentDate.getDate().toString();
             mm = (mm.length === 2) ? mm : '0' + mm;
             dd = (dd.length === 2) ? dd : '0' + dd;
 
-            timeSearchValue += '[' + year + '0101+TO+' + year + mm + dd + ']'; //e.g. [20140101+TO+20141231]
+            timeSearchValue += year + mm + dd + ']'; //e.g. [20140101+TO+20141231]
         } else {
-            timeSearchValue += '[' + year + '0101+TO+' + year + '1231]'; //e.g. [20140101+TO+20141231]
+            timeSearchValue += year + '1231]'; //e.g. [20140101+TO+20141231]
             //@wARN results slightly different if date string have dashes
         }
 

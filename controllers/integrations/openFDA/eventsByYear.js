@@ -167,7 +167,11 @@ module.exports = function (router) {
     */
 
     function combineEventReplies1(year, total, events, res) {
-        var responseObject = {year: year, total: total, events: events};
+        var responseObject = {total: total, events: events};
+        if (year !== undefined && year) {
+            responseObject.year = year;
+        }
+        
         res.send(responseObject);
     }
 };
