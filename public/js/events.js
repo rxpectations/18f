@@ -55,6 +55,28 @@ $(function() {
     }
   });
 
+  $('body').on('termSelect.rx', function GetEventData(event, eventData){
+    console.log(eventData.term);
+    //Get the term from the event data and do ajax call to get data from last 5 years
+    $.ajax({
+    //url: '/integrations/openFDA/recall?drug='+$('header').data('name')+'&mode=name',
+      url: '/static/events?term='+eventData.term,
+      type: 'get',
+      beforeSend: function beforeSend() {
+        $('body').trigger('start.ajax');
+      },
+      success: function success(response) {
+        $('body').trigger('effectData', response);
+        $('body').trigger('end.ajax');
+      },
+      error: function error(xhr, status, thrownError) {
+        var response = {'error': 'No data found'}
+        $('body').trigger('effectData', response);
+        $('body').trigger('end.ajax');
+      }
+    });
+  });
+
   
 
 });

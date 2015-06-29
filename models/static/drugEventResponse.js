@@ -1,4 +1,9 @@
 module.exports = function() {
+
+    function getRandomInt() {
+        return Math.floor(Math.random() * (10000 - 100)) + 100;
+    }
+
     return {
       "results": [
         {
@@ -13,7 +18,7 @@ module.exports = function() {
         }, 
         {
           "year": "2014",
-          "total": 6198,
+          "total": getRandomInt(),
           "events": [
             {
                 "term": "DRUG INEFFECTIVE",
@@ -59,7 +64,7 @@ module.exports = function() {
         }, 
         {
           "year": "2012",
-          "total": 9215,
+          "total": getRandomInt(),
           "events": [
             {
                 "term": "PAIN",
@@ -105,7 +110,7 @@ module.exports = function() {
         }, 
         {
           "year": "2013",
-          "total": 11377,
+          "total": getRandomInt(),
           "events": [
             {
                 "term": "DRUG INEFFECTIVE",
