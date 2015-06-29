@@ -21,10 +21,9 @@ module.exports = function (router) {
         
     });
 
-    router.get('/static/events', function(req, res) {
-        
-
+    router.get('/static/events', function(req, res) {        
         res.json(drugEventResponse);
+
     });
 
     router.get('/events/:drugname', function (req, res) {
@@ -40,11 +39,11 @@ module.exports = function (router) {
             sideEffects: 'short list of side effects',
             updates: 'updates about drug',
             resource: 'resource and community description',
-            recalls: 5          
+            recalls: 5
         };
         // Use path.normalize for consistent paths 
         // across Windows and OS
-        res.render(path.normalize('drug-detail'), model);       
+        res.render(path.normalize('drug-detail'), model);
         
     });
 
@@ -52,8 +51,7 @@ module.exports = function (router) {
         // Use path.normalize for consistent paths 
         // across Windows and OS
         res.render(path.normalize('index'), model.Index());
-        
-        
+
     });
 
     // Dyanmic routing example

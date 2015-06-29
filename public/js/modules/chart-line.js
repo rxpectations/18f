@@ -1,7 +1,7 @@
 /**
- * Chart
+ * Line Chart
  * ====
- * This module will render the chart component and show if not
+ * This module will render the line chart component and show if not
  * already visisible.
  */
 
@@ -11,12 +11,12 @@ var $ = window.jQuery = require('jquery');
 var d3 = require('d3');
 
 /**
- * Create new instance of Chart
+ * Create new instance of Line Chart
  * @param element
  * @constructor
  * @param rawData
  */
-var Chart = function Chart(element) {
+var Line = function Line(element) {
 
   this.$el = $(element);
   this.init();
@@ -24,10 +24,10 @@ var Chart = function Chart(element) {
 };
 
 /**
- *  Initialize the chart with basic attributes
+ *  Initialize the line chart with basic attributes
  * 
  */
-Chart.prototype.init = function() {
+Line.prototype.init = function() {
   this.width = this.$el.width();
   this.height = this.$el.height();
   this.margin = {
@@ -51,7 +51,7 @@ Chart.prototype.init = function() {
 /**
  * Bind to relevant DOM events
  */
-Chart.prototype.bind = function() {
+Line.prototype.bind = function() {
 
   $('body').bind('incidentData', this.update.bind(this));
 };
@@ -61,7 +61,7 @@ Chart.prototype.bind = function() {
  * @param  {Object} event Can be `data` if called directly
  * @param  {Object} data  New updated data
  */
-Chart.prototype.update = function(event, data) {
+Line.prototype.update = function(event, data) {
 
   var self = this;
 
@@ -146,4 +146,4 @@ Chart.prototype.update = function(event, data) {
  * @param {Function} callback
  */
 
-module.exports = Chart;
+module.exports = Line;
