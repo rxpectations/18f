@@ -32,8 +32,8 @@ $(function() {
 
 
   $.ajax({
-    url: '/integrations/openFDA/eventsByYears?drug='+$('header').data('name')+'&mode=name&year=2011',
-    //url: '/static/events',
+    //url: '/integrations/openFDA/eventsByYears?drug='+$('header').data('name')+'&mode=name&year=2011',
+    url: '/static/events',
     type: 'get',
     beforeSend: function beforeSend() {
       $('body').trigger('start.ajax');
@@ -50,8 +50,8 @@ $(function() {
   });
 
   $.ajax({
-    url: '/integrations/openFDA/recall?drug='+$('header').data('name')+'&mode=name',
-    //url: '/static/events',
+    //url: '/integrations/openFDA/recall?drug='+$('header').data('name')+'&mode=name',
+    url: '/static/events',
     type: 'get',
     beforeSend: function beforeSend() {
       $('body').trigger('start.ajax');
