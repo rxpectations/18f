@@ -1,7 +1,6 @@
 'use strict';
 
 var $ = require('jquery');
-var Chart = require('./modules/chart');
 var Search = require('./modules/search');
 var SearchResults = require('./modules/search-results');
 var Accordion = require('./modules/accordion');

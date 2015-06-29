@@ -64,7 +64,7 @@ module.exports = function (router) {
                 console.timeEnd('openFDA [event multi-year search]');
 console.log(searchRes);
                 //@TODO: handle 429 and other errors in this multi-async request
-                res.json({'error': {'code': feedRes.statusCode, 'message': 'Unexpected Error'}});
+                res.json({'error': {'code': searchRes.statusCode, 'message': 'Unexpected Error'}});
 
             } //@TODO: handle other non-OK response
 

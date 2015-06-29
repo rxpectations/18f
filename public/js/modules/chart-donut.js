@@ -9,6 +9,7 @@
 
 var $ = window.jQuery = require('jquery');
 var d3 = require('d3');
+var numeral = require('numeral');
 
 /**
  * Create new instance of Donut
@@ -34,7 +35,8 @@ Donut.prototype.init = function() {
 
   this._d3Configs = {};
   this._d3Configs.radius = Math.min(this.width, this.height) / 2;
-  this._d3Configs.color = d3.scale.ordinal().range(d3.range(5).map(function(i) { return "c" + i; }));
+  this._d3Configs.color = d3.scale.ordinal().range(d3.range(10).map(function(i) { return "c" + i; }));
+  //this._d3Configs.color = d3.scale.category10();
 
   this._d3Configs.donut = d3.layout.pie()
     .sort(null)
@@ -63,7 +65,7 @@ Donut.prototype.init = function() {
  */
 Donut.prototype.bind = function() {
 
-  $('body').bind('incidentData', this.create.bind(this));
+  $('body').bind('eventData', this.create.bind(this));
   $(window).resize(function windowResize() {
     this.update(this.getData());
   });
@@ -81,9 +83,7 @@ Donut.prototype.create = function(event, data) {
   if (!data) {
     data = event;
   }
-
-  var results = this.formatData(data.results);
-  this.setData(results);
+  this.setData(data);
 
   this.update(this.getData());
 
@@ -94,10 +94,9 @@ Donut.prototype.create = function(event, data) {
  * @param  {Object} data  New updated data
  */
 Donut.prototype.update = function(data) {
-  
   var self = this;
   var arcs = this.svg.selectAll('.arc')
-    .data(this._d3Configs.donut(data))
+    .data(this._d3Configs.donut(data.results))
     .enter().append('g')
       .attr('class', 'arc');
 
@@ -107,16 +106,19 @@ Donut.prototype.update = function(data) {
     .on('mouseover', this.arcOver.bind(this))
     .on('mouseout', this.arcOut.bind(this));
 
-  var legend = d3.select(this.$el[0])
-    .append('ul.legend');
+  var center_group = this.svg.append('svg:g')
+      .attr('class', 'center_group');
 
-  legend.selectAll('.series')
-    .data(data)
-    .enter().append('li')
-    .attr('class', function(d) {
-      return self._d3Configs.color(d.term);
-    })
-    .text(function(d) {return d.term; });
+  var label = center_group.append('svg:text')
+      .attr('class', 'donut-label')
+      .attr('dy', 20)
+      .attr('text-anchor', 'middle') // text-align: right
+      .text('reported reactions');
+  var totalLabel = center_group.append('svg:text')
+      .attr('class', 'donut-total')
+      .attr('dy', 0)
+      .attr('text-anchor', 'middle') // text-align: right
+      .text(numeral(data.total).format('0,0'));
 };
 
 Donut.prototype.arcOver = function(d) {
