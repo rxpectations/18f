@@ -1,24 +1,30 @@
 .icon-list
 	inline-list()
 	clearfix()
-	margin 40px 0
+	margin 40px 0 0
 
 	@media screen and (min-width: 768px)
-		margin 60px 0 80px
+		margin 60px 0 10px
 
 	li
 		text-align center
 		col(1/2, uncycle:6, cycle:2)
+		border-radius 100%
 
 		@media screen and (min-width: 768px)
 			col(1/6, uncycle:2, cycle:6)
 
-
 		i
 			display block
 			text-align center
-			font-size 2rem
-			margin-bottom 10px
+			font-size 3rem
+			width 100px 
+			height 100px
+			border-radius 50%
+			background white
+			line-height 100px
+			margin 0 auto 20px
+			transition all .25s
 
 			@media screen and (min-width: 768px)
 				font-size 3.5rem
@@ -30,6 +36,12 @@
 			transition color .25s
 			margin-bottom 40px
 			padding 0 20px
+			color white
+			transition color .25s
+
+			i
+				color $blue
+
 			font-family 'Roboto', 'Open Sans', Helvetica, Arial, sans-serif
 
 			@media screen and (min-width: 768px)
@@ -37,3 +49,7 @@
 
 			&:hover
 				color $blue-header
+
+				i
+					background $blue-header
+					color white

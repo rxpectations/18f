@@ -10,23 +10,40 @@
             <li><a href="" class="ui-btn orange"><i class="fa fa-exclamation-triangle"></i> Report a Reaction</a></li>
         </ul>
 	</header>
-
+    
     <div class="inner">
         <div class="col2 shift-right">
         	<section class="total-reports">
                 <p class="chart-title">Total incidents {#years}{@first}{.} - {/first}{@last}{.}{/last}{/years}: <strong>{totalIncidents}</strong></p>
                 <div class="line-chart"></div>
             </section>
+
+            <section class="graph-filters">
+                <ul>
+                    <li>
+                        <label>Age: </label>
+                        <select id="age">
+                            <option value="age_all">All</option>
+                            <option value="">age 1</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label>Weight: </label>
+                        <select id="weight">
+                            <option value="weight_all">All</option>
+                            <option value="">weight 1</option>
+                        </select>
+                    </li>
+                </ul>
+            </section>
         </div>
 
         <div class="col2 shift-left">
             <section class="reported-reations" id="graph-toggle">
                 <div class="graph top show">            
-                    <p class="chart-title">Top 10 Reported Reactions</p>
+                    <p class="chart-title">Top 5 adverse reactions in 2015</p>
                     <div class="donut-chart" data-legend="true"></div>
-                    <div class="reactions">
-                        
-                    </div>
+                    <p class="arc-selected">&nbsp;</p>
                 </div>
                 <div class="graph all">
                     <p class="chart-title">All adverse reactions in 2015</p>
@@ -39,12 +56,8 @@
 
     <section class="recalls">
         <div class="inner">
-            {@eq key="{recalls}" value="0"}
-            <p><strong>There are no recalls associated with this drug</strong</p>
-            {:else}
             <p><strong>There were {recalls} recalls associated with this drug.</strong></p>
             <p>Talk to your health care provider or more information on how this can affect your use of this drug.</p>
-            {/eq}
         </div>
     </section>
 

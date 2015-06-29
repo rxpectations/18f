@@ -36,7 +36,7 @@ module.exports = function (router) {
 					var parseString = require('xml2js').parseString;
 					parseString(body, function (err, result) {
 					    if (err) {
-					    	res.json({'error': {'code': feedRes.statusCode, 'message': 'Unexpected Error'}});
+					    	res.json({'error': {'code': 'xml-parse', 'message': 'Unexpected Error'}});
 					    } else {
 					    	//xml2js places attribute fields into arrays of 1, 
 					    	result.rss.channel[0].item.forEach(function (currVal, idx, currArr) {
