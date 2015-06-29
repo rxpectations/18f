@@ -4,11 +4,10 @@
 <section id="search-toggle" class="app-search show">
     <div class="inner">
         <img class="logo" src="/img/logo.svg" alt="Rxpecations" />
-        <a href="#" class="close-btn toggle-view" data-toggle="search-toggle"><i class="fa fa-times"></i></a>
+        <!--<a href="#" class="close-btn toggle-view" data-toggle="search-toggle"><i class="fa fa-times"></i></a>-->
         <form class="search">
          	<div class="search-bar">
-           		<input type="text" placeholder="Search" />
-           		<!-- <input type="submit" value="Search" /> -->
+           		<input type="text" value="" readonly />
            	</div>
         </form>
         <div class="results">
