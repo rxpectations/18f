@@ -52,7 +52,7 @@ module.exports = function (router) {
 						}
 					});
 	            } else if (feedRes.statusCode >= 300 && feedRes.statusCode < 400) {
-	            	res.send(url.parse(feedRes.headers.location));
+	            	res.json({'error': {'code': feedRes.statusCode, 'message': url.parse(feedRes.headers.location)}});
 	            } else {
 	                res.json({'error': {'code': feedRes.statusCode, 'message': 'Unexpected Error'}});
 				} 
