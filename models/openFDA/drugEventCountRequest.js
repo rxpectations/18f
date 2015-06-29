@@ -48,6 +48,8 @@ var FDASearchModel = function (requestQueryData, apiKey) {
             timeSearchValue + ')' + countValue + apiKeyValue;
     }
 
+    //@TODO add function to return all years in data range to verify empty results returned when applicable?
+
     return {
         drug: drug,
         mode: mode,
