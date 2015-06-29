@@ -36,7 +36,6 @@ $(function() {
     new Reactions(this);
   });
 
-
   $.ajax({
     //url: '/integrations/openFDA/recall?drug='+$('header').data('name')+'&mode=name',
     url: '/testingAPI?term='+$('header').data('name'),
