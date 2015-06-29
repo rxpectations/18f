@@ -1,5 +1,6 @@
 {
   "name": "pwcecx-18f",
+  "license": "MIT",
   "version": "0.1.0",
   "description": "RFQ-BPA response prototype using data from openFDA",
   "author": "PwC Experience Center",
