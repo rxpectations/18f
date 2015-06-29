@@ -21,18 +21,16 @@ module.exports = function (router) {
         };
 
         var formattedUrl;
-        var replyCount = 0;
-        var body1, body2;
-        var eventsTotal = -2;
-        var topEvents = [];
-        var abortted = false;
+        var body1;
+        var yearTotal;
+        var totalsByTime = [];
+        var yearlyCounts = [];
 
-        options.search = model.totalsQuery();
+        options.search = model.timeseriesQuery();
         formattedUrl = url.format(options);
         console.log(formattedUrl);
-        //req1
-        console.time('openFDA [event totals search]');
-        console.log(formattedUrl);
+
+        console.time('openFDA [event count search]');
         var fdaReq1 = https.get(formattedUrl, function(searchRes) {
             var body = '';
 
@@ -42,41 +40,33 @@ module.exports = function (router) {
             });
             
             searchRes.on('end', function() {
-                if (abortted) { return; }
-                
-                console.timeEnd('openFDA [event totals search]');
+                console.timeEnd('openFDA [event count search]');
                 body1 = body;
-                replyCount++;
 
                 if (searchRes.statusCode === 200) {
                     try {
-                        var totalsObj = JSON.parse(body1);
-                        eventsTotal = totalsObj.meta.results.total;
+                        var timeseriesObj = JSON.parse(body1);
+                        totalsByTime = timeseriesObj.results;
                     } catch (e) {
-                        console.log('PARSE EXCEPTION [event totals search]: ' + e.name + '\r\n' + body1);
-                        eventsTotal = -1;
+                        console.log('PARSE EXCEPTION [event count search]: ' + e.stack);
+                        res.json({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error [parse]' } });
+                        return;
                     }
 
-                    if (replyCount === 2) {
-                        combineEventReplies1(model.year, eventsTotal, topEvents, res);
-                    }
+                    yearlyCounts = combineTimeseriesYearly(totalsByTime);
+                    console.log(model.drugEvent);
+                    res.json({drug: model.drug, drugEvent: model.drugEvent, yearlyCounts: yearlyCounts})
                 } else {
                     //non-OK response
-                    if (replyCount !== 2) {
-                        abortted = true;
-                        fdaReq2.abort();
-                    }
-
                     if (searchRes.statusCode === 404) {
                         //no results found, send 0 as the total (instead of error)
-                        combineEventReplies1(model.year, 0, [], res);
+                        res.json({drug: model.drug, drugEvent: model.Event, yearlyCounts: []})
                     } else if (searchRes.statusCode === 429) {
                         //rate-limited
-                        console.log('RATE-LIMITED [event totals search]: ' + body1);
-                        combineEventReplies1(model.year, -1, topEvents, res);
+                        console.log('RATE-LIMITED [event count search]: ' + body1);
+                        res.json({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
                     } else {
-                        combineEventReplies1(model.year, -1, topEvents, res);
-                        //res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
+                        res.json({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error [response]' } });
                     }
                 }
             });
@@ -84,67 +74,31 @@ module.exports = function (router) {
             console.log('ERROR: '  + e.message);
         });
 
-
-        options.search = model.eventsQuery();
-        formattedUrl = url.format(options);
-        console.log(formattedUrl);
-        //req2
-        console.time('openFDA [events search]');
-        var fdaReq2 = https.get(formattedUrl, function(searchRes) {
-            var body = '';
-
-            searchRes.setEncoding('utf8');
-            searchRes.on('data', function(chunk) {
-                body += chunk;
-            });
-            
-            searchRes.on('end', function() {
-                if (abortted) { return; }
-
-                console.timeEnd('openFDA [events search]');
-                body2 = body;
-                replyCount++;
-
-                if (searchRes.statusCode === 200) {
-                    try {
-                        var eventsObject = JSON.parse(body2);
-                        topEvents = eventsObject.results;
-                    } catch (e) {
-                        console.log('PARSE EXCEPTION [events search]: ' + e.name + '\r\n' + body2);
-                        topEvents = [];
-                    }
-
-                    if (replyCount === 2) {
-                        combineEventReplies1(model.year, eventsTotal, topEvents, res);
-                    }
-                } else {
-                    //non-OK response
-                    if (replyCount !== 2) {
-                        abortted = true;
-                        fdaReq1.abort();
-                    }
-
-                    if (searchRes.statusCode === 404) {
-                        //no events found
-                        combineEventReplies1(model.year, 0, [], res);
-                    } else if (searchRes.statusCode === 429) {
-                        //rate-limited
-                        console.log('RATE-LIMITED [event totals search]: ' + body2);
-                        combineEventReplies1(model.year, eventsTotal, [], res);
-                    } else {
-                        combineEventReplies1(model.year, eventsTotal, [], res);
-                        //res.send({ 'error': { 'code': searchRes.statusCode, 'message': 'Unexpected Error' } });
-                    }
-                }    
-            });
-        }).on('error', function(e) {
-            console.log('ERROR: '  + e.message);
-        });
     });
 
+// [{year: 2010, count: 100}, {year: 2011, count: 200}]
+// ["2010": 200, "2011"]
 
-    function combineEventReplies1(year, total, events, res) {
-        var responseObject = {year: year, total: total, events: events};
-        res.send(responseObject);
+    function combineTimeseriesYearly(timeseriesResults) {
+        var countsByYear = {};  //associate object-array for temp counting
+        var year;
+        var yearCount;
+        for (var idx = 0, len = timeseriesResults.length; idx < len; idx++) {
+            year = timeseriesResults[idx].time.substring(0, 4);
+            yearCount = (countsByYear[year]) ? countsByYear[year] : 0;
+            yearCount += timeseriesResults[idx].count;
+            countsByYear[year] = yearCount;
+            //countsByYear.push(year: year, count:yearCount});// = yearCount;
+            //console.log();
+        }
+
+        var countsByYearArr = [];   //formal array of objects as response
+        for (var yearKey in countsByYear) {
+            if (countsByYear.hasOwnProperty(yearKey)) {
+                countsByYearArr.push({year: yearKey, count: countsByYear[yearKey]});
+            }
+        }
+
+        return countsByYearArr;
     }
 };

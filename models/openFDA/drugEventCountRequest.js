@@ -2,13 +2,12 @@
 
 //@TODO: IMPLEMENT
 var FDASearchModel = function (requestQueryData, apiKey) {
-	//var DEFAULT_LIMIT = 10;
     var drug = requestQueryData.drug;
     var mode = requestQueryData.mode;
-    var drugEvent = requestQueryData.drugEvent;
+    var drugEvent = requestQueryData.drugevent;
     var year = requestQueryData.year;
 
-    function toSearchQueryString(useCount, resultsLimit) {
+    function toSearchQueryString() {
     	if (!mode || mode === undefined) {
             mode = 'name';
         }
@@ -25,7 +24,7 @@ var FDASearchModel = function (requestQueryData, apiKey) {
             //leave empty
     	}
 
-        var drugEventSearchValue = (!drugEvent || drugEvent !== undefined) ? 
+        var drugEventSearchValue = (!drugEvent || drugEvent === undefined) ? 
             '' : 'patient.reaction.reactionmeddrapt:' + drugEvent;
 
         var currentDate = new Date();
@@ -39,21 +38,21 @@ var FDASearchModel = function (requestQueryData, apiKey) {
         dd = (dd.length === 2) ? dd : '0' + dd;
 
         var timeSearchValue = 'receiptdate:[' + startYear + '0101+TO+' + 
-            year + mm + dd + ']'; //e.g. [20130101+TO+20140629]
+            currentYear + mm + dd + ']'; //e.g. [20130101+TO+20140629]
 
 
         var countValue = '&count=receiptdate';
         var apiKeyValue = (apiKey !== undefined && apiKey !== '') ? '&api_key=' + apiKey : '';
 
     	return '?search=(' + nameSearchValue + ')+AND+(' + drugEventSearchValue + ')+AND+(' + 
-            timeSearchValue + ')' + '&limit=' + resultsLimit + countValue + apiKeyValue;
+            timeSearchValue + ')' + countValue + apiKeyValue;
     }
 
     return {
         drug: drug,
         mode: mode,
         drugEvent: drugEvent,
-        year: year,
+        startYear: year,
         timeseriesQuery: toSearchQueryString
     };
 };
