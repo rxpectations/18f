@@ -29,9 +29,16 @@ module.exports = function (router) {
 					    if (err) {
 					    	res.json({'error': {'code': feedRes.statusCode, 'message': 'Unexpected Error'}});
 					    } else {
+					    	//xml2js places attribute fields into arrays of 1, 
 					    	result.rss.channel[0].item.forEach(function (currVal, idx, currArr) {
-				    			result.rss.channel[0].item[idx] = 'poop';
+				    			for (var key in result.rss.channel[0].item[idx]) {
+								   if (result.rss.channel[0].item[idx].hasOwnProperty(key)) {
+								      var element = result.rss.channel[0].item[idx][key];
+								      result.rss.channel[0].item[idx][key] = element[0];
+								   }
+								}
 					    	});
+					    	
 					    	res.json({articles: result.rss.channel[0].item});
 						}
 					});

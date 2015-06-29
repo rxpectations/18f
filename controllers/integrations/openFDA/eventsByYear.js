@@ -71,6 +71,7 @@ module.exports = function (router) {
                         combineEventReplies1(model.year, 0, [], res);
                     } else if (searchRes.statusCode === 429) {
                         //rate-limited
+                        console.log("RATE-LIMITED [event totals search]: " + body1);
                         combineEventReplies1(model.year, -1, topEvents, res);
                     } else {
                         combineEventReplies1(model.year, -1, topEvents, res);
@@ -127,6 +128,7 @@ module.exports = function (router) {
                         combineEventReplies1(model.year, 0, [], res);
                     } else if (searchRes.statusCode === 429) {
                         //rate-limited
+                        console.log("RATE-LIMITED [event totals search]: " + body2);
                         combineEventReplies1(model.year, eventsTotal, [], res);
                     } else {
                         combineEventReplies1(model.year, eventsTotal, [], res);
