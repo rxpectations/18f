@@ -39,11 +39,6 @@
         <div class="inner">
             <img class="logo" src="/img/logo.svg" alt="Rxpecations" />
             <a href="#" class="close-btn toggle-view" data-toggle="search-toggle"><i class="fa fa-times"></i></a>
-
-        	<ul class="toggle toggle-select">
-        		<li id="Drug"><a class="active" href="#">Drug</a></li>
-        		<li id="Diagnosis"><a href="#">Diagnosis</a></li>
-        	</ul>
             <form class="search">
             	<div class="search-bar">
             		<input type="text" placeholder="Search" />
