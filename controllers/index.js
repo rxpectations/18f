@@ -45,8 +45,8 @@ module.exports = function (router) {
 
         var handleRecalls = function(err, data) {
             var recalls = JSON.parse(data);
-            model.recalls = recalls.total;
-            
+            model.recalls = (recalls.total)?recalls.total:0;
+            console.log(model.recalls);
             // Use path.normalize for consistent paths 
             // across Windows and OS
             res.render(path.normalize('drug-detail'), model);

@@ -19,7 +19,7 @@ $(function() {
 
   $('.line-chart').each(function instantiateLineChart() {
 
-    new Chart(this);
+    new Line(this);
   });
 
   $('.donut-chart').each(function instantiateDonutChart() {
