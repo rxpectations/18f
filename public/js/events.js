@@ -4,6 +4,7 @@ var $ = require('jquery');
 var Line = require('./modules/chart-line');
 var Donut = require('./modules/chart-donut');
 var Bar = require('./modules/chart-bar');
+var Reactions = require('./modules/reactions');
 
 /* When DOM ready initialize modules */
 
@@ -30,24 +31,30 @@ $(function() {
     new Bar(this);
   });
 
+  $('.reactions').each(function instantiateReactions() {
+
+    new Reactions(this);
+  });
+
 
   $.ajax({
     //url: '/integrations/openFDA/recall?drug='+$('header').data('name')+'&mode=name',
-    url: '/static/events',
+    url: '/testingAPI?term='+$('header').data('name'),
     type: 'get',
     beforeSend: function beforeSend() {
       $('body').trigger('start.ajax');
     },
     success: function success(response) {
-      $('body').trigger('recallData', response);
+      $('body').trigger('eventData', response);
       $('body').trigger('end.ajax');
     },
     error: function error(xhr, status, thrownError) {
       var response = {'error': 'No data found'}
-      $('body').trigger('recallData', response);
+      $('body').trigger('eventData', response);
       $('body').trigger('end.ajax');
     }
   });
 
 
 });
+     

@@ -3,6 +3,7 @@
 var path = require('path');
 //App Packages
 var getData = require('../lib/getData');
+var getDataHTTPS = require('../lib/getDataHTTPS');
 
 //Models
 var IndexModel = require('../models/index');
@@ -53,6 +54,7 @@ module.exports = function (router) {
             'http://localhost:' + (process.env.PORT || 8000)+'/integrations/openFDA/recall?drug='+model.drugname+'&mode=name',
             { timer: false },
             handleRecalls);
+
         
     });
 
@@ -62,6 +64,22 @@ module.exports = function (router) {
         res.render(path.normalize('index'), model.Index());
         
         
+    });
+
+    router.get('/testingAPI', function(req, res) {
+        var handleAPI = function(err, data) {
+            var api = JSON.parse(data);
+            api.total = 0;
+            for (var effect in api.results)  {
+                api.total += api.results[effect].count;
+            }
+            res.json(api);
+        }
+        var getAPI = new getDataHTTPS(
+            'https://api.fda.gov/drug/event.json?search=%28product_description:'+req.query.term+'+patient.drug.openfda.brand_name:'+req.query.term+'+patient.drug.openfda.generic_name:'+req.query.term+'%29&count=patient.reaction.reactionmeddrapt.exact&limit=10',
+            {timer : false},
+            handleAPI
+        );
     });
 
     // Dyanmic routing example
