@@ -1,9 +1,9 @@
 'use strict';
 
 var $ = require('jquery');
-var Chart = require('./modules/chart');
-var Donut = require('./modules/donut');
-var Bar = require('./modules/bar');
+var Line = require('./modules/chart-line');
+var Donut = require('./modules/chart-donut');
+var Bar = require('./modules/chart-bar');
 
 /* When DOM ready initialize modules */
 
@@ -18,7 +18,7 @@ $(function() {
 
   $('.line-chart').each(function instantiateLineChart() {
 
-    new Chart(this);
+    new Line(this);
   });
 
   $('.donut-chart').each(function instantiateDonutChart() {
@@ -30,24 +30,6 @@ $(function() {
     new Bar(this);
   });
 
-
-  $.ajax({
-    //url: '/integrations/openFDA/eventsByYears?drug='+$('header').data('name')+'&mode=name&year=2011',
-    url: '/static/events',
-    type: 'get',
-    beforeSend: function beforeSend() {
-      $('body').trigger('start.ajax');
-    },
-    success: function success(response) {
-      $('body').trigger('incidentData', response);
-      $('body').trigger('end.ajax');
-    },
-    error: function error(xhr, status, thrownError) {
-      var response = {'error': 'No data found'}
-      $('body').trigger('incidentData', response);
-      $('body').trigger('end.ajax');
-    }
-  });
 
   $.ajax({
     //url: '/integrations/openFDA/recall?drug='+$('header').data('name')+'&mode=name',
@@ -67,6 +49,5 @@ $(function() {
     }
   });
 
-  
 
 });
