@@ -17,25 +17,6 @@
                 <p class="chart-title">Total incidents {#years}{@first}{.} - {/first}{@last}{.}{/last}{/years}: <strong>{totalIncidents}</strong></p>
                 <div class="line-chart"></div>
             </section>
-
-            <section class="graph-filters">
-                <ul>
-                    <li>
-                        <label>Age: </label>
-                        <select id="age">
-                            <option value="age_all">All</option>
-                            <option value="">age 1</option>
-                        </select>
-                    </li>
-                    <li>
-                        <label>Weight: </label>
-                        <select id="weight">
-                            <option value="weight_all">All</option>
-                            <option value="">weight 1</option>
-                        </select>
-                    </li>
-                </ul>
-            </section>
         </div>
 
         <div class="col2 shift-left">

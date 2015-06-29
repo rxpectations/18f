@@ -4,7 +4,7 @@ var http = require('http');
 var url = require('url');
 
 module.exports = function (router) {
-	var DEFAULT_FEED_NAME = "new-drugs";
+	var DEFAULT_FEED_NAME = 'new-drugs';
 
     /*
      * RSS Feed pull + JSONify

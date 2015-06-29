@@ -50,7 +50,7 @@ module.exports = function (router) {
             // Use path.normalize for consistent paths 
             // across Windows and OS
             res.render(path.normalize('drug-detail'), model);
-        }
+        };
 
         var getRecalls = new getData(
             'http://localhost:' + (process.env.PORT || 8000)+'/integrations/openFDA/recall?drug='+model.drugname+'&mode=name',
@@ -74,7 +74,7 @@ module.exports = function (router) {
                 api.total += api.results[effect].count;
             }
             res.json(api);
-        }
+        };
         var getAPI = new getDataHTTPS(
             'https://api.fda.gov/drug/event.json?search=%28product_description:'+req.query.term+'+patient.drug.openfda.brand_name:'+req.query.term+'+patient.drug.openfda.generic_name:'+req.query.term+'%29&count=patient.reaction.reactionmeddrapt.exact&limit=10',
             {timer : false},

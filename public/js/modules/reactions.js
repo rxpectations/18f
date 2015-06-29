@@ -73,14 +73,16 @@ Reactions.prototype.update = function(data) {
 
   this.$el.append(this.$list);
 
-  this.$list.bxSlider({
+  this.slider = this.$list.bxSlider({
     slideWidth: 100,
     minSlides: 3,
     maxSlides: 3,
     moveSlides: 1,
     hideControlOnEnd: true,
     pager:false
-  })
+  });
+
+  
   
 };
 
