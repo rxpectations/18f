@@ -73,7 +73,8 @@ module.exports = function (router) {
             var model = JSON.parse(data);
             model.term = req.query.term;
             model.totalResults = model.results.brandNames.length + model.results.genericNames.length;
-            res.json(model);
+            console.log(model);
+            res.render('search', model);
         }
 
         var getSearchResults = new getData(
