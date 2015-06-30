@@ -80,7 +80,6 @@
             	<div class="search-bar">
             		<input type="text" placeholder="Search" />
                     <span class="loader"><i class="fa fa-spinner fa-pulse"></i> Loading...</span>
-            		<!-- <input type="submit" value="Search" /> -->
             	</div>
             </form>
             <div class="results">

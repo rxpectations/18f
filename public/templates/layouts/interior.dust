@@ -49,6 +49,7 @@
     <a href="#" class="close-btn toggle-view" data-toggle="search-toggle"><i class="fa fa-times"></i></a>
     <form class="search">
       <div class="search-bar">
+        <span class="loader"><i class="fa fa-spinner fa-pulse"></i> Loading...</span>
         <input type="text" placeholder="Search" />
         <!-- <input type="submit" value="Search" /> -->
       </div>
