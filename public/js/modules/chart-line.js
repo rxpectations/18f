@@ -71,10 +71,10 @@ Line.prototype.create = function(event, data) {
 
   var results = [];
   var years = [];
-  for (var r in data.results) {
-    if (!(data.results[r].total < 0)) {
-      results.push(data.results[r]);
-      years.push(data.results[r].year);
+  for (var r in data.yearlyCounts) {
+    if (!(data.yearlyCounts[r].total < 0)) {
+      results.push(data.yearlyCounts[r]);
+      years.push(data.yearlyCounts[r].year);
     } 
   }
   results.sort(function(a,b) {
@@ -90,7 +90,7 @@ Line.prototype.create = function(event, data) {
 
   this._d3Configs.y = d3.scale.linear()
     .range([this.height - this.margin.top, this.margin.bottom])
-    .domain([d3.min(results, function(d) { return d.total; })-50, d3.max(results, function(d) { return d.total; })+50]);
+    .domain([d3.min(results, function(d) { return d.count; })-50, d3.max(results, function(d) { return d.count; })+50]);
 
   this._d3Configs.color = d3.scale.category10();
 
@@ -101,7 +101,7 @@ Line.prototype.create = function(event, data) {
 
   this._d3Configs.line = d3.svg.line()
     .x(function(d) { console.log(self._d3Configs.x(d.year)); return self._d3Configs.x(d.year) })
-    .y(function(d) { console.log(self._d3Configs.y(d.total));  return self._d3Configs.y(d.total) });
+    .y(function(d) { console.log(self._d3Configs.y(d.count));  return self._d3Configs.y(d.count) });
 
   if (this.circlesGroup) {
     this.update(results);
@@ -117,7 +117,7 @@ Line.prototype.create = function(event, data) {
           .attr('class', 'data-point')
           .style('opacity', 1)
           .attr('cx', function(d) { return self._d3Configs.x(d.year) })
-          .attr('cy', function(d) { return self._d3Configs.y(d.total) })
+          .attr('cy', function(d) { return self._d3Configs.y(d.count) })
           .attr('r', 4);
           
 
@@ -150,7 +150,7 @@ Line.prototype.update = function(data) {
 
   svg.selectAll('.data-point').duration(750)
       .attr('cx', function(d) { return self._d3Configs.x(d.year) })
-      .attr('cy', function(d) { return self._d3Configs.y(d.total) });  
+      .attr('cy', function(d) { return self._d3Configs.y(d.count) });  
 
     svg.select('.line')
       .duration(750)

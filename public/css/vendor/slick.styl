@@ -134,16 +134,10 @@
 .slick-prev,
 .slick-next
 {
-    font-size: 0;
-    line-height: 0;
-
     position: absolute;
     top: 50%;
 
     display: block;
-
-    width: 20px;
-    height: 20px;
     margin-top: -10px;
     padding: 0;
 
@@ -161,7 +155,6 @@
 {
     color: transparent;
     outline: none;
-    background: transparent;
 }
 .slick-prev:hover:before,
 .slick-prev:focus:before,
@@ -199,14 +192,6 @@
     right: -25px;
     left: auto;
 }
-.slick-prev:before
-{
-    content: '←';
-}
-[dir='rtl'] .slick-prev:before
-{
-    content: '→';
-}
 
 .slick-next
 {
@@ -216,14 +201,6 @@
 {
     right: auto;
     left: -25px;
-}
-.slick-next:before
-{
-    content: '→';
-}
-[dir='rtl'] .slick-next:before
-{
-    content: '←';
 }
 
 /* Dots */

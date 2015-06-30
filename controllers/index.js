@@ -91,6 +91,14 @@ module.exports = function (router) {
     });
 
     // Dyanmic routing example
+    router.get('/error/:error', function (req, res) {
+        // Use path.normalize for consistent paths
+        // across Windows and OS
+        res.render(path.normalize('errors/'+req.params.error), {});
+
+    });
+
+    // Dyanmic routing example
     router.get('/:templatename', function (req, res) {
         // Use path.normalize for consistent paths
         // across Windows and OS

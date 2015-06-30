@@ -1,6 +1,14 @@
 {>"layouts/master" /}
 
 {<body}
-    <h1>{@pre type="content" key="header"/}</h1>
-    <p>{@pre type="content" key="description"/}</p>
+<section class="errors 503-error">
+	<div class="inner">
+	    <h1>Seek a second opinion. The FDA.gov site is down. Try again soon.</h1>
+	    <p class="error-description">5<span class="accent">0</span>3</p>
+
+	    <div class="disclaimer">
+			<small>Image credit: <a href="https://imagebank.nih.gov/about.cfm">https://imagebank.nih.gov/about.cfm</a><small>
+		</div>
+	</div>
+</section>
 {/body}
