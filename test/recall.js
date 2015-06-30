@@ -55,8 +55,8 @@ describe('/integrations/openFDA/', function () {
         request(mock)
             .get('/integrations/openFDA/recalls?drug=Methadone-doesnotexist&mode=name')
             .expect(200)
-            .expect('Content-Type', /html/)
-            .expect(/NOT_FOUND/)
+            .expect('Content-Type', /application\/json/)
+            .expect('{"total":0,"results":[]}')
             .end(function (err, res) {
                 done(err);
             });
