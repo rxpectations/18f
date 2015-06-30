@@ -6,7 +6,7 @@
 	<header class="inner" data-name="{drugname}">
 		<h1>{drugname}</h1>
         <ul class="toolbar">
-            <li class="popular"><i class="fa fa-line-chart"></i> <em>Popular this week</em></li>
+            <li class="popular"><!--<i class="fa fa-line-chart"></i> <em>Popular this week</em>--></li>
             <li><a href="" class="ui-btn orange"><i class="fa fa-exclamation-triangle"></i> Report a Reaction</a></li>
         </ul>
 	</header>
