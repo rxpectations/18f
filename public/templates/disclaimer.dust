@@ -1,0 +1,34 @@
+{>"layouts/interior" /}
+
+{<body}
+    <div class="inner supporting-content">
+    	<header>
+            <h1>Disclaimer</h1>
+        </header>
+
+    	<section class="supporting-content disclaimer">
+        <p>Users are hereby provided with access to government and third party data, including without limitation the FDA Adverse Event Reporting System (FAERS) that contains information on adverse event and medication error reports submitted to FDA through its network of properties, which may be accessed through any various medium or device now known or hereafter developed (the "Services").</p>
+
+        <p>Permission is hereby granted, free of charge, to you to use the software and associated documentation files (the "Software") without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+        <ul>
+        <li>A.  You agree that you will be solely responsible for the use of the Software by any other person to whom you publish, distribute, sublicense, sell or otherwise provide access to copies of the Software.</li>
+        <li>B.  The Services may provide, or third parties may provide, links to other World Wide Web sites or resources. You acknowledge and agree that Developer is not responsible for the availability, accuracy, or validity of such external sites or resources, and does not endorse and is not responsible or liable for any Content or other materials on or available from such sites or resources. You further acknowledge and agree that Developer shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such Content or services available on or through any such site or resource.</li<
+
+        <p><strong>YOU EXPRESSLY UNDERSTAND AND AGREE THAT:</strong></p>
+        <ul>
+        <li>A.  YOUR USE OF THE SERVICES AND SOFTWARE ARE AT YOUR SOLE RISK. THE SERVICES AND SOFTWARE ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. DEVELOPER AND ITS SUBSIDIARIES, AFFILIATES, OFFICERS, EMPLOYEES, AGENTS, PARTNERS AND LICENSORS EXPRESSLY DISCLAIM ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.</li>
+        <li>B.  DEVELOPER AND ITS SUBSIDIARIES, AFFILIATES, OFFICERS, EMPLOYEES, AGENTS, PARTNERS AND LICENSORS MAKE NO WARRANTY THAT (i) THE SERVICES OR SOFTWARE WILL MEET YOUR REQUIREMENTS; (ii) THE SERVICES OR SOFTWARE WILL BE UNINTERRUPTED, TIMELY, SECURE OR ERROR-FREE; (iii) THE RESULTS THAT MAY BE OBTAINED FROM THE USE OF THE SERVICES OR SOFTWARE WILL BE ACCURATE OR RELIABLE; (iv) THE QUALITY OF ANY PRODUCTS, SERVICES, INFORMATION OR OTHER MATERIAL OBTAINED BY YOU THROUGH THE SERVICES OR SOFTWARE WILL MEET YOUR EXPECTATIONS; AND (v) ANY ERRORS IN THE SOFTWARE WILL BE CORRECTED.</li>
+        <li>C.  THE DATA AND CONTENT PROVIDED THROUGH THE SOFTWARE AND SERVICES ARE FOR INFORMATIONAL PURPOSES ONLY.  YOU MAY NOT RELY ON ANY DATA OR INFORMATION AVAILABLE ON OR THROUGH THE SOFTWARE (“CONTENT”), INCLUDING WITHOUT LIMITATION INFORMATION IN FAERS AND IN ALL OTHER PARTS OF THE SERVICES</li>
+        <li>D.  USE OF THE SOFTWARE IS NOT INTENDED TO BE A SUBSTITUTE FOR THE JUDGMENT OF MEDICAL PROFESSIONALS</li>
+        <li>E.  YOU SHOULD PROMPTLY CONTACT YOUR OWN DOCTOR REGARDING ANY MEDICAL CONDITIONS OR QUESTIONS YOU MAY HAVE.</li>
+        <li>F.  THE CONTENT IS NOT INTENDED TO PROVIDE MEDICAL ADVICE OR TO TREAT OR DIAGNOSE ANY DISEASE OR MEDICAL CONDITION.</li>
+
+        	
+        </section>
+    </div>
+{/body}
+
+{<script}
+<script src="/js/app.js"></script>
+{/script}
