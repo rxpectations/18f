@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "test": "grunt test",
-    "cucumber": "cucumber-js test/functional/features/ -f pretty -r test/functional/steps/"
+    "cucumber": "cucumber-js test/functional/features/ -f pretty -r test/functional/steps/ -r test/functional/support/hooks.js"
   },
   "dependencies": {
     "adaro": "^0.1.5",
