@@ -1,6 +1,7 @@
 'use strict';
 var https = require('https');
 var url = require('url');
+var getter = require('../../../lib/getData.js');
 
 var drugLabelRequest = require('../../../models/openFDA/drugLabelRequest');
 var drugInfoResponse = require('../../../models/openFDA/drugInfoResponse');
@@ -20,6 +21,11 @@ module.exports = function (router) {
     		pathname: req.app.kraken.get('integrations').openFDA.endpoints.drug.label,
     		search: model.query()
     	};
+
+        var replyCount = 0;
+        var repliesExpected = 2;
+        var drugInfo, drugRecalls;
+
     	var formattedUrl = url.format(options);
         //console.log(formattedUrl);
 
@@ -32,26 +38,57 @@ module.exports = function (router) {
                 body += chunk;
             });
 
-			if (searchRes.statusCode === 200) {
-                searchRes.on('end', function() {
-                    console.log(body);
-                    var drugInfo = new drugInfoResponse(body);
+            searchRes.on('end', function() {
+                console.timeEnd('openFDA [info search]');
+                console.log(body);
+                
 
-                    res.json(drugInfo);
-                    console.timeEnd('openFDA [info search]');
-                });
-			} else if (searchRes.statusCode === 404) {
-                searchRes.on('end', function() {
-                    res.send(body);
-                    console.timeEnd('openFDA [info search]');
-                });
-            } else {
-                res.json({'error': {'code': searchRes.statusCode, 'message': 'Unexpected Error'}});
+                if (searchRes.statusCode === 200) {
+                    drugInfo = new drugInfoResponse(body);
+                    //res.json(drugInfo);
+                } else if (searchRes.statusCode === 404) {
+                    drugInfo = {};
+                } else {
+                    drugInfo = {};
+                    //res.json({'error': {'code': searchRes.statusCode, 'message': 'Unexpected Error'}});
+                } //@TODO: handle other non-OK response
+                
+                replyCount++;
+                if (replyCount === repliesExpected) {
+                    handleAllReplies();
+                }
 
-			} //@TODO: handle other non-OK response
+			});
     	}).on('error', function(e) {
     		console.log('ERROR: '  + e.message);
     	});
+
+        var handleRecalls = function(err, data) {
+            if (!err) {
+                var recallsObj = JSON.parse(data);
+                drugRecalls = (recallsObj.error || recallsObj.error !== undefined) ?
+                    [] : recallsObj.results;
+            } else {
+                drugRecalls = [];
+            }
+
+            replyCount++;
+            if (replyCount === repliesExpected) {
+                handleAllReplies();
+            }
+        };
+
+        //internal recall search
+        var getRecalls = new getter(
+            'http://localhost:' + (process.env.PORT || 8000)+'/integrations/openFDA/recalls?drug='+model.term+'&mode=name',
+            { timer: false },
+            handleRecalls);
+
+        var handleAllReplies = function() {
+            res.json({drugInfo: drugInfo, recalls: drugRecalls});
+        };
     });
+
+    
  
 };
