@@ -32,22 +32,19 @@
 	.tab-content		
 		display block
 		transition opacity .25s
-		padding 30px
+		padding 20px
 		background white
 		opacity 1
 		margin-bottom 10px
 
+		p:last-of-type
+			margin-bottom 0
+
 		@media screen and (min-width: 768px)
-			padding 20px
 			display none
 			opacity 0
 			border-radius 0 0 10px 10px
 			margin-bottom 0
-
-		@media screen and (min-width: 799px)
-			padding 30px
-			display none
-			opacity 0
 
 		&.active
 			opacity 1
