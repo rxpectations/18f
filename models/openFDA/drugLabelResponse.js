@@ -11,16 +11,23 @@ var DrugLabelModel = function (searchResponse) {
         if (responseObject.results[idx].openfda !== undefined) {
             // has openFDA data
             if (responseObject.results[idx].openfda.brand_name !== undefined &&
-                brandNames.indexOf(responseObject.results[idx].openfda.brand_name + '') === -1) {
-                brandNames.push(responseObject.results[idx].openfda.brand_name.toString());
+                brandNames.indexOf(toCleanString(responseObject.results[idx].openfda.brand_name)) === -1) {
+                brandNames.push(toCleanString(responseObject.results[idx].openfda.brand_name));
             }
             if (responseObject.results[idx].openfda.generic_name !== undefined &&
-                genericNames.indexOf(responseObject.results[idx].openfda.generic_name + '') === -1) {
-                genericNames.push(responseObject.results[idx].openfda.generic_name.toString());
+                genericNames.indexOf(toCleanString(responseObject.results[idx].openfda.generic_name)) === -1) {
+                genericNames.push(toCleanString(responseObject.results[idx].openfda.generic_name));
             }
         } 
     }
 
+    function toTitleCase(str) {
+        return str.replace(/\w\S*/g, function(str){return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();});
+    }
+
+    function toCleanString(obj) {
+        return toTitleCase(obj.toString().trim());
+    }
 
     return {
         rawTotal: hitCount,

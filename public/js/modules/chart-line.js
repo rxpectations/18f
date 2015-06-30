@@ -86,7 +86,7 @@ Line.prototype.create = function(event, data) {
   this._d3Configs.x = d3.scale.linear()
     .range([this.margin.left, this.width - this.margin.right])
     //.domain([d3.min(results, function(d) { return d.year; }), d3.max(results, function(d) { return d.year; })]);
-    .domain([2011,2015]);
+    .domain([d3.min(years),d3.max(years)]);
 
   this._d3Configs.y = d3.scale.linear()
     .range([this.height - this.margin.top, this.margin.bottom])

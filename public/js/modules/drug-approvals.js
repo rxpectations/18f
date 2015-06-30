@@ -30,16 +30,22 @@ DrugApprovals.prototype.getData = function() {
 
     //add items to slider
     $.each( data.articles, function( i, item ) {
-      //Get Information
-      var title = data.articles[i].title,
-          date = data.articles[i].pubDate.slice(0, - 13),
-          desc = data.articles[i].description,
-          href = data.articles[i].link;
+      if(i <= 10) {
+        //Get Information
+        var title = data.articles[i].title,
+            date = data.articles[i].pubDate.slice(0, - 13),
+            desc = data.articles[i].description,
+            href = data.articles[i].link;
 
-      buildSlider(title, date, desc, href);
+        buildSlider(title, date, desc, href);
+      } else {
+        addSlider();  
+      }
+
+
 
       if(i === data.articles.length - 1) {
-        addSlider();
+        
       }
     });
   });
@@ -56,10 +62,12 @@ buildSlider = function(title, date, desc, href) {
   slider.append(
     "<div class='card'>" +
     "<div class='front'>" +
+    "<span class='flipper'><i class='fa fa-plus'></i></span>" +
     "<h6 class='date'>" + date + "</h6>" +
     "<h5>" + title + "</h5>"+
     "</div>" +
     "<div class='back'>" +
+    "<span class='flipper'><i class='fa fa-minus'></i></span>" +
     "<p>" + desc + " <a target='_blank' href='" + url +"'>More</a></p>" +
     "</div>" +
     "</div>"
@@ -82,12 +90,23 @@ addSlider = function(){
           arrows: false,
           centerMode: true,
           centerPadding: '40px',
-          slidesToShow: 2,
-          slidesToScroll: 2
+          slidesToShow: 3,
+          slidesToScroll: 3
         }
       },
       {
-        breakpoint: 820,
+        breakpoint: 835,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          centerPadding: '40px',
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 767,
         settings: {
           arrows: false,
           centerMode: true,
@@ -100,8 +119,21 @@ addSlider = function(){
     ]
   });
 
+  //Fix bug in slider disabling click event
   $('.drug-slider a').on('click', function(){
     window.open($(this).attr('href'));
+  });
+
+  //Flip cards on click
+  $('.drug-slider .card .flipper').bind('click', function(){
+    var card = $(this).parent().parent();
+
+    if(card.hasClass('flip')) {
+      card.toggleClass('flip'); 
+    } else {
+      $('.drug-slider .card').removeClass('flip');
+      card.toggleClass('flip');
+    }    
   });
 };
 

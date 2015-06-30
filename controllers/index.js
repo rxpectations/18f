@@ -67,6 +67,21 @@ module.exports = function (router) {
 
     });
 
+    router.get('/search', function (req, res){
+
+        var handleSearchResults = function(err, data) {
+            var model = JSON.parse(data);
+            model.term = req.query.term;
+            model.totalResults = model.results.brandNames.length + model.results.genericNames.length;
+            console.log(model);
+            res.render('search', model);
+        }
+
+        var getSearchResults = new getData(
+            'http://localhost:' + (process.env.PORT || 8000)+ '/integrations/openFDA/?drug='+req.query.term+'&mode=all',
+            {timer: false},
+            handleSearchResults);
+    });
     router.get('/', function (req, res) {
         // Use path.normalize for consistent paths
         // across Windows and OS

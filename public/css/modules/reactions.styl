@@ -15,4 +15,29 @@
         margin-right:-150px
         background: url('/img/right.png') no-repeat
     .slick-slide
+        position:relative
         border: 1px solid LawnGreen
+        
+    
+    .slick-center
+        position:relative;
+        &:before, &:after
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-color: transparent;
+            border-top: 0;
+        &:before 
+            top:-16px
+            left: 67px
+            
+            border-bottom-color: LawnGreen
+            border-width: 12px
+        &:after
+            top: -15px
+            left: 68px
+            
+            border-bottom-color: #fff
+            border-width: 11px

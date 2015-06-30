@@ -48,15 +48,16 @@ Reactions.prototype.bind = function() {
  * @param  {Object} data  New updated data
  */
 Reactions.prototype.create = function(event, data) {
-
+  console.log(event);
   var self = this;
   
   if (!data) {
     data = event;
   }
   this.setData(data);
-
-  this.update(this.getData());
+  if (this.$el.find('.slider').length < 1)  {
+    this.update(this.getData());
+  }
 
 };
 
@@ -66,7 +67,7 @@ Reactions.prototype.create = function(event, data) {
  */
 Reactions.prototype.update = function(data) {
   var self = this;
-  console.log(data);
+  
   for (var event in data.results) {
     this.$list.append('<div data-term="'+data.results[event].term+'">'+self.toTitleCase(data.results[event].term)+'</div>');
   }
