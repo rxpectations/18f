@@ -12,8 +12,13 @@
 		font-size 1.5rem
 		outline none
 
-	input[type="submit"]
-		padding 10px
-		height 40px
-		cursor pointer
-		display block
+	.loader
+		display none
+
+	&.loading
+		.loader
+			display block
+			position absolute
+			top 45px
+			left 0			
+
