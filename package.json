@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "browserify": "^3.46.1",
+    "chai": "^3.0.0",
     "d3": "^3.5.5",
     "grunt": "^0.4.1",
     "grunt-browserify": "^2.0.1",
