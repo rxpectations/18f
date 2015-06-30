@@ -12,9 +12,9 @@ module.exports = function (router) {
      */
     router.get('/', function (req, res) {
         var apiKey = req.app.kraken.get('integrations').openFDA.apiKey;
-
     	var model = new drugRecallRequest(req.query, apiKey);
-    	var options = { 
+    	
+        var options = { 
     		protocol: 'https:', 
     		hostname: req.app.kraken.get('integrations').openFDA.hostname, //'api.fda.gov', 
     		pathname: req.app.kraken.get('integrations').openFDA.endpoints.drug.enforcement, 
@@ -23,7 +23,7 @@ module.exports = function (router) {
     	var formattedUrl = url.format(options);
         //console.log(formattedUrl);
     	
-        console.time('openFDA [recall search]');
+        console.time('openFDA:[recall search]');
     	var fdaReq = https.get(formattedUrl, function(searchRes) {
             var body = '';
 
@@ -33,29 +33,28 @@ module.exports = function (router) {
                 body += chunk;
             });
 
-			if (searchRes.statusCode === 200) {	
-                searchRes.on('end', function() {
-                    var drugRecalls = new drugRecallResponse(body);
-
-                    res.send(drugRecalls);
-                    console.timeEnd('openFDA [recall search]');
-                });
-			} else if (searchRes.statusCode === 404) {
-                searchRes.on('end', function() {
-                    res.send(body);
-                    console.timeEnd('openFDA [recall search]');
-                });
-            } else {
-                res.send({'error': {'code': searchRes.statusCode, 'message': 'Unexpected Error'}});
-
-			} //@TODO: handle other non-OK response
+            searchRes.on('end', function() {
+                handleRecallsResponse(res, searchRes.statusCode, body);
+            });
 
     	}).on('error', function(e) {
     		console.log('ERROR: '  + e.message);
     	});
     });
 
+    var handleRecallsResponse = function (res, resCode, resBody) {
+        console.timeEnd('openFDA:[recall search]');
 
+        var drugRecalls;
+        if (resCode === 200) { 
+            drugRecalls = new drugRecallResponse(body);
+        } else if (resCode === 404 || resCode === 429) { 
+            drugRecalls = new drugRecallResponse(null);
+        } else {    
+            drugRecalls = body; //openFDA error message
+        }
 
+        res.json(drugRecalls);
+    };
 
 };

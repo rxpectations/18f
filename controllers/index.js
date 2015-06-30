@@ -75,7 +75,7 @@ module.exports = function (router) {
             model.totalResults = model.results.brandNames.length + model.results.genericNames.length;
             console.log(model);
             res.render('search', model);
-        }
+        };
 
         var getSearchResults = new getData(
             'http://localhost:' + (process.env.PORT || 8000)+ '/integrations/openFDA/?drug='+req.query.term+'&mode=all',
