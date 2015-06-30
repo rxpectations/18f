@@ -47,11 +47,11 @@ module.exports = function (router) {
 
         var drugRecalls;
         if (resCode === 200) { 
-            drugRecalls = new drugRecallResponse(body);
+            drugRecalls = new drugRecallResponse(resBody);
         } else if (resCode === 404 || resCode === 429) { 
             drugRecalls = new drugRecallResponse(null);
         } else {    
-            drugRecalls = body; //openFDA error message
+            drugRecalls = resBody; //openFDA error message
         }
 
         res.json(drugRecalls);
