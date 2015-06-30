@@ -1,11 +1,17 @@
 'use strict';
 
 var DrugLabelModel = function (searchResponse) {
-    var responseObject = JSON.parse(searchResponse);
-    var hitCount = (responseObject.meta.results.limit < responseObject.meta.results.total) ? 
-        responseObject.meta.results.limit : responseObject.meta.results.total;   //@TODO: handle 100+
+    var responseObject;
+    var hitCount = 0;
     var brandNames = []; 
     var genericNames = [];
+
+    if (searchResponse !== null) {
+        responseObject = JSON.parse(searchResponse);
+        hitCount = (responseObject.meta.results.limit < responseObject.meta.results.total) ? 
+            responseObject.meta.results.limit : responseObject.meta.results.total;  
+            //no need to handle 100+ result queries so far
+    }
 
     for (var idx = 0; idx < hitCount; idx++) {
         if (responseObject.results[idx].openfda !== undefined) {

@@ -2,8 +2,8 @@
 var https = require('https');
 var url = require('url');
 
-var drugLabelRequest = require('../../../models/openFDA/drugLabelRequest');
-var drugLabelResponse = require('../../../models/openFDA/drugLabelResponse');
+var DrugLabelRequest = require('../../../models/openFDA/drugLabelRequest');
+var DrugLabelResponse = require('../../../models/openFDA/drugLabelResponse');
 
 module.exports = function (router) {
 
@@ -12,8 +12,8 @@ module.exports = function (router) {
      */
     router.get('/', function (req, res) {
         var apiKey = req.app.kraken.get('integrations').openFDA.apiKey;
+    	var model = new DrugLabelRequest(req.query, apiKey);
 
-    	var model = new drugLabelRequest(req.query, apiKey);
     	var options = {
     		protocol: 'https:',
     		hostname: req.app.kraken.get('integrations').openFDA.hostname, //'api.fda.gov',
@@ -21,22 +21,9 @@ module.exports = function (router) {
     		search: model.query()
     	};
     	var formattedUrl = url.format(options);
-        //console.log(formattedUrl);
+        //console.info(formattedUrl);
 
-        var handleSearchResponse = function(resCode, resBody) {
-            console.timeEnd('openFDA [label search]');
-            
-            if (resCode === 200) {
-                var drugLabels = new drugLabelResponse(resBody);
-                res.json(drugLabels);
-            } else if (resCode === 404) {
-                res.send(resBody); 
-            } else {
-                res.json({'error': {'code': resCode, 'message': 'Unexpected Error'}});
-            } //@TODO: handle other non-OK response
-        };
-
-        console.time('openFDA [label search]');
+        console.time('openFDA:[label search]');
     	var fdaReq = https.get(formattedUrl, function(searchRes) {
             var body = '';
 
@@ -45,11 +32,29 @@ module.exports = function (router) {
                 body += chunk;
             });
 
-            searchRes.on('end', function () { handleSearchResponse(searchRes.statusCode, body); });
+            searchRes.on('end', function () { 
+                handleSearchResponse(res, searchRes.statusCode, body); 
+            });
 
     	}).on('error', function(e) {
     		console.log('ERROR: '  + e.message);
     	});
     });
+
+    var handleSearchResponse = function(res, resCode, resBody) {
+        console.timeEnd('openFDA:[label search]');
+        
+        var drugLabels;
+        if (resCode === 200) {
+            drugLabels = new DrugLabelResponse(resBody);
+        } else if (resCode === 404 || resCode === 429) {
+            drugLabels = new DrugLabelResponse(null);
+        } else {
+            console.error('openFDA:[label search] Unexpected Response, recieved (' + resCode + '): ' + resBody);
+            drugLabels = resBody;
+        }
+
+        res.json(drugLabels);
+    };
  
 };
