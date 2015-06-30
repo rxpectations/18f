@@ -12,7 +12,7 @@ describe("getDataHTTPS", function() {
       var getData = new getDataHTTPS('https://wwww.google.com');
       expect(getData.url).to.equal(
           'https://wwww.google.com',
-          {},
+          {timer: false},
           function () {}
       );
     });
@@ -48,7 +48,27 @@ describe("getDataHTTPS", function() {
           callBack
       );
     });
+
+    it("it should use second argument as callback if function", function (done) {
+      var testItem = 0;
+
+      var callBack = function () {
+          testItem = 2;
+          // Check value after callback
+          testItem.should.equal(2);
+          done();
+          return testItem;
+      };
+
+      // Check initial value
+      testItem.should.equal(0);
+
+      var getData = new getDataHTTPS(
+          'https://wwww.google.com',
+          callBack
+      );
+    });
   });
 
-  // describe should not accept http
+  
 });
