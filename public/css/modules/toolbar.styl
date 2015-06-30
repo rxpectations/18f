@@ -1,0 +1,27 @@
+.toolbar
+	margin 5px 0 0
+	clearfix()
+
+	@media screen and (min-width: 768px)
+		border-bottom 1px solid $grey
+		padding-bottom 15px
+
+	li
+		float left
+		width 50%
+
+		a
+			display inline-block
+
+		&.popular
+			color $grey
+			padding 5px 0
+
+			em
+				font-style italic
+
+			i
+				color $orange
+
+		&:last-child
+			text-align right

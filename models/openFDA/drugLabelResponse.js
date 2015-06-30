@@ -8,7 +8,8 @@ var DrugLabelModel = function (searchResponse) {
     var genericNames = [];
 
     (function toArrays() {
-        if (hitCount > 1) {
+        //@TODO: wouldn't this always be > 0?
+        if (hitCount > 0) {
             for (var idx = 0; idx < hitCount; idx++) {
                 if (responseObject.results[idx].openfda !== undefined) {
                     // has openFDA data

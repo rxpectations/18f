@@ -1,10 +1,11 @@
 'use strict';
 
 var $ = require('jquery');
-var Chart = require('./modules/chart');
 var Search = require('./modules/search');
 var SearchResults = require('./modules/search-results');
 var Accordion = require('./modules/accordion');
+var ToggleView = require('./modules/toggleview');
+var ToggleSelect = require('./modules/toggleselect');
 
 /* When DOM ready initialize modules */
 
@@ -22,10 +23,17 @@ $(function() {
     new SearchResults(this);
   });
 
-  $('.accordion').each(function() {
+  $('.accordion').each(function instantiateAccordion() {
     var instance = new Accordion(this);
   });
 
+  $('.toggle-view').each(function instantiateToggle() {
+    var toggleview = new ToggleView(this);
+  });
+
+  $('.toggle-select').each(function instantiateToggleSelect() {
+    var toggleselect = new ToggleSelect(this);
+  });
   
 
 });

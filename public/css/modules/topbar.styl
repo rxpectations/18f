@@ -1,11 +1,35 @@
 .topbar
 	display block
-	background #333
+	background $dark-blue
 	color white
-	overflow hidden
+	clearfix()
+	height 50px
+	line-height 50px
+
+	&.home
+		text-align center
+		height auto
+		line-height auto
+		padding 20px 0 5px
+
+		img
+			width 35%
+
+		@media screen and (min-width: 768px)
+			padding 20px 0 0
+
+			img
+				width 200px
+
+	.inner
+		padding 0 10px
 
 	.logo
 		float left
+
+		img
+			width 50%
+			padding-top 10px
 
 	.search
 		float right
@@ -13,4 +37,3 @@
 	ul
 		a
 			display block
-			padding 10px 20px

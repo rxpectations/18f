@@ -28,13 +28,13 @@ var Search = function Chart(element) {
  * 
  */
 Search.prototype.init = function() {
-  
+  console.log('search init');
 }
 /**
  * Bind to relevant DOM events
  */
 Search.prototype.bind = function() {
-  this.$el.find('#apiSearch').bind('keyup', this.keyupEvent.bind(this));
+  this.$el.find('input').bind('keyup', this.keyupEvent.bind(this));
 };
 
 /**
@@ -44,14 +44,15 @@ Search.prototype.bind = function() {
 Search.prototype.keyupEvent = function(e) {
   var self = this;
   self.term = $(e.currentTarget).val();
+  console.log()
   if(this.timer) {
     clearTimeout(this.timer);
   }
 
-  this.timer = setTimeout(function() {
+  this.timer = setTimeout(function setTimer() {
     // Create url
     
-    var route = '/integrations/openFDA/?term='+self.term+'&mode=all';
+    var route = '/integrations/openFDA/?drug='+self.term+'&mode=all';
     console.log('make request after 250 milliseconds of typing');
     console.log(route);
     if  (self.term.length >= 3) {

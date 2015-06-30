@@ -69,16 +69,20 @@
                 "drug": {
                     "label": "/drug/label.json",
                     "event": "/drug/event.json",
-                    "enforcement": "/drug/enforcement"
+                    "enforcement": "/drug/enforcement.json"
                 },
                 "device": {
                     "event": "/device/event.json",
-                    "enforcement": "/device/enforcement"
+                    "enforcement": "/device/enforcement.json"
                 },
                 "food": {
-                    "enforcement": "/food/enforcement"
+                    "enforcement": "/food/enforcement.json"
                 }
             }
-        } 
+        },
+        "feeds": {
+            "new-drugs": "http://www.drugs.com/feeds/new_drug_approvals.xml",
+            "clinical-trials": "http://www.drugs.com/feeds/clinical_trials.xml"
+        }  
     }
 }
