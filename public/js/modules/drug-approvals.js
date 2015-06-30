@@ -90,12 +90,23 @@ addSlider = function(){
           arrows: false,
           centerMode: true,
           centerPadding: '40px',
-          slidesToShow: 2,
-          slidesToScroll: 2
+          slidesToShow: 3,
+          slidesToScroll: 3
         }
       },
       {
-        breakpoint: 820,
+        breakpoint: 835,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          centerPadding: '40px',
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 767,
         settings: {
           arrows: false,
           centerMode: true,
