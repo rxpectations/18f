@@ -10,13 +10,18 @@ describe("getDataHTTPS", function() {
   describe("constructor", function() {
     it("it should set the url", function() {
       var getData = new getDataHTTPS('https://wwww.google.com');
-      expect(getData.url).to.equal('https://wwww.google.com');
+      expect(getData.url).to.equal(
+          'https://wwww.google.com',
+          {},
+          function () {}
+      );
     });
 
     it("it should set the options", function() {
       var getData = new getDataHTTPS(
           'https://wwww.google.com',
-          {timer: false}
+          {timer: false},
+          function () {}
       );
 
       var testProperty = getData.options;
@@ -45,18 +50,5 @@ describe("getDataHTTPS", function() {
     });
   });
 
-  // describe should not accept https
-
-  // describe("#greets", function() {
-  //   it("should throw if no target is passed in", function() {
-  //     expect(function() {
-  //       (new Cow()).greets();
-  //     }).to.throw(Error);
-  //   });
-  //
-  //   it("should greet passed target", function() {
-  //     var greetings = (new Cow("Kate")).greets("Baby");
-  //     expect(greetings).to.equal("Kate greets Baby");
-  //   });
-  // });
+  // describe should not accept http
 });
