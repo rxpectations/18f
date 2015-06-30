@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "results": {
+      "skip": 0,
+      "limit": 10,
+      "total": 2
+    }
+  },
+  "results": [
+    {
+      "recall_number": "D-414-2013",
+      "reason_for_recall": "Lack of Assurance of Sterility: all sterile products compounded, repackaged, and distributed by this compounding pharmacy due to lack of sterility assurance and concerns associated with the quality control processes.",
+      "status": "Ongoing",
+      "distribution_pattern": "Nationwide",
+      "recall_initiation_date": "20130410",
+      "state": "NV",
+      "event_id": "64879",
+      "product_description": "Thiamine Hydrochloride Injection, all strengths and all presentations including a) Thiamine 100 mg/30 mL, b) Thiamine Hydrochloride 100 mg/mL with preservative 30 mL, c) Thiamine Hydrochloride 50 mg/mL with preservative 30 mL, d) Thiamine Hydrochloride 100 mg/mL preservative free 10 mL and 30 mL, Rx only, Green Valley Drugs, 1850 Whitney Mesa, #180, Henderson, NV  89014.",
+      "country": "US",
+      "city": "Henderson",
+      "report_date": "20150325",
+      "code_info": "All lots repackaged and distributed between 01/05/12 to 02/12/15",
+      "@id": "00132aeec88ef5a53d610cc6924c0d3965384831361e1a1a0345113c35d81c57"
+    },
+    {
+      "recall_number": "D-0413-2015",
+      "reason_for_recall": "Subpotent Drug and Failed Impurities/Degradation Specifications.",
+      "status": "Ongoing",
+      "distribution_pattern": "Nationwide",
+      "recall_initiation_date": "20150123",
+      "state": "IL",
+      "event_id": "70375",
+      "product_description": "Nicardipine Hydrochloride Injection, 25 mg/10 ml (2.5 mg/mL),10 mL single dose vial, Rx only, Manufactured in India for: Mylan Institutional LLC, Rockford, IL 61103, NDC 67457-224-10",
+      "country": "US",
+      "city": "Rockford",
+      "report_date": "20150325",
+      "code_info": "All lots repackaged and distributed between 01/05/12 to 02/12/15",
+      "@id": "0107ec1b21d9128e0ec27655f7a50aeade85fd66da524f6d5aca6674151004e5"
+    }
+  ]
+}

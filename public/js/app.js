@@ -6,6 +6,8 @@ var SearchResults = require('./modules/search-results');
 var Accordion = require('./modules/accordion');
 var ToggleView = require('./modules/toggleview');
 var ToggleSelect = require('./modules/toggleselect');
+var Tabs = require('./modules/tabs');
+var DrugApprovals = require('./modules/drug-approvals');
 
 /* When DOM ready initialize modules */
 
@@ -34,6 +36,13 @@ $(function() {
   $('.toggle-select').each(function instantiateToggleSelect() {
     var toggleselect = new ToggleSelect(this);
   });
+
+  $('.tabs').each(function instantiateTabs() {
+    var tabadoodledoo = new Tabs(this);
+  });
   
+  $('.drug-approvals').each(function instantiateDrugApprovals() {
+    var drugapprovals = new DrugApprovals(this);
+  });
 
 });

@@ -15,11 +15,19 @@ module.exports = function (router) {
     var model = new IndexModel();
 
     router.get('/styleguide', function (req, res) {
-        
-        // Use path.normalize for consistent paths 
+
+        // Use path.normalize for consistent paths
         // across Windows and OS
-        res.render(path.normalize('styleguide'), model.Styleguide());        
-        
+        res.render(path.normalize('styleguide'), model.Styleguide());
+
+    });
+
+    router.get('/disclaimer', function (req, res) {
+
+        // Use path.normalize for consistent paths
+        // across Windows and OS
+        res.render(path.normalize('disclaimer'), model.Styleguide());
+
     });
 
     router.get('/static/events', function(req, res) {
@@ -47,20 +55,20 @@ module.exports = function (router) {
             var recalls = JSON.parse(data);
             model.recalls = (recalls.total)?recalls.total:0;
             console.log(model.recalls);
-            // Use path.normalize for consistent paths 
+            // Use path.normalize for consistent paths
             // across Windows and OS
             res.render(path.normalize('drug-detail'), model);
         };
 
         var getRecalls = new getData(
-            'http://localhost:' + (process.env.PORT || 8000)+'/integrations/openFDA/recall?drug='+model.drugname+'&mode=name',
+            'http://localhost:' + (process.env.PORT || 8000)+'/integrations/openFDA/recalls?drug='+model.drugname+'&mode=name',
             { timer: false },
             handleRecalls);
-        
+
     });
 
     router.get('/', function (req, res) {
-        // Use path.normalize for consistent paths 
+        // Use path.normalize for consistent paths
         // across Windows and OS
         res.render(path.normalize('index'), model.Index());
 
@@ -84,10 +92,10 @@ module.exports = function (router) {
 
     // Dyanmic routing example
     router.get('/:templatename', function (req, res) {
-        // Use path.normalize for consistent paths 
+        // Use path.normalize for consistent paths
         // across Windows and OS
-        res.render(path.normalize(req.params.templatename), model.Styleguide());        
-        
+        res.render(path.normalize(req.params.templatename), model.Styleguide());
+
     });
 
 };

@@ -19,11 +19,13 @@
     "kraken-js": "^1.0.1",
     "localizr": "^0.1.0",
     "lodash": "^3.9.3",
+    "newrelic": "^1.20.2",
     "stylus": "^0.50.0",
     "xml2js": "^0.4.9"
   },
   "devDependencies": {
     "browserify": "^3.46.1",
+    "chai": "^3.0.0",
     "d3": "^3.5.5",
     "grunt": "^0.4.1",
     "grunt-browserify": "^2.0.1",
@@ -40,6 +42,7 @@
     "kraken-devtools-browserify": "0.0.3",
     "mocha": "^1.18.0",
     "nib": "^1.1.0",
+    "nock": "^2.6.0",
     "numeral": "^1.5.3",
     "slick-carousel": "^1.5.5",
     "spin.js": "^2.3.1",
