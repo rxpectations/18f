@@ -75,6 +75,8 @@ Reactions.prototype.update = function(data) {
   this.slider = this.$el.find('.slider').slick({
     centerMode: true,
     slidesToShow: 3,
+    prevArrow: $('.slick-prev'),
+    nextArrow: $('.slick-next'),
     responsive: [
       {
         breakpoint: 768,

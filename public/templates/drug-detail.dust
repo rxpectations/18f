@@ -24,7 +24,10 @@
             <section class="reported-reations reactions" id="graph-toggle">
                 <div class="graph top show">            
                     <p class="chart-title">Top 10 Reported Reactions</p>
-                    <div class="donut-chart" data-legend="true"></div>
+                    <div class="donut-chart" data-legend="true">
+                        <button type="button" class="slick-prev">Previous</button>
+                        <button type="button" class="slick-next">Next</button>
+                    </div>
                 </div>
                 <div class="graph all">
                     <p class="chart-title">All adverse reactions in 2015</p>
