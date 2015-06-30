@@ -32,7 +32,6 @@ module.exports = function (router) {
         console.log(formattedUrl);
         //req1
         console.time('openFDA [event totals search]');
-        console.log(formattedUrl);
         var fdaReq1 = https.get(formattedUrl, function(searchRes) {
             var body = '';
 

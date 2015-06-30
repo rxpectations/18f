@@ -75,11 +75,11 @@ module.exports = function (router) {
 
     });
 
-// [{year: 2010, count: 100}, {year: 2011, count: 200}]
-// ["2010": 200, "2011"]
 
+//@TODO add function to return all years in data range to verify empty results returned when applicable?
     function combineTimeseriesYearly(timeseriesResults) {
-        var countsByYear = {};  //associate object-array for temp counting
+        //associate object-array for temp counting
+        var countsByYear = {};   //["2010": 200, "2011"]
         var year;
         var yearCount;
         for (var idx = 0, len = timeseriesResults.length; idx < len; idx++) {
@@ -91,7 +91,8 @@ module.exports = function (router) {
             //console.log();
         }
 
-        var countsByYearArr = [];   //formal array of objects as response
+        //formal array of objects as response
+        var countsByYearArr = [];   //[{year: 2010, count: 100}, {year: 2011, count: 200}]
         for (var yearKey in countsByYear) {
             if (countsByYear.hasOwnProperty(yearKey)) {
                 countsByYearArr.push({year: yearKey, count: countsByYear[yearKey]});
