@@ -66,6 +66,7 @@
     <section class="drug-approvals">
         <h2 class="text-center text-uppercase headline">New Drug Approvals</h2>
         <p class="subtext text-center">Data taken from <a href="#">Drugs.com</a></p>
+        <a href="http://www.drugs.com/newdrugs.html" class="ui-btn blue center" data-type="Drug">View All New Drugs</a>
         <div class="drug-slider cf">
             
         </div>
