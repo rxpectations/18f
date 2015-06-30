@@ -22,6 +22,14 @@ module.exports = function (router) {
         
     });
 
+    router.get('/disclaimer', function (req, res) {
+        
+        // Use path.normalize for consistent paths 
+        // across Windows and OS
+        res.render(path.normalize('disclaimer'), model.Styleguide());        
+        
+    });
+
     router.get('/static/events', function(req, res) {
         res.json(drugEventResponse());
 
