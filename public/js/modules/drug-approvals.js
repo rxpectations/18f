@@ -115,7 +115,14 @@ addSlider = function(){
 
   //Flip cards on click
   $('.drug-slider .card .flipper').bind('click', function(){
-    $(this).parent().parent().toggleClass('flip');
+    var card = $(this).parent().parent();
+
+    if(card.hasClass('flip')) {
+      card.toggleClass('flip'); 
+    } else {
+      $('.drug-slider .card').removeClass('flip');
+      card.toggleClass('flip');
+    }    
   });
 };
 
