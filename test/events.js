@@ -2,7 +2,6 @@
 
 'use strict';
 
-
 var kraken = require('kraken-js'),
     express = require('express'),
     request = require('supertest');
@@ -30,27 +29,27 @@ describe('/events/:drugname', function () {
     });
 
 
-    it('should return results page for Methadone-Hydrochloride', function (done) {
-        request(mock)
-            .get('/events/Methadone-Hydrochloride')
-            .expect(200)
-            .expect('Content-Type', /html/)
-            .expect(/Methadone Hydrochloride/)
-            .end(function (err, res) {
-                done(err);
-            });
-    });
-
-    it('should return results page for Ethanol', function (done) {
-        request(mock)
-            .get('/events/ETHANOL')
-            .expect(200)
-            .expect('Content-Type', /html/)
-            .expect(/ETHANOL/)
-            .end(function (err, res) {
-                done(err);
-            });
-    });
+    // it('should return results page for Methadone-Hydrochloride', function (done) {
+    //     request(mock)
+    //         .get('/events/Methadone-Hydrochloride')
+    //         .expect(200)
+    //         .expect('Content-Type', /html/)
+    //         .expect(/Methadone Hydrochloride/)
+    //         .end(function (err, res) {
+    //             done(err);
+    //         });
+    // });
+    //
+    // it('should return results page for Ethanol', function (done) {
+    //     request(mock)
+    //         .get('/events/ETHANOL')
+    //         .expect(200)
+    //         .expect('Content-Type', /html/)
+    //         .expect(/ETHANOL/)
+    //         .end(function (err, res) {
+    //             done(err);
+    //         });
+    // });
 
     /*
     // Commented out while we use fake data
