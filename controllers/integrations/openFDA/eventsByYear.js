@@ -32,7 +32,6 @@ module.exports = function (router) {
         console.log(formattedUrl);
         //req1
         console.time('openFDA [event totals search]');
-        console.log(formattedUrl);
         var fdaReq1 = https.get(formattedUrl, function(searchRes) {
             var body = '';
 
@@ -167,7 +166,11 @@ module.exports = function (router) {
     */
 
     function combineEventReplies1(year, total, events, res) {
-        var responseObject = {year: year, total: total, events: events};
+        var responseObject = {total: total, events: events};
+        if (year !== undefined && year) {
+            responseObject.year = year;
+        }
+        
         res.send(responseObject);
     }
 };

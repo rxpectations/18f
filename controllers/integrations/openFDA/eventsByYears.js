@@ -57,12 +57,11 @@ module.exports = function (router) {
                     replyCount++;
                     if (replyCount === repliesExpected) {
                         console.timeEnd('openFDA [event multi-year search]');
-                        res.json({ results: resultsBody});
+                        res.json({results: resultsBody});
                     }
                 });
             } else {
                 console.timeEnd('openFDA [event multi-year search]');
-console.log(searchRes);
                 //@TODO: handle 429 and other errors in this multi-async request
                 res.json({'error': {'code': searchRes.statusCode, 'message': 'Unexpected Error'}});
 
@@ -80,7 +79,7 @@ console.log(searchRes);
             var year = parseInt(model.year) + idx;
             options.search = '?mode=' + model.mode + '&drug=' + model.drug + '&year=' + year;
             var formattedUrl = url.format(options);
-console.log(formattedUrl);
+            //console.log(formattedUrl);
 
             var fdaReq = http.get(formattedUrl, yearData)
             .on('error', yearError);

@@ -8,7 +8,7 @@
 /* Module dependencies */
 
 var $ = window.jQuery = require('jquery');
-var bxSlider = require('../vendor/jquery.bxSlider.min');
+var bxSlider = require('../vendor/jquery.bxslider.min');
 
 /**
  * Create new instance of Reactions
