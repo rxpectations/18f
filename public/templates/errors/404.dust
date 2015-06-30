@@ -5,7 +5,7 @@
 	<div class="inner">
 	    <h1>Failure to diagnose. Page not found.</h1>
 	    <p class="error-description">4<span class="accent">0</span>4</p>
-		<h4>Perphaps, try another search?</h4>
+		<h4>Perhaps, try another search?</h4>
 		<button class="ui-btn orange lg">Search Drugs</button>
 
 		 <div class="disclaimer">
