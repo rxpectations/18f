@@ -71,16 +71,20 @@ Line.prototype.create = function(event, data) {
 
   var results = [];
   var years = [];
+  var totalReports = 0;
   for (var r in data.yearlyCounts) {
     if (!(data.yearlyCounts[r].total < 0)) {
       results.push(data.yearlyCounts[r]);
       years.push(data.yearlyCounts[r].year);
+      totalReports += data.yearlyCounts[r].count;
     } 
   }
   results.sort(function(a,b) {
     return a.year-b.year
   });
 
+  //Update Chart title
+  this.updateChartTitle(data.drugEvent, [d3.min(years), d3.max(years)], totalReports);
   this._d3Configs = {};
 
   this._d3Configs.x = d3.scale.linear()
@@ -167,5 +171,13 @@ Line.prototype.update = function(data) {
  * @param {Object}   data
  * @param {Function} callback
  */
+Line.prototype.updateChartTitle = function(label, years, total) {
+  var self = this;
+  var $titleEl = this.$el.siblings('.chart-title');
+
+  $titleEl.find('.drugEvent').text(label);
+  $titleEl.find('.years').text(years[0] + ' - ' + years[1]);
+
+}
 
 module.exports = Line;

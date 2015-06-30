@@ -67,9 +67,10 @@ Reactions.prototype.create = function(event, data) {
  */
 Reactions.prototype.update = function(data) {
   var self = this;
-  
+  var i = 0
   for (var event in data.results) {
-    this.$list.append('<div data-term="'+data.results[event].term+'">'+self.toTitleCase(data.results[event].term)+'</div>');
+    this.$list.append('<div data-term="'+data.results[event].term+'"><div class="c'+i+'">'+self.toTitleCase(data.results[event].term)+'</div></div>');
+    i++;
   }
 
   this.$el.find('.chart-container').append(this.$list);
@@ -90,8 +91,8 @@ Reactions.prototype.update = function(data) {
     ]
   });
 
-  this.onSlideAfter();
-  this.slider.on('afterChange', self.onSlideAfter.bind(self));
+  this.onSlideAfter(null, null, null, 0);
+  this.slider.on('beforeChange', self.onSlideAfter.bind(self));
 /*
   this.slider = this.$el.find('ul').bxSlider({
     slideWidth: 100,
@@ -107,8 +108,8 @@ Reactions.prototype.update = function(data) {
   this.slider.goToSlide(0);*/
   
 };
-Reactions.prototype.onSlideAfter = function(event, slick, currentSlide) {
-  var $slide = $('.slick-center');
+Reactions.prototype.onSlideAfter = function(event, slick, currentSlide, nextSlide) {
+  var $slide = $('[data-slick-index="'+nextSlide+'"]');
   $('body').trigger('eventSelect.rx', {term: $slide.data('term')});
 }
 

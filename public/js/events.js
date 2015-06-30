@@ -66,6 +66,7 @@ $(function() {
         $('body').trigger('start.ajax');
       },
       success: function success(response) {
+        console.log(response);
         $('body').trigger('effectData', response);
         $('body').trigger('end.ajax');
       },

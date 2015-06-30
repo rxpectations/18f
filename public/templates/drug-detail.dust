@@ -12,15 +12,7 @@
 	</header>
     
     <div class="inner">
-        <div class="col2 shift-right">
-        	<section class="total-reports">
-                <p class="chart-title">Total incidents {#years}{@first}{.} - {/first}{@last}{.}{/last}{/years}: <strong>{totalIncidents}</strong></p>
-                <div class="line-chart"></div>
-            </section>
-
-        </div>
-
-        <div class="col2 shift-left">
+        <div class="col2">
             <section class="reported-reations reactions" id="graph-toggle">
                 <div class="graph top show chart-container">            
                     <p class="chart-title">Top 10 Reported Reactions</p>
@@ -36,6 +28,18 @@
                 <a href="" class="toggle-view ui-btn blue content-switch" data-toggle="graph-toggle">View All Reactions</a>
             </section>
         </div>
+        <div class="col2">
+        	<section class="total-reports">
+                <p class="chart-title">
+                    <span class="drugEvent"></span><br/>
+                    reports from <span class="years"></span>
+                </p>
+                <div class="line-chart"></div>
+            </section>
+
+        </div>
+
+        
     </div>
 
     <section class="supporting-content ui-grey-bg">        
