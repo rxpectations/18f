@@ -1,6 +1,10 @@
 {>"layouts/master" /}
 
 {<body}
-    <h1>{@pre type="content" key="header"/}</h1>
-    <p>{@pre type="content" key="description"/}</p>
+	<div class="row errors 404-error">
+	    <h1>{@pre type="content" key="header"/}</h1>
+	    <p>{@pre type="content" key="description"/}</p>
+	    <small></small>
+	    <button class="ui-btn orange"></button>
+    </div>
 {/body}
