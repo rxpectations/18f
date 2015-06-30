@@ -7,7 +7,8 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "cucumber": "cucumber-js test/functional/features/ -f pretty -r test/functional/steps/ -r test/functional/support/hooks.js"
   },
   "dependencies": {
     "adaro": "^0.1.5",
@@ -24,6 +25,8 @@
   },
   "devDependencies": {
     "browserify": "^3.46.1",
+    "chai": "^3.0.0",
+    "cucumber": "^0.5.1",
     "d3": "^3.5.5",
     "grunt": "^0.4.1",
     "grunt-browserify": "^2.0.1",
@@ -40,6 +43,10 @@
     "kraken-devtools-browserify": "0.0.3",
     "mocha": "^1.18.0",
     "nib": "^1.1.0",
+    "q": "^1.4.1",
+    "supertest": "^0.9.0",
+    "webdriverio": "^2.4.5",
+    "zombie": "^3.1.1",
     "numeral": "^1.5.3",
     "slick-carousel": "^1.5.5",
     "spin.js": "^2.3.1",

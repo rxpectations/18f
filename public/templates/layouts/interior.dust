@@ -23,8 +23,8 @@
   <link rel="manifest" href="/icons/manifest.json">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png">
-  <meta name="theme-color" content="#ffffff"> 
-  
+  <meta name="theme-color" content="#ffffff">
+
 
 </head>
 <body>
@@ -47,7 +47,7 @@
     <a href="#" class="close-btn toggle-view" data-toggle="search-toggle"><i class="fa fa-times"></i></a>
     <form class="search">
       <div class="search-bar">
-        <input type="text" placeholder="Search" />
+        <input id="searchField" type="text" placeholder="Search" />
         <!-- <input type="submit" value="Search" /> -->
       </div>
     </form>
