@@ -56,6 +56,9 @@ Search.prototype.keyupEvent = function(e) {
     console.log('make request after 250 milliseconds of typing');
     console.log(route);
     if  (self.term.length >= 3) {
+      $('.search-bar').toggleClass('loading');
+      $('.results').html('');
+
       $.ajax({
         url: route || '/',
         type: 'get',
@@ -78,7 +81,9 @@ Search.prototype.success = function(response) {
   var self = this;
   response.term = self.term;
 
+  $('.search-bar').toggleClass('loading');
   $('body').trigger('search.rx', response);
+
 };
 
 /**
