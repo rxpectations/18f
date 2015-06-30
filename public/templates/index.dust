@@ -65,17 +65,9 @@
 
     <section class="drug-approvals">
         <h2 class="text-center text-uppercase headline">New Drug Approvals</h2>
+        <p class="subtext text-center">Data taken from <a href="#">Drugs.com</a></p>
         <div class="drug-slider cf">
-            <!--<div>
-                <div class="front">
-                    <h6 class="date">June 22</h6>
-                    <h5>FDA Approves Fycompa as Adjunctive Treatment for Primary Generalized TonicClonic Seizures</h5>                    
-                </div>
-                <div class="back">
-                    <h5>FDA Approves Fycompa as Adjunctive Treatment for Primary Generalized TonicClonic Seizures</h5>
-                    <p>Eisai Co., Ltd. announced today that its U.S. subsidiary Eisai Inc. has received approval from the U.S. Food and Drug Admits in-house developed antiepileptic... <a href="#">More</a></p>
-                </div>
-            </div>-->
+            
         </div>
     </section>
 
