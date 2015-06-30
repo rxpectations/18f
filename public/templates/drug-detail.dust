@@ -22,7 +22,7 @@
 
         <div class="col2 shift-left">
             <section class="reported-reations reactions" id="graph-toggle">
-                <div class="graph top show">            
+                <div class="graph top show chart-container">            
                     <p class="chart-title">Top 10 Reported Reactions</p>
                     <div class="donut-chart" data-legend="true">
                         <button type="button" class="slick-prev">Previous</button>
