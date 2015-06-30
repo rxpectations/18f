@@ -15,22 +15,22 @@
             <div class="row cf">
                 <div class="col3">
                     
-                    <img src="/img/step-1.png"  alt="place kitty" />
-                    <p>Users and/or healthcare professionals submit an <a href="#">Adverse Reaction Incident Report</a> to the FDA</p>
+                    <img src="/img/step-1.png"  alt="Report Icon" />
+                    <p>UPatients, healthcare providers, and manufacturers submit an Adverse Reaction Incident Report to the FDA.</p>
 
                 </div>
 
                 <div class="col3">
                     
-                    <img src="/img/step-2.png"  alt="place kitty" />
-                    <p>The FDA removes any personal or identifying information and makes the data available via <a href="#">OpenFDA</a></p>
+                    <img src="/img/step-2.png"  alt="FDA Icon" />
+                    <p>The FDA removes any identifying information and makes the data available via OpenFDA.</p>
 
                 </div>
 
                 <div class="col3">
                     
-                    <img src="/img/step-3.png"  alt="place kitty" />
-                    <p>The data is presented in a friendly format so you can be better informated when talking with your healthcare provider</p>
+                    <img src="/img/step-3.png"  alt="Devices Icon" />
+                    <p>The data is sifted, sorted, and visualized to provide you with information and tools to participate in more informed healthcare decisions. </p>
 
                 </div> 
             </div>
@@ -65,17 +65,9 @@
 
     <section class="drug-approvals">
         <h2 class="text-center text-uppercase headline">New Drug Approvals</h2>
+        <p class="subtext text-center">Data taken from <a href="#">Drugs.com</a></p>
         <div class="drug-slider cf">
-            <!--<div>
-                <div class="front">
-                    <h6 class="date">June 22</h6>
-                    <h5>FDA Approves Fycompa as Adjunctive Treatment for Primary Generalized TonicClonic Seizures</h5>                    
-                </div>
-                <div class="back">
-                    <h5>FDA Approves Fycompa as Adjunctive Treatment for Primary Generalized TonicClonic Seizures</h5>
-                    <p>Eisai Co., Ltd. announced today that its U.S. subsidiary Eisai Inc. has received approval from the U.S. Food and Drug Admits in-house developed antiepileptic... <a href="#">More</a></p>
-                </div>
-            </div>-->
+            
         </div>
     </section>
 

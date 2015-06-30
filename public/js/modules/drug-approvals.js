@@ -60,7 +60,7 @@ buildSlider = function(title, date, desc, href) {
     "<h5>" + title + "</h5>"+
     "</div>" +
     "<div class='back'>" +
-    "<p><a href='" + url +"'>" + desc + " <span>More</span></a></p>" +
+    "<p><a target='_blank' href='" + url +"'>" + desc + " <span>More</span></a></p>" +
     "</div>" +
     "</div>"
   );
@@ -98,6 +98,10 @@ addSlider = function(){
         }
       }
     ]
+  });
+
+  $('.drug-slider a').on('click', function(){
+    window.open($(this).attr('href'));
   });
 };
 
