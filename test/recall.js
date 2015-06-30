@@ -2,6 +2,22 @@
 
 'use strict';
 
+var nock = require('nock');
+
+var mockData = nock('https://api.fda.gov')
+  // .log(console.log)
+  .get('/drug/enforcement.json?search=(product_description:Methadone-Hydrochloride+patient.drug.openfda.brand_name:Methadone-Hydrochloride+patient.drug.openfda.generic_name:Methadone-Hydrochloride)&limit=10&api_key=fWo3VYTbToPaLcFem1T9ZJqqNHNmetmU3peGa1BF')
+  .replyWithFile(200, __dirname + '/mocks/recall.json', {
+    'Content-Type': 'application/json'
+  })
+  .get('/drug/enforcement.json?search=(product_description:Methadone-doesnotexist+patient.drug.openfda.brand_name:Methadone-doesnotexist+patient.drug.openfda.generic_name:Methadone-doesnotexist)&limit=10&api_key=fWo3VYTbToPaLcFem1T9ZJqqNHNmetmU3peGa1BF')
+  .reply(404, {code: "NOT_FOUND"}, {
+    'Content-Type': 'application/json'
+  });
+
+
+module.exports = mockData;
+
 
 var kraken = require('kraken-js'),
     express = require('express'),
