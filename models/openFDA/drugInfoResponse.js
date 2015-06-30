@@ -14,9 +14,9 @@ var DrugLabelModel = function (searchResponse) {
         drugInfo.brandName = responseObject.results[0].openfda.brand_name.toString();
         drugInfo.genericName = responseObject.results[0].openfda.generic_name.toString();
         drugInfo.indications = (responseObject.results[0].indications_and_usage) ? 
-            responseObject.results[0].indications_and_usage.toString() : '';
+            responseObject.results[0].indications_and_usage.toString().trim() : '';
         drugInfo.contraindications = (responseObject.results[0].contraindications) ? 
-            responseObject.results[0].contraindications.toString() : '';
+            responseObject.results[0].contraindications.toString().trim() : '';
     } 
 
     return {

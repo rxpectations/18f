@@ -23,18 +23,18 @@ module.exports = function (router) {
     	var formattedUrl = url.format(options);
         //console.log(formattedUrl);
 
-        var handleSearchResponse = function(resBody) {
+        var handleSearchResponse = function(resCode, resBody) {
             console.timeEnd('openFDA [label search]');
             
-            if (searchRes.statusCode === 200) {
-                var drugLabels = new drugLabelResponse(body);
+            if (resCode === 200) {
+                var drugLabels = new drugLabelResponse(resBody);
                 res.json(drugLabels);
-            } else if (searchRes.statusCode === 404) {
-                res.send(body); 
+            } else if (resCode === 404) {
+                res.send(resBody); 
             } else {
-                res.json({'error': {'code': searchRes.statusCode, 'message': 'Unexpected Error'}});
+                res.json({'error': {'code': resCode, 'message': 'Unexpected Error'}});
             } //@TODO: handle other non-OK response
-        }
+        };
 
         console.time('openFDA [label search]');
     	var fdaReq = https.get(formattedUrl, function(searchRes) {
@@ -45,7 +45,7 @@ module.exports = function (router) {
                 body += chunk;
             });
 
-            searchRes.on('end', handleSearchResponse(body));
+            searchRes.on('end', function () { handleSearchResponse(searchRes.statusCode, body); });
 
     	}).on('error', function(e) {
     		console.log('ERROR: '  + e.message);
