@@ -35,10 +35,10 @@ ToggleView.prototype.bind = function() {
       
     if($(this).hasClass('content-switch')) {
       $('#' + obj + ' .graph').toggleClass('show');
-      if(btnTxt === "View All") {
-        $(this).text('View Top 5');
+      if(btnTxt === "View All Reactions") {
+        $(this).text('View Top 10 Reactions');
       } else {
-        $(this).text('View All');  
+        $(this).text('View All Reactions');  
       }
 
     } else {

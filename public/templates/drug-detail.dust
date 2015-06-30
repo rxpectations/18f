@@ -30,7 +30,7 @@
                     <p class="chart-title">All adverse reactions in 2015</p>
                     <div class="bar-chart"></div>
                 </div>
-                <a href="" class="toggle-view ui-btn blue content-switch" data-toggle="graph-toggle">View All</a>
+                <a href="" class="toggle-view ui-btn blue content-switch" data-toggle="graph-toggle">View All Reactions</a>
             </section>
         </div>
     </div>
