@@ -39,7 +39,9 @@
   {+body /}
 </div>
 <footer>
-  <h2>This is the footer</h2>
+    <div class="inner">
+        <p class="disclaimer">Disclaimer: The data and content provided through this website are for informational purposes only.  Use of the Software is not intended to be a substitute for the judgment of medical professionals, and you should promptly contact your own doctor regarding any medical conditions or questions you may have.  The content on this website is not intended to provide medical advice or to treat or diagnose any disease or medical condition. <a href="/disclaimer">View Full Disclaimer</a></p>        
+    </div>
 </footer>
 <section id="search-toggle" class="app-search">
   <div class="inner">
