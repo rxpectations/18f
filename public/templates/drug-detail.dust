@@ -35,19 +35,10 @@
         </div>
     </div>
 
-    <!--<section class="recalls">
-        <div class="inner">
-            {@eq key="{recalls}" value="0"}
-            <p><strong>There are no recalls associated with this drug.</strong></p>
-            {:else}
-            <p><strong>There were {recalls} recalls associated with this drug.</strong></p>
-            <p>Talk to your health care provider or more information on how this can affect your use of this drug.</p>
-            {/eq}
-        </div>
-    </section>-->
-
-    <section class="supporting-content ui-grey-bg">
+    <section class="supporting-content ui-grey-bg">        
         <div class="tabs inner">
+            <h2>About this drug</h2>
+
             <ul class="tab-list">
 
             </ul>

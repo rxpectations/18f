@@ -1,0 +1,68 @@
+.drug-approvals
+	padding 30px 0
+
+	h2
+		margin-bottom 20px
+
+	.drug-slider
+
+		div
+			width 275px
+			height 200px
+			border-radius 10px
+			position relative			
+
+			h6
+				margin-bottom 10px			
+
+			h5
+				font-weight bold
+				line-height 1.2rem
+				font-size 1.05em
+				color $blue
+				margin-bottom 10px
+
+			p
+				line-height 1.1rem
+
+
+			.front, .back
+				position absolute
+				top 0
+				left 0
+				width 100%
+				height 100%
+
+			.front, .back
+				backface-visibility hidden
+				transition transform 0.3s
+				
+
+			.front
+				background $light-grey
+				padding 40px 40px
+
+				&:before
+					content ''
+					display block
+					position absolute
+					width 5px
+					height 95px
+					background $orange
+					left 20px
+					top 40px							
+
+			.back
+				background $blue
+				padding 20px
+				color white
+				transform rotateY(-180deg)					
+				
+				h5
+					color white
+
+			&:hover
+				.front
+					transform rotateY(-180deg)	
+				.back
+					transform rotateY(0)

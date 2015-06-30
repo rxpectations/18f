@@ -15,7 +15,6 @@ $(function() {
     var instance = new Accordion(this);
   });
 
-
   $('.line-chart').each(function instantiateLineChart() {
 
     new Line(this);
