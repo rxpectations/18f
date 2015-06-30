@@ -8,8 +8,8 @@
 		<h4>Perphaps, try another search?</h4>
 		<button class="ui-btn orange lg">Search Drugs</button>
 
-		<div class="disclaimer">
-			<small>Image credit: <a href="https://imagebank.nih.gov/about.cfm">https://imagebank.nih.gov/about.cfm</a><small>
+		 <div class="disclaimer">
+			<small>Image credit: <a href="https://imagebank.nih.gov/details.cfm?imageid=1474">National Institute of Allergy and Infectious Diseases (NIAID)</a><small>
 		</div>
 	</div>
 </section>
