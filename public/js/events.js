@@ -7,7 +7,6 @@ var Bar = require('./modules/chart-bar');
 var Reactions = require('./modules/reactions');
 
 /* When DOM ready initialize modules */
-
 $(function() {
 
   /* Generic inits. These are just baselines, they have no extended logic */
@@ -54,7 +53,7 @@ $(function() {
     }
   });
 
-  $('body').on('termSelect.rx', function GetEventData(event, eventData){
+  $('body').on('eventSelect.rx', function GetEventData(event, eventData){
     console.log(eventData.term);
     //Get the term from the event data and do ajax call to get data from last 5 years
     $.ajax({

@@ -53,10 +53,14 @@ Donut.prototype.init = function() {
     .append('svg')
       .attr('width', this.width)
       .attr('height', this.height)
-    .append('g')
-      .attr('class', 'pie-chart')
-      .attr('transform', 
-            'translate(' + (this.width / 2) + ',' + (this.height / 2) + ')');
+  this.svgChart = this.svg.append('g')
+    .attr('class', 'pie-chart')
+    .attr('transform', 
+      'translate(' + (this.width / 2) + ',' + (this.height / 2) + ')');
+  this.centerLabel = this.svg.append('svg:g')
+    .attr('class', 'center-label')
+    .attr('transform', 
+      'translate(' + (this.width / 2) + ',' + (this.height / 2) + ')');
 
 
 }
@@ -64,10 +68,11 @@ Donut.prototype.init = function() {
  * Bind to relevant DOM events
  */
 Donut.prototype.bind = function() {
-
+  var self = this;
   $('body').bind('eventData', this.create.bind(this));
+  $('body').bind('eventSelect.rx', this.rotate.bind(this));
   $(window).resize(function windowResize() {
-    this.update(this.getData());
+    self.update(self.getData());
   });
 };
 
@@ -95,30 +100,31 @@ Donut.prototype.create = function(event, data) {
  */
 Donut.prototype.update = function(data) {
   var self = this;
-  var arcs = this.svg.selectAll('.arc')
+  this.arcs = this.svgChart.selectAll('.arc')
     .data(this._d3Configs.donut(data.results))
     .enter().append('g')
       .attr('class', 'arc');
 
-  arcs.append('path')
+  this.arcs.append('path')
     .attr('d', this._d3Configs.arc)
     .attr('class', function(d) { return self._d3Configs.color(d.data.term); })
+    .attr('data-term', function(d) { return d.data.term; })
     .on('mouseover', this.arcOver.bind(this))
     .on('mouseout', this.arcOut.bind(this));
+  
 
-  var center_group = this.svg.append('svg:g')
-      .attr('class', 'center_group');
-
-  var label = center_group.append('svg:text')
+  var label = this.centerLabel.append('svg:text')
       .attr('class', 'donut-label')
       .attr('dy', 20)
       .attr('text-anchor', 'middle') // text-align: right
       .text('reported reactions');
-  var totalLabel = center_group.append('svg:text')
+  var totalLabel = this.centerLabel.append('svg:text')
       .attr('class', 'donut-total')
       .attr('dy', 0)
       .attr('text-anchor', 'middle') // text-align: right
       .text(numeral(data.total).format('0,0'));
+
+  $('body').trigger('donutLoaded.rx', this.getData());
 };
 
 Donut.prototype.arcOver = function(d) {
@@ -155,11 +161,40 @@ Donut.prototype.formatData = function(data) {
     d.count = +d.count;
   });
 
-
-
   return events.slice(0, 5);
 }
 
+/**
+ * Getter method for Donut data
+ */
+Donut.prototype.rotate = function(event, data) {
+  
+  var self = this;
+  var arc = d3.select('[data-term="'+data.term+'"]');
+  var center = this._d3Configs.arc.centroid(arc.data()[0]);
+
+  if (!this.currAngle) {
+    this.currAngle = 0;
+  }
+  
+  var vertex = {"x": center[0]-0,"y":-(center[1])};
+  var newAngle = Math.acos( vertex.x / Math.sqrt(vertex.x*vertex.x + vertex.y*vertex.y) );
+  newAngle = (newAngle * 180 / Math.PI);//in degrees
+  if (0 < center[1]) {
+    newAngle = 90 - newAngle;
+  } else {
+    newAngle = 90 + newAngle;
+  }
+  d3.select('.pie-chart').transition().duration(750)
+    .attrTween('transform', function() { 
+      return d3.interpolateString(
+        'translate(' + (self.width / 2) + ',' + (self.height / 2) + ')rotate('+self.currAngle+')', 
+        'translate(' + (self.width / 2) + ',' + (self.height / 2) + ')rotate('+newAngle+')'); 
+    })
+    .each('end', function() {
+      self.currAngle = newAngle;
+    });
+}
 
 
 /**

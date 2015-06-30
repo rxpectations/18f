@@ -143,18 +143,22 @@ Line.prototype.create = function(event, data) {
 
 Line.prototype.update = function(data) {
   var self = this;
-  this.svg.transition();
   this.circles = this.circlesGroup.selectAll('.data-point')
-    .data(data)
+    .data(data);
+
+  var svg = d3.select('body').transition();
+
+  svg.selectAll('.data-point').duration(750)
       .attr('cx', function(d) { return self._d3Configs.x(d.year) })
       .attr('cy', function(d) { return self._d3Configs.y(d.total) });  
 
-    this.svg.select('.line')
+    svg.select('.line')
+      .duration(750)
       .attr('d', this._d3Configs.line(data));
 
     // Add the X Axis
-    this.svg.select('.x-axis')
-      .attr('transform', 'translate(0,' + (this.height - this.margin.bottom) + ')')
+    svg.select('.x-axis')
+      .duration(750)
       .call(this._d3Configs.xAxis);
 };
 

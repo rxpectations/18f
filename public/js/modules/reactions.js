@@ -8,7 +8,7 @@
 /* Module dependencies */
 
 var $ = window.jQuery = require('jquery');
-var bxSlider = require('../vendor/jquery.bxslider.min');
+var slick = require('slick-carousel');
 
 /**
  * Create new instance of Reactions
@@ -29,14 +29,14 @@ var Reactions = function Reactions(element) {
  * 
  */
 Reactions.prototype.init = function() {
-  this.$list = $('<ul />');
+  this.$list = $('<div class="slider" />');
 }
 /**
  * Bind to relevant DOM events
  */
 Reactions.prototype.bind = function() {
 
-  $('body').bind('eventData', this.create.bind(this));
+  $('body').bind('donutLoaded.rx', this.create.bind(this));
   $(window).resize(function windowResize() {
     //this.update(this.getData());
   });
@@ -68,11 +68,28 @@ Reactions.prototype.update = function(data) {
   var self = this;
   console.log(data);
   for (var event in data.results) {
-    this.$list.append('<li data-term="'+data.results[event].term+'">'+data.results[event].term+'</li>');
+    this.$list.append('<div data-term="'+data.results[event].term+'">'+data.results[event].term+'</div>');
   }
 
   this.$el.append(this.$list);
+  this.slider = this.$el.find('.slider').slick({
+    centerMode: true,
+    slidesToShow: 3,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          slidesToShow: 1
+        }
+      }
+    ]
+  });
 
+  this.onSlideAfter();
+  this.slider.on('afterChange', self.onSlideAfter.bind(self));
+/*
   this.slider = this.$el.find('ul').bxSlider({
     slideWidth: 100,
     minSlides: 3,
@@ -84,11 +101,12 @@ Reactions.prototype.update = function(data) {
     onSlideAfter: self.onSlideAfter.bind(self)
   });
 
-  this.slider.goToSlide(0);
+  this.slider.goToSlide(0);*/
   
 };
-Reactions.prototype.onSlideAfter = function($slide, oldIndex, newIndex) {
-  $('body').trigger('termSelect.rx', {term: $slide.data('term')});
+Reactions.prototype.onSlideAfter = function(event, slick, currentSlide) {
+  var $slide = $('.slick-center');
+  $('body').trigger('eventSelect.rx', {term: $slide.data('term')});
 }
 
 /**
