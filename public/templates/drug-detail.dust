@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <section class="recalls">
+    <!--<section class="recalls">
         <div class="inner">
             {@eq key="{recalls}" value="0"}
             <p><strong>There are no recalls associated with this drug.</strong></p>
@@ -44,10 +44,47 @@
             <p>Talk to your health care provider or more information on how this can affect your use of this drug.</p>
             {/eq}
         </div>
-    </section>
+    </section>-->
 
-    <section class="supporting-content inner">
-        <article class="panel">
+    <section class="supporting-content ui-grey-bg">
+        <div class="tabs inner">
+            <ul class="tab-list">
+
+            </ul>
+            <div class="tab-content-wrapper">
+                
+                <article class="tab-content">
+                    <h4>Description</h4>
+                    <p>Lorem ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis et duo ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis platonem an eam, quod eros Lorem ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis et duo ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis platonem an eam, quod eros</p>
+                </article>
+
+                {@eq key="{recalls}" value="0"}
+                    
+                {:else}
+                    <article class="tab-content">
+                        <h4>Recall History({recalls})</h4>
+                        <p>Lorem ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis et duo ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis platonem an eam, quod eros Lorem ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis et duo ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis platonem an eam, quod eros</p>
+                    </article>
+                {/eq}
+
+                <article class="tab-content">
+                    <h4>Considerations</h4>
+                    <p>Lorem ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis et duo ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis platonem an eam, quod eros Lorem ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis et duo ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis platonem an eam, quod eros</p>
+                </article>
+
+                <article class="tab-content">
+                    <h4>What's New</h4>
+                    <p>Lorem ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis et duo ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis platonem an eam, quod eros Lorem ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis et duo ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis platonem an eam, quod eros</p>
+                </article>
+
+                <article class="tab-content">
+                    <h4>Resources & Community</h4>
+                    <p>Lorem ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis et duo ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis platonem an eam, quod eros Lorem ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis et duo ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis platonem an eam, quod eros</p>
+                </article>
+
+            </div>
+        </div>
+        <!--<article class="panel">
             <h4>About Prendisone Generic</h4>
             <p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat...</a></p>
         </article>
@@ -58,7 +95,7 @@
         <article class="panel">
             <h4>News & Updates</h4>
             <p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat...</a></p>
-        </article>
+        </article>-->
     </section>
 
 {/body}

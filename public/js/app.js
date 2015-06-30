@@ -6,6 +6,7 @@ var SearchResults = require('./modules/search-results');
 var Accordion = require('./modules/accordion');
 var ToggleView = require('./modules/toggleview');
 var ToggleSelect = require('./modules/toggleselect');
+var Tabs = require('./modules/tabs');
 
 /* When DOM ready initialize modules */
 
@@ -33,6 +34,10 @@ $(function() {
 
   $('.toggle-select').each(function instantiateToggleSelect() {
     var toggleselect = new ToggleSelect(this);
+  });
+
+  $('.tabs').each(function instantiateTabs() {
+    var tabadoodledoo = new Tabs(this);
   });
   
 
