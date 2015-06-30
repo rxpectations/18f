@@ -1,17 +1,28 @@
 .drug-approvals
+	overflow hidden
 	padding 30px 0
+
+	.slick-dots li button:before
+		font-size 2rem
+
+	.slick-dots li
+		margin 0
 
 	h2
 		margin-bottom 20px
 
 	.drug-slider
+		width 100%
+		display block
+		cursor ew-resize
 
-		div
+		.card
 			width 275px
-			height 200px
+			height 250px
 			border-radius 10px
 			position relative	
-			margin 0 auto		
+			margin 0 auto
+			margin 0 10px		
 
 			h6
 				margin-bottom 10px			
@@ -41,7 +52,7 @@
 
 			.front
 				background $light-grey
-				padding 40px 40px
+				padding 30px 40px
 
 				&:before
 					content ''
@@ -61,6 +72,17 @@
 				
 				h5
 					color white
+
+				a 
+					transition color .25s
+
+					&:hover
+						color $blue-header
+
+					span
+						text-decoration underline
+						font-weight bold
+
 
 			&:hover
 				.front
