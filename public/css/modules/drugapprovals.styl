@@ -32,7 +32,24 @@
 			border-radius 10px
 			position relative	
 			margin 0 auto
-			margin 0 10px		
+			margin 0 10px
+
+			.flipper
+				position absolute
+				top 10px
+				right 10px
+				border 1px solid $grey
+				border-radius 50%
+				text-align center
+				width 30px
+				height 30px
+				line-height 30px
+				cursor pointer
+				color $grey
+				transition all .25s
+				&:hover
+					background $grey
+					color white
 
 			h6
 				margin-bottom 10px			
@@ -76,9 +93,17 @@
 
 			.back
 				background $blue
-				padding 20px
+				padding 40px 30px
 				color white
-				transform rotateY(-180deg)					
+				transform rotateY(-180deg)
+
+				.flipper
+					border-color white
+					color white	
+
+					&:hover
+						background $blue-header
+						border-color $blue-header				
 				
 				h5
 					color white
@@ -96,7 +121,7 @@
 						font-weight bold
 
 
-			&:hover
+			&.flip
 				.front
 					transform rotateY(-180deg)	
 				.back

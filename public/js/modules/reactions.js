@@ -48,15 +48,16 @@ Reactions.prototype.bind = function() {
  * @param  {Object} data  New updated data
  */
 Reactions.prototype.create = function(event, data) {
-
+  console.log(event);
   var self = this;
   
   if (!data) {
     data = event;
   }
   this.setData(data);
-
-  this.update(this.getData());
+  if (this.$el.find('.slider').length < 1)  {
+    this.update(this.getData());
+  }
 
 };
 
@@ -66,15 +67,17 @@ Reactions.prototype.create = function(event, data) {
  */
 Reactions.prototype.update = function(data) {
   var self = this;
-  console.log(data);
+  
   for (var event in data.results) {
-    this.$list.append('<div data-term="'+data.results[event].term+'">'+data.results[event].term+'</div>');
+    this.$list.append('<div data-term="'+data.results[event].term+'">'+self.toTitleCase(data.results[event].term)+'</div>');
   }
 
-  this.$el.append(this.$list);
+  this.$el.find('.chart-container').append(this.$list);
   this.slider = this.$el.find('.slider').slick({
     centerMode: true,
     slidesToShow: 3,
+    prevArrow: $('.slick-prev'),
+    nextArrow: $('.slick-next'),
     responsive: [
       {
         breakpoint: 768,
@@ -126,4 +129,7 @@ Reactions.prototype.setData = function(data) {
   }
 }
 
+Reactions.prototype.toTitleCase = function(str) {
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
 module.exports = Reactions;

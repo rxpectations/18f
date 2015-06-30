@@ -112,17 +112,18 @@ Donut.prototype.update = function(data) {
     .on('mouseover', this.arcOver.bind(this))
     .on('mouseout', this.arcOut.bind(this));
   
-
-  var label = this.centerLabel.append('svg:text')
+  if (!this.label) {
+    this.label = this.centerLabel.append('svg:text')
       .attr('class', 'donut-label')
       .attr('dy', 20)
       .attr('text-anchor', 'middle') // text-align: right
       .text('reported reactions');
-  var totalLabel = this.centerLabel.append('svg:text')
+    this.totalLabel = this.centerLabel.append('svg:text')
       .attr('class', 'donut-total')
       .attr('dy', 0)
       .attr('text-anchor', 'middle') // text-align: right
       .text(numeral(data.total).format('0,0'));
+  }
 
   $('body').trigger('donutLoaded.rx', this.getData());
 };

@@ -54,10 +54,13 @@ $(function() {
 
   $('body').on('eventSelect.rx', function GetEventData(event, eventData){
     console.log(eventData.term);
+    var url = '/integrations/openFDA/eventCountByName/?mode=name&drug=' +
+              $('header').data('name') +
+              '&drugevent=' + eventData.term;
     //Get the term from the event data and do ajax call to get data from last 5 years
     $.ajax({
-    //url: '/integrations/openFDA/recall?drug='+$('header').data('name')+'&mode=name',
-      url: '/static/events?term='+eventData.term,
+      url: url,
+      //url: '/static/events?term='+eventData.term,
       type: 'get',
       beforeSend: function beforeSend() {
         $('body').trigger('start.ajax');
