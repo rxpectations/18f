@@ -3,14 +3,13 @@ var baseurl = process.env.URL || 'http://dev-18F.herokuapp.com';
 
 var options = {
   desiredCapabilities: {
-    browserName: 'chrome'
+    browserName: 'chrome',
+    name: "RxPectations 18F"
   },
   host: 'ondemand.saucelabs.com',
   port: 80,
   user: process.env.SAUCE_USERNAME,
   key: process.env.SAUCE_ACCESS_KEY,
-  name: "PwCexc 18F",
-  public: "public",
   logLevel: 'silent'
 }
 

@@ -8,6 +8,10 @@ var sync = utils.sync;
 module.exports = function (browser) {
   // browser.sendKeyUp = sendKeyUp;
 
+  function showBrowser () {
+    return browser;
+  }
+
   /**
   * Visit a page in the browser
   * @param string page
@@ -20,7 +24,6 @@ module.exports = function (browser) {
       location = config.baseURL + options.url;
     }
 
-    console.log(location);
     return browser.url(location).call(cb);
   };
 
@@ -29,14 +32,27 @@ module.exports = function (browser) {
   * @param string term
   */
   function search (term, cb) {
-    browser.waitFor('#apiSearch', 2000, function () {
-      browser.setValue('#apiSearch', term, cb);
+    var searchButton = '#searchButton';
+    var searchField = '#searchField';
+
+    browser.waitFor(searchButton, 6000, function waitForSearch () {
+      browser.click(searchButton, function clickSearchButton () {
+        browser.waitFor(searchField, 6000, function waitForSearch () {
+          browser.setValue(searchField, term, cb);
+        });
+      });
     });
   };
 
+  /**
+  * Checks for searchResults
+  * @param string term
+  * @param function cb
+  */
   function checkResults (term, cb) {
-    browser.waitFor('.search-results', 5000, function (a, b) {
-      browser.getText('.search-results', function(err, text) {
+    var searchResults = '.search-results';
+    browser.waitFor(searchResults, 5000, function () {
+      browser.getText(searchResults, function(err, text) {
         var exp = new RegExp(term, 'ig');
         utils.expect(err).to.be.undefined;
         utils.expect(text).to.match(exp);
@@ -45,9 +61,29 @@ module.exports = function (browser) {
     });
   }
 
+  function clickLink (link, cb) {
+    var link = 'a[href="/events/' + link + '"]';
+    browser.waitFor(link, 5000, function waitForLinkText () {
+      browser.click(link, function clickLinkText () {
+        cb();
+      });
+    });
+  }
+
+  function checkHtml (tag, html, cb) {
+    browser.getText(tag, function(err, result) {
+      utils.expect(err).to.be.undefined;
+      utils.expect(result).to.equal(html);
+      cb();
+    });
+  }
+
   return {
+    showBrowser: showBrowser,
     visit: visit,
     search: search,
-    checkResults: checkResults
+    checkResults: checkResults,
+    clickLink: clickLink,
+    checkHtml: checkHtml
   };
 };
