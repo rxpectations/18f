@@ -4,7 +4,7 @@
     <section class="hero">
         <div class="inner">
             <h2 class="text-uppercase headline">Learn More About Medicine Safety</h2>
-            <h3>Weigh the risks & Benefits of drugs to better manage your treatment.</h3>
+            <h3>Weigh the risks & benefits of drugs to better manage your treatment.</h3>
             <a href="#" class="ui-btn orange lg toggle-view" data-toggle="search-toggle" data-type="Drug">Search Drugs</a>
         </div>
     </section>
