@@ -41,22 +41,22 @@
         <div class="inner">
             <h2 class="text-center text-uppercase headline">Learn more about drugs by condition</h2>
             <ul class="icon-list">
-                <li><a href="#">
+                <li><a href="/search?term=Asthema">
                  <i class="icon-i-respiratory"></i> Asthema
                 </a></li>
-                <li><a href="#">
+                <li><a href="/search?term=Multiple+Sclerosis">
                  <i class="icon-i-neurology"></i> Multiple Sclerosis
                 </a></li>
-                <li><a href="#">
+                <li><a href="/search?term=Breast+Cancer">
                  <i class="icon-i-mammography"></i> Breast Cancer
                 </a></li>
-                <li><a href="#">
+                <li><a href="/search?term=Mental+Health">
                  <i class="icon-i-mental-health"></i> Mental Health
                 </a></li>
-                <li><a href="#">
+                <li><a href="/search?term=Type+1+Diabetes">
                  <i class="icon-i-diabetes-education"></i> Type 1 Diabetes
                 </a></li>
-                <li><a href="#">
+                <li><a href="/search?term=Heart+Disease">
                  <i class="icon-i-cardiology"></i> Heart Disease
                 </a></li>
             </ul>
