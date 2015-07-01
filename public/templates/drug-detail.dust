@@ -84,27 +84,17 @@
 
                 <article class="tab-content">
                     <h4>Resources & Community</h4>
-                    <a class="twitter-timeline" href="https://twitter.com/hashtag/{hashtag}" data-widget-id="615997891505733632">#{hashtag} Tweets</a>
-                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)  
-                        [0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id))
-                        {js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-                    </script>
+                    <div class="twitter-wrapper">
+                        <a class="twitter-timeline" href="https://twitter.com/hashtag/{hashtag}" data-widget-id="615997891505733632">#{drugname} Tweets</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)  
+                            [0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id))
+                            {js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+                        </script>
+                    </div>
                 </article>
 
             </div>
         </div>
-        <!--<article class="panel">
-            <h4>About Prendisone Generic</h4>
-            <p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat...</a></p>
-        </article>
-        <article class="panel">
-            <h4>Side Effects</h4>
-            <p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat...</a></p>
-        </article>
-        <article class="panel">
-            <h4>News & Updates</h4>
-            <p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci sodales, auctor sem eu, ultrices metus. Quisque consectetur, lacus sed feugiat tincidunt, risus ante lobortis nunc, vel finibus leo justo ac est. Sed imperdiet cursus lorem sit amet volutpat...</a></p>
-        </article>-->
     </section>
 
 {/body}
