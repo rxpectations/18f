@@ -39,29 +39,23 @@ module.exports = function (router) {
         var drugname = req.params.drugname;
         var model = {
             drugname: drugname.replace(/-/g, ' '),
-            script: 'events',
-            totalIncidents: 3405,
-            years: [
-                2011, 2012, 2013, 2014, 2015
-            ],
-            about: 'short description of drug',
-            sideEffects: 'short list of side effects',
-            updates: 'updates about drug',
-            resource: 'resource and community description',
-            recalls: 5
+            hashtag: drugname.replace(/\s/g, ''),
+            script: 'events'
         };
 
         var handleRecalls = function(err, data) {
-            var recalls = JSON.parse(data);
-            model.recalls = (recalls.total)?recalls.total:0;
-            console.log(model.recalls);
+            var info = JSON.parse(data);
+            model.recalls = info.recalls;
+            model.recallsTotal = info.recalls.length;
+            model.drugInfo = info.drugInfo.drugInfo;
             // Use path.normalize for consistent paths
             // across Windows and OS
+            console.log(model);
             res.render(path.normalize('drug-detail'), model);
         };
 
         var getRecalls = new getData(
-            'http://localhost:' + (process.env.PORT || 8000)+'/integrations/openFDA/recalls?drug='+model.drugname+'&mode=name',
+            'http://localhost:' + (process.env.PORT || 8000)+'/integrations/openFDA/info?drug='+model.drugname+'&mode=name',
             { timer: false },
             handleRecalls);
 
