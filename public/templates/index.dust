@@ -41,8 +41,8 @@
         <div class="inner">
             <h2 class="text-center text-uppercase headline">Learn more about drugs by condition</h2>
             <ul class="icon-list">
-                <li><a href="/search?term=Asthema">
-                 <i class="icon-i-respiratory"></i> Asthema
+                <li><a href="/search?term=Asthma">
+                 <i class="icon-i-respiratory"></i> Asthma
                 </a></li>
                 <li><a href="/search?term=Multiple+Sclerosis">
                  <i class="icon-i-neurology"></i> Multiple Sclerosis
