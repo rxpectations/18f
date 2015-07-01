@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{title}</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/css/app.css" />
     <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png">
@@ -33,13 +33,7 @@
 <div id="wrapper" class="content">
     {+body /}
 </div>
-<footer>
-    <div class="inner">
-        <p class="disclaimer">Disclaimer: The data and content provided through this website are for informational purposes only.  Use of the Software is not intended to be a substitute for the judgment of medical professionals, and you should promptly contact your own doctor regarding any medical conditions or questions you may have.  The content on this website is not intended to provide medical advice or to treat or diagnose any disease or medical condition. <a href="/disclaimer">View Full Disclaimer</a></p>
 
-        <p>National Institutes of Health, Photo by: <a href="https://imagebank.nih.gov/details.cfm?imageid=1415">Rhoda Baer</a></p>
-    </div>
-</footer>
 {+script /}
 </body>
 </html>

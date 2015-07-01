@@ -9,6 +9,7 @@
 
 var $ = window.jQuery = require('jquery');
 var slick = require('slick-carousel');
+var numeral = require('numeral');
 
 /**
  * Create new instance of Reactions
@@ -69,7 +70,13 @@ Reactions.prototype.update = function(data) {
   var self = this;
   var i = 0
   for (var event in data.results) {
-    this.$list.append('<div data-term="'+data.results[event].term+'"><div class="c'+i+'">'+self.toTitleCase(data.results[event].term)+'</div></div>');
+    var percent = numeral(data.results[event].count / data.total).format('0.00%');
+    this.$list.append('<div data-term="'+data.results[event].term+'">' +
+      '<div class="c'+i+'">' + 
+      '<p class="reaction-percent">'+percent+'</p>' +
+      '<p class="reaction-name"><strong>'+self.toTitleCase(data.results[event].term)+'</strong></p>'+
+      '</div></div>'
+    );
     i++;
   }
 
@@ -79,6 +86,7 @@ Reactions.prototype.update = function(data) {
     slidesToShow: 3,
     prevArrow: $('.slick-prev'),
     nextArrow: $('.slick-next'),
+    focusOnSelect: true,
     responsive: [
       {
         breakpoint: 768,
@@ -91,25 +99,17 @@ Reactions.prototype.update = function(data) {
     ]
   });
 
-  this.onSlideAfter(null, null, null, 0);
+  this.onSlideAfter(null, null, 0, 0);
   this.slider.on('beforeChange', self.onSlideAfter.bind(self));
-/*
-  this.slider = this.$el.find('ul').bxSlider({
-    slideWidth: 100,
-    minSlides: 3,
-    maxSlides: 3,
-    moveSlides: 1,
-    startSlide: 9,
-    hideControlOnEnd: true,
-    pager:false,
-    onSlideAfter: self.onSlideAfter.bind(self)
+  this.slider.find('.slick-slide').not('.slick-center').each(function() {
+    self.truncateName($(this));
   });
-
-  this.slider.goToSlide(0);*/
   
 };
 Reactions.prototype.onSlideAfter = function(event, slick, currentSlide, nextSlide) {
+  this.truncateName($('[data-slick-index="'+currentSlide+'"]'));
   var $slide = $('[data-slick-index="'+nextSlide+'"]');
+  this.fullName($slide);
   $('body').trigger('eventSelect.rx', {term: $slide.data('term')});
 }
 
@@ -125,10 +125,33 @@ Reactions.prototype.getData = function() {
  * @param {Object}   data
  */
 Reactions.prototype.setData = function(data) {
+
   if (!this.data) {
     this.data = data;
   }
 }
+
+Reactions.prototype.truncateName = function(element) {
+  var self = this;
+
+  var $slide = element;
+  var term = this.toTitleCase($slide.data('term'));
+  var truncatedString = term.substring(0, Math.min(19,term.length));
+  if (term.length == Math.min(term.length, 19)) {
+    $slide.find('.reaction-name strong').html(term);
+  } else {
+    $slide.find('.reaction-name strong').html(truncatedString + '&hellip;');
+  }
+}
+
+Reactions.prototype.fullName = function(element) {
+  var self = this;
+
+  var $slide = element;
+  var term = this.toTitleCase($slide.data('term'));
+  $slide.find('.reaction-name strong').html(term);
+}
+
 
 Reactions.prototype.toTitleCase = function(str) {
     return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});

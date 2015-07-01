@@ -1,13 +1,13 @@
-{>"layouts/master" /}
+{>"layouts/condition" /}
 
 {<body}
 <section id="search-toggle" class="app-search show">
     <div class="inner">
-        <img class="logo" src="/img/logo.svg" alt="Rxpecations" />
+        <a href="/"><img class="logo" src="/img/logo.svg" alt="Rxpecations" /></a>
         <!--<a href="#" class="close-btn toggle-view" data-toggle="search-toggle"><i class="fa fa-times"></i></a>-->
         <form class="search">
          	<div class="search-bar">
-           		<input type="text" value="" readonly />
+           		<input type="text" value="Condition: {term}" readonly />
            	</div>
         </form>
         <div class="results">
@@ -18,5 +18,5 @@
 {/body}
 
 {<script}
-<script src="/js/app.js"></script>
+    <script src="/js/app.js"></script>
 {/script}

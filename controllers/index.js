@@ -45,13 +45,25 @@ module.exports = function (router) {
 
         var handleRecalls = function(err, data) {
             var info = JSON.parse(data);
-            model.recalls = info.recalls;
-            model.recallsTotal = info.recalls.length;
-            model.drugInfo = info.drugInfo.drugInfo;
-            // Use path.normalize for consistent paths
-            // across Windows and OS
-            console.log(model);
-            res.render(path.normalize('drug-detail'), model);
+            console.log(info);
+            if (info.drugInfo.drugInfo === undefined) {
+                var errorModel = { url: req.url, statusCode: 404 };
+                if (req.xhr) {
+                    res.send(404, errorModel);
+                } else {
+                    res.status(404);
+                    res.render(path.normalize('errors/404'), errorModel);
+                }
+            } else {
+                
+                model.recalls = (info.recalls === undefined)?null:info.recalls;
+                model.recallsTotal = (info.recalls === undefined)?0:info.recalls.length;
+                model.drugInfo = info.drugInfo.drugInfo;
+                // Use path.normalize for consistent paths
+                // across Windows and OS
+                console.log(model);
+                res.render(path.normalize('drug-detail'), model);
+            }
         };
 
         var getRecalls = new getData(

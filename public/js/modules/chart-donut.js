@@ -117,7 +117,7 @@ Donut.prototype.update = function(data) {
       .attr('class', 'donut-label')
       .attr('dy', 20)
       .attr('text-anchor', 'middle') // text-align: right
-      .text('reported reactions');
+      .text('total reactions');
     this.totalLabel = this.centerLabel.append('svg:text')
       .attr('class', 'donut-total')
       .attr('dy', 0)
