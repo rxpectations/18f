@@ -15,8 +15,9 @@
         <div class="col2">
             <section class="reported-reations reactions" id="graph-toggle">
                 <div class="graph top show chart-container">            
-                    <p class="chart-title">Top 10 Reported Adverse Reactions</p>
+                    <p class="chart-title">Top 10 Reported Adverse Events</p>
                     <div class="donut-chart" data-legend="true">
+                        <div class="loadercss ball-pulse" data-listenevent="eventData"><div></div><div></div><div></div></div>
                         <button type="button" class="slick-prev">Previous</button>
                         <button type="button" class="slick-next">Next</button>
                     </div>
@@ -32,9 +33,12 @@
         	<section class="total-reports">
                 <p class="chart-title">
                     <span class="drugEvent"></span><br/>
-                    reports from <span class="years"></span>
+                    events reported by year<br/>
+                    <span class="years"></span>
                 </p>
-                <div class="line-chart"></div>
+                <div class="line-chart">
+                    <div class="loadercss ball-pulse" data-listenevent="effectData"><div></div><div></div><div></div></div>
+                </div>
             </section>
 
         </div>

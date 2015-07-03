@@ -5,6 +5,7 @@ var Line = require('./modules/chart-line');
 var Donut = require('./modules/chart-donut');
 var Bar = require('./modules/chart-bar');
 var Reactions = require('./modules/reactions');
+var Loader = require('./modules/loader');
 
 /* When DOM ready initialize modules */
 $(function() {
@@ -34,27 +35,31 @@ $(function() {
     new Reactions(this);
   });
 
+  $('.loadercss').each(function instantiateLoaders() {
+
+    new Loader(this);
+  });
+
   $.ajax({
-    //url: '/integrations/openFDA/recall?drug='+$('header').data('name')+'&mode=name',
-    url: '/testingAPI?term='+$('header').data('name'),
+    url: '/integrations/openFDA/events?drug='+$('header').data('name')+'&mode=name',
     type: 'get',
     beforeSend: function beforeSend() {
-      $('body').trigger('start.ajax');
+      $('body').trigger('eventData.start.ajax');
     },
     success: function success(response) {
       $('body').trigger('eventData', response);
-      $('body').trigger('end.ajax');
+      $('body').trigger('eventData.end.ajax');
     },
     error: function error(xhr, status, thrownError) {
       var response = {'error': 'No data found'}
       $('body').trigger('eventData', response);
-      $('body').trigger('end.ajax');
+      $('body').trigger('eventData.end.ajax');
     }
   });
 
   $('body').on('eventSelect.rx', function GetEventData(event, eventData){
     console.log(eventData.term);
-    var url = '/integrations/openFDA/eventCountByName/?mode=name&drug=' +
+    var url = '/integrations/openFDA/eventCountByName?mode=name&drug=' +
               $('header').data('name') +
               '&drugevent=' + eventData.term;
     //Get the term from the event data and do ajax call to get data from last 5 years
@@ -63,17 +68,17 @@ $(function() {
       //url: '/static/events?term='+eventData.term,
       type: 'get',
       beforeSend: function beforeSend() {
-        $('body').trigger('start.ajax');
+        $('body').trigger('effectData.start.ajax');
       },
       success: function success(response) {
         console.log(response);
         $('body').trigger('effectData', response);
-        $('body').trigger('end.ajax');
+        $('body').trigger('effectData.end.ajax');
       },
       error: function error(xhr, status, thrownError) {
         var response = {'error': 'No data found'}
         $('body').trigger('effectData', response);
-        $('body').trigger('end.ajax');
+        $('body').trigger('effectData.end.ajax');
       }
     });
   });

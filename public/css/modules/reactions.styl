@@ -5,6 +5,7 @@
     .donut-chart
         position: relative
     .slider
+        min-height: 150px
         margin-top: -12px
     .slick-prev, .slick-next
         width: 29px
@@ -62,13 +63,13 @@
                 top: -16px
                 left: 50%
                 border-width: 16px
-                margin-left: -12px
+                margin-left: -16px
             &:after
                 top: -12px
                 left: 50%
                 border-bottom-color: #fff
                 border-width: 12px
-                margin-left: -8px
+                margin-left: -12px
         for color, i in $chartColors
             .c{i}
                 border-color: color

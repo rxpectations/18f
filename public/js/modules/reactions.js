@@ -107,6 +107,7 @@ Reactions.prototype.update = function(data) {
   
 };
 Reactions.prototype.onSlideAfter = function(event, slick, currentSlide, nextSlide) {
+  console.log(currentSlide, nextSlide);
   this.truncateName($('[data-slick-index="'+currentSlide+'"]'));
   var $slide = $('[data-slick-index="'+nextSlide+'"]');
   this.fullName($slide);
