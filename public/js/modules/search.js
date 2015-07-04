@@ -34,9 +34,17 @@ Search.prototype.init = function() {
  * Bind to relevant DOM events
  */
 Search.prototype.bind = function() {
+  this.$el.bind('submit', this.submit.bind(this));
   this.$el.find('input').bind('keyup', this.keyupEvent.bind(this));
 };
 
+/**
+ * Fired on element emitting 'submit' evnet
+ * @param {Object} e event data
+ */
+Search.prototype.submit = function(e) {
+  return false;
+};
 /**
  * Fired on element emitting 'keyup' event
  * @param {Object} e
