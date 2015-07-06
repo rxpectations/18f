@@ -14,25 +14,25 @@
             <h2 class="text-uppercase text-center headline">Where This Data Comes From</h2>
             <div class="row cf">
                 <div class="col3">
-                    
+
                     <img src="/img/step-1.png"  alt="Report Icon" />
-                    <p>Patients, healthcare providers, and manufacturers submit an Adverse Event Incident Report to the FDA.</p>
+                    <p>Patients, healthcare providers, and manufacturers submit an Adverse Event Incident Report to the FDA</p>
 
                 </div>
 
                 <div class="col3">
-                    
+
                     <img src="/img/step-2.png"  alt="FDA Icon" />
-                    <p>The FDA removes any identifying information and makes the data available via OpenFDA.</p>
+                    <p>The FDA removes any identifying information and makes the data available via OpenFDA</p>
 
                 </div>
 
                 <div class="col3">
-                    
-                    <img src="/img/step-3.png"  alt="Devices Icon" />
-                    <p>The data is sifted, sorted, and visualized to provide you with information and tools to participate in more informed healthcare decisions. </p>
 
-                </div> 
+                    <img src="/img/step-3.png"  alt="Devices Icon" />
+                    <p>The data is sifted, sorted, and visualized to provide you with information and tools to participate in more informed healthcare decisions</p>
+
+                </div>
             </div>
         </div>
     </section>
@@ -64,21 +64,21 @@
     </section>
 
     <section class="drug-approvals">
-        <h2 class="text-center text-uppercase headline">New Drug Approvals</h2>
-        <p class="subtext text-center">Data taken from <a href="#">Drugs.com</a></p>
-        <a target"_blank" href="http://www.drugs.com/newdrugs.html" class="ui-btn blue center" data-type="Drug">View All New Drugs on Drugs.com</a>
+        <h2 class="text-center text-uppercase headline">New Drug Approvals</h2>        
+
         <div class="drug-slider cf">
-            
+
         </div>
+        <p class="subtext text-center">Information sourced from Drugs.com. <a href="http://www.drugs.com/newdrugs.html">View all new drugs here</a></p>        
     </section>
 
 	<section id="search-toggle" class="app-search">
         <div class="inner">
-            <img class="logo" src="/img/logo.svg" alt="Rxpecations" />
+            <a href="/"><img class="logo" src="/img/logo.svg" alt="Rxpecations" /></a>
             <a href="#" class="close-btn toggle-view" data-toggle="search-toggle"><i class="fa fa-times"></i></a>
             <form class="search">
             	<div class="search-bar">
-            		<input type="text" placeholder="Search" />
+            		<input type="text" placeholder="Click here to search Prescription and OTC Drugs" />
                     <span class="loader"><i class="fa fa-spinner fa-pulse"></i> Loading...</span>
             	</div>
             </form>

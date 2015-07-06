@@ -41,7 +41,7 @@ $(function() {
   });
 
   $.ajax({
-    url: '/integrations/openFDA/eventsByYear?drug='+$('header').data('name')+'&mode=name',
+    url: '/integrations/openFDA/events?drug='+$('header').data('name')+'&mode=name',
     type: 'get',
     beforeSend: function beforeSend() {
       $('body').trigger('eventData.start.ajax');
