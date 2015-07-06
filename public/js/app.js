@@ -40,8 +40,8 @@ $(function() {
   $('.tabs').each(function instantiateTabs() {
     var tabadoodledoo = new Tabs(this);
   });
-  
-  $('.drug-approvals').each(function instantiateDrugApprovals() {
+
+  $('.drug-slider').each(function instantiateDrugApprovals() {
     var drugapprovals = new DrugApprovals(this);
   });
 

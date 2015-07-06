@@ -64,12 +64,12 @@
     </section>
 
     <section class="drug-approvals">
-        <h2 class="text-center text-uppercase headline">New Drug Approvals</h2>        
+        <h2 class="text-center text-uppercase headline">New Drug Approvals</h2>
 
         <div class="drug-slider cf">
 
         </div>
-        <p class="subtext text-center">Information sourced from Drugs.com. <a href="http://www.drugs.com/newdrugs.html">View all new drug approvals</a></p>        
+        <p class="subtext text-center">Information sourced from Drugs.com. <a href="http://www.drugs.com/newdrugs.html" target="_blank">View all new drug approvals</a></p>        
     </section>
 
 	<section id="search-toggle" class="app-search">
