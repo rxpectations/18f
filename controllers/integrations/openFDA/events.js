@@ -11,14 +11,10 @@ module.exports = function (router) {
     router.get('/', function(req, res) {
         var handleAPI = function(err, data) {
             var api = JSON.parse(data);
-            api.total = 0;
-            for (var effect in api.results)  {
-                api.total += api.results[effect].count;
-            }
             res.json(api);
         };
         var getAPI = new getDataHTTPS(
-            'https://api.fda.gov/drug/event.json?search=%28product_description:'+req.query.drug+'+patient.drug.openfda.brand_name:'+req.query.drug+'+patient.drug.openfda.generic_name:'+req.query.drug+'%29&count=patient.reaction.reactionmeddrapt.exact&limit=10',
+            'https://api.fda.gov/drug/event.json?search=(patient.drug.medicinalproduct:'+req.query.drug+'+patient.drug.openfda.brand_name:'+req.query.drug+'+patient.drug.openfda.generic_name:'+req.query.drug+')+AND+(receiptdate:[20100101+TO+20150706])&limit=50&count=patient.reaction.reactionmeddrapt.exact&api_key=fWo3VYTbToPaLcFem1T9ZJqqNHNmetmU3peGa1BF',
             {timer : false},
             handleAPI
         );
