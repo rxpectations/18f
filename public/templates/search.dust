@@ -7,7 +7,7 @@
         <!--<a href="#" class="close-btn toggle-view" data-toggle="search-toggle"><i class="fa fa-times"></i></a>-->
         <!-- <form class="search">
              <div class="search-bar">
-                   <input type="text" value="Condition: {term}" readonly />
+                   <input type="text" value="{term}" />
                </div>
         </form> -->
         <a href="/" class="close-btn"><i class="fa fa-times"></i></a>
@@ -20,10 +20,14 @@
                 </p>
             </header>
             <section class="search-results">
+                <h3>Brand Names</h3>
                 <ul>
                     {#brandNames}
                         <li><a href="/events/{url}"><h3>{value}</h3></a></li>
                     {/brandNames}
+                </ul>
+                <h3>Generic</h3>
+                <ul>
                     {#genericNames}
                         <li><a href="/events/{url}"><h3>{value}</h3></a></li>
                     {/genericNames}

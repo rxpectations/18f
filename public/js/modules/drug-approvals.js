@@ -64,7 +64,7 @@ buildSlider = function(title, date, desc, href) {
     "<div class='front'>" +
     "<span class='flipper'><i class='fa fa-plus'></i></span>" +
     "<h6 class='date'>" + date + "</h6>" +
-    "<h5>" + title + "</h5>"+
+    "<h5><a target='_blank' href='" + url +"'>" + title + "</a></h5>" +
     "</div>" +
     "<div class='back'>" +
     "<span class='flipper'><i class='fa fa-minus'></i></span>" +
