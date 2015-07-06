@@ -1,0 +1,40 @@
+.app-search
+	background $dark-blue
+	color white
+	padding 10px
+	position fixed
+	height 100%
+	width 100%
+	top -100%
+	left 0
+	opacity 0
+	transition all .15s ease-in
+	overflow-y scroll
+	z-index: 10
+
+	.logo
+		width 150px
+		display block
+		margin-bottom 20px
+
+	.close-btn
+		position absolute
+		top 20px
+		right 20px
+		font-size 1.5rem
+		transition color .25s
+
+		&:hover, &:focus
+			color $blue
+
+	&.show
+		opacity 1
+		top 0
+
+	.results
+		li
+			margin-bottom 15px
+
+			a:hover, a:focus
+				text-decoration underline
+				color rgba(255,255,255,.8)

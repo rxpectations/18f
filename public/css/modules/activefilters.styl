@@ -1,0 +1,15 @@
+.active-filters
+	inline-list()
+
+	li
+		transition opacity .25s
+		
+		&:hover, &:focus
+			cursor pointer
+			opacity .75
+
+	li:after
+		display inline block
+		font-family "FontAwesome"
+		content "\f057"
+		margin 0 10px 0 5px

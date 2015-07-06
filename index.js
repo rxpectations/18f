@@ -1,5 +1,8 @@
 'use strict';
 
+// Set monitoring
+require('newrelic');
+
 var express = require('express');
 var kraken = require('kraken-js');
 
@@ -12,10 +15,6 @@ var options, app;
  */
 options = {
     onconfig: function (config, next) {
-        /*
-         * Add any additional config setup or overrides here. `config` is an initialized
-         * `confit` (https://github.com/krakenjs/confit/) configuration object.
-         */
         next(null, config);
     }
 };

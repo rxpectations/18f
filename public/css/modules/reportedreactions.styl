@@ -1,0 +1,22 @@
+.reported-reations
+	padding 0 20px
+	color black
+	text-align center
+	margin-bottom 20px
+	
+	.toggle-view
+		margin-top -20px
+		display inline-block
+
+	.graph
+		position absolute
+		opacity 0
+		transition opacity .25s
+		z-index -99
+
+		&.show
+			opacity 1
+			position static
+			z-index 1
+			display block
+			margin-bottom 20px

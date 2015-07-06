@@ -1,0 +1,57 @@
+.tabs
+	h2
+		margin-bottom 20px
+
+	.tab-list
+		inline-list()
+		display none
+
+		@media screen and (min-width: 768px)
+			display block
+
+		li			
+			border-radius 10px 10px 0 0
+			margin-right 5px
+			display inline-block
+			background #cacaca
+			transition background-color .25s
+			cursor pointer		
+
+			@media screen and (min-width: 768px)
+				padding 10px 20px		
+
+			&:hover, &:focus
+				background #ddd
+
+			&.active
+				background white
+
+			&:last-child
+				margin-right 0
+
+	.tab-content		
+		display block
+		transition opacity .25s
+		padding 20px
+		background white
+		opacity 1
+		margin-bottom 10px
+
+		p:last-of-type
+			margin-bottom 0
+
+		@media screen and (min-width: 768px)
+			display none
+			opacity 0
+			border-radius 0 0 10px 10px
+			margin-bottom 0
+
+		&.active
+			opacity 1
+			display block
+
+		h4
+			margin-bottom 20px
+
+		#twitter-widget-0
+			width 100%!important 

@@ -1,0 +1,144 @@
+.drug-approvals
+	overflow hidden
+	padding 30px 0
+
+	@media screen and (min-width: 768px)
+		padding-bottom 50px
+
+
+	.slick-dots li button:before
+		font-size 2rem
+
+	.slick-dots li
+		margin 0
+
+	h2
+		margin-bottom 30px
+
+	.subtext
+		margin 0
+		font-size 1rem
+		font-weight 100
+		color $grey
+		
+
+		@media screen and (min-width: 768px)
+			position relative
+			top 30px
+			margin 0 0 10px 0
+
+		a
+			color $blue
+			transition all .25s
+
+			&:hover, &:focus
+				color $blue-header
+				text-decoration underline
+
+
+	.drug-slider
+		width 100%
+		display block
+		cursor ew-resize
+
+		.card
+			width 275px
+			height 250px
+			border-radius 10px
+			position relative	
+			margin 0 auto
+			margin 0 10px
+
+			.flipper
+				position absolute
+				top 10px
+				right 10px
+				border 1px solid #555
+				border-radius 50%
+				text-align center
+				width 30px
+				height 30px
+				line-height 30px
+				cursor pointer
+				color #555
+				transition all .25s
+				
+				&:hover, &:focus
+					background #555
+					color white
+
+			h6
+				margin-bottom 10px			
+
+			h5
+				font-weight bold
+				line-height 1.2rem
+				font-size 1.1rem
+				color $blue
+				margin-bottom 10px
+
+			p
+				line-height 1.35rem
+
+
+			.front, .back
+				position absolute
+				top 0
+				left 0
+				width 100%
+				height 100%
+
+			.front, .back
+				backface-visibility hidden
+				transition transform 0.3s
+				
+
+			.front
+				background $light-grey
+				padding 30px 40px
+
+				&:before
+					content ''
+					display block
+					position absolute
+					width 5px
+					height 95px
+					background $orange
+					left 20px
+					top 40px							
+
+			.back
+				background $blue
+				padding 30px
+				color white
+				transform rotateY(-180deg)
+
+				.flipper
+					border-color white
+					color white	
+
+					&:hover, &:focus
+						background $blue-header
+						border-color $blue-header				
+				
+				h5
+					color white
+
+				a 
+					transition color .25s
+					text-decoration underline
+					font-weight bold
+
+					&:hover, &:focus
+						color $blue-header
+
+					span
+						text-decoration underline
+						font-weight bold
+
+
+			&.flip
+				.front
+					transform rotateY(-180deg)	
+				.back
+					transform rotateY(0)

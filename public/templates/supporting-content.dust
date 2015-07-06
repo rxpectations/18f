@@ -1,0 +1,28 @@
+{>"layouts/interior" /}
+
+{<body}
+    <div class="inner supporting-content">
+    	<header>
+            <h1>About Prednisone</h1>
+        </header>
+
+    	<section class="supporting-content">
+    		<h2>Lorem Ipsum</h2>
+
+            <p>Discover common side effects to FDA approved prescription drugs etc etc etc.</p>
+
+            <h2>Lorem Ipsum</h2>
+
+            <p>Discover common side effects to FDA approved prescription drugs etc etc etc.</p>
+
+            <h2>Lorem Ipsum</h2>
+
+            <p>Discover common side effects to FDA approved prescription drugs etc etc etc.</p>
+        	
+        </section>
+    </div>
+{/body}
+
+{<script}
+<script src="/js/app.js"></script>
+{/script}

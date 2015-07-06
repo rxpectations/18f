@@ -1,0 +1,112 @@
+{>"layouts/interior" /}
+{<title}
+{drugname} | Events
+{/title}
+{<body}
+	<header class="drug-detail" data-name="{drugname}">
+        <div class="inner">
+            <a target="_blank" href="https://www.accessdata.fda.gov/scripts/medwatch/index.cfm?action=reporting.home" class="ui-btn orange"><i class="fa fa-exclamation-triangle"></i> Report a Reaction</a>
+    		<h1>{drugname}</h1>            
+        </div>
+	</header>
+    
+    <div class="inner">
+        <div class="col2">
+            <section class="reported-reations reactions" id="graph-toggle">
+                <div class="graph top show chart-container">            
+                    <p class="chart-title">Top 10 Reported Adverse Events</p>
+                    <div class="donut-chart" data-legend="true">
+                        <div class="loadercss ball-pulse" data-listenevent="eventData"><div></div><div></div><div></div></div>
+                        <button type="button" class="slick-prev">Previous</button>
+                        <button type="button" class="slick-next">Next</button>
+                    </div>
+                </div>
+                <div class="graph all">
+                    <p class="chart-title">All adverse reactions in 2015</p>
+                    <div class="bar-chart"></div>
+                </div>
+                <a href="" class="toggle-view ui-btn blue content-switch" data-toggle="graph-toggle">View All Reactions</a>
+            </section>
+        </div>
+        <div class="col2">
+        	<section class="total-reports">
+                <p class="chart-title">
+                    <span class="drugEvent"></span><br/>
+                    events reported by year<br/>
+                    <span class="years"></span>
+                </p>
+                <div class="line-chart">
+                    <div class="loadercss full-bg" data-listenevent="effectData"></div>
+                    <div class="loadercss ball-pulse" data-listenevent="effectData">
+                        <div></div><div></div><div></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        
+    </div>
+
+    <section class="supporting-content ui-grey-bg">        
+        <div class="tabs inner">
+            <h2>About this drug</h2>            
+
+            <ul class="tab-list">
+
+            </ul>
+            <div class="tab-content-wrapper">
+                
+                {#drugInfo.indications}
+                <article class="tab-content">
+                    <h4>Description</h4>
+                    <p>{drugInfo.indications}</p>
+                </article>
+                {/drugInfo.indications}
+
+                {@ne key="{recallsTotal}" value="0"}                    
+                    <article class="tab-content">
+                        <h4>Recall History ({recallsTotal})</h4>
+                        {#recalls}
+                        <p>{reportDate} - {city}, {state}<br/>
+                            {reason}<br/>
+                            Status: {status}
+                        </p>
+                        {/recalls}
+                    </article>
+                {/ne}
+
+                {#drugInfo.contraindications}
+                <article class="tab-content">
+                    <h4>Considerations</h4>
+                    <p>{drugInfo.contraindications}</p>
+                </article>
+                {/drugInfo.contraindications}
+
+                <!-- Removing since there is no content for this section
+                <article class="tab-content">
+                    <h4>What's New</h4>
+                    <p>Lorem ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis et duo ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis platonem an eam, quod eros Lorem ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis et duo ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis platonem an eam, quod eros</p>
+                </article>-->
+
+                <article class="tab-content">
+                    <h4>Resources & Community</h4>
+                    <!-- CAUSING LONG PAGE LOAD TIMES -->
+                    <!-- <div class="twitter-wrapper">
+                        <a class="twitter-timeline" href="https://twitter.com/hashtag/{hashtag}" data-widget-id="615997891505733632">#{drugname} Tweets</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)  
+                            [0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id))
+                            {js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+                        </script>
+                    </div> -->
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+{/body}
+{<script}
+<script src="/js/events.js"></script>
+<script src="/js/app.js"></script>
+{/script}

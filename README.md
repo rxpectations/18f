@@ -1,4 +1,4 @@
-# 18f
+# 18f [![Build Status](https://travis-ci.org/pwcexc/18f.svg?branch=dev)](https://travis-ci.org/pwcexc/18f)
 
 Bad-ass prototype using data from open.fda.gov.  Built using [kraken.js](http://krakenjs.com/)
 
@@ -31,6 +31,7 @@ npm start
 
 Alternately, you can run the process with **nodemon** to continously watch for file changes and automatically restart the server
 ```
+npm install nodemon -g
 nodemon server.js
 ```
 
@@ -84,3 +85,7 @@ build: {
     }]
 }
 ```
+
+## License
+
+RxPectations is released under the [MIT License](http://www.opensource.org/licenses/MIT).

@@ -1,0 +1,51 @@
+/* Chart.styl */
+
+.line-chart 
+    width: 100%
+    height: 250px
+    position:relative
+    svg
+      position:relative
+      z-index:1
+    .line
+        fill: none
+        stroke: steelblue
+        stroke-width: 2
+    .data-point
+        fill: steelblue
+    .x-axis
+        path
+            stoke-width: 0
+            fill: none
+    text.nodata
+        fill: grey
+.donut-chart
+    width: 100%
+    height: 200px
+    .donut-label
+      font-weight: bold
+      font-size:12px
+    .donut-total
+      font-size: 32px
+      font-weight: 400
+    
+.bar-chart
+  position:relative
+  .bar
+    position:relative
+    padding-right:10px
+    .path
+      position:absolute
+      right:0
+      height: 5px
+      margin-top: 8px
+  .bar-label
+    padding-left:10px
+    text-align:left
+
+//Chart Colors
+for color, i in $chartColors
+  .c{i}
+    fill: color
+    background-color: color
+    

@@ -1,5 +1,96 @@
 {>"layouts/master" /}
-
+{<title}
+RxPectations - Weigh the risks & benefits of drugs to better manage your treatment
+{/title}
 {<body}
-    <h1>{@pre type="content" key="greeting"/}</h1>
+    <section class="hero">
+        <div class="inner">
+            <h2 class="text-uppercase headline">Learn More About Medicine Safety</h2>
+            <h3>Weigh the risks & benefits of drugs to better manage your treatment</h3>
+            <a href="#" class="ui-btn orange lg toggle-view" data-toggle="search-toggle" data-type="Drug">Search Drugs</a>
+        </div>
+    </section>
+
+    <section class="data-description">
+        <div class="inner">
+            <h2 class="text-uppercase text-center headline">Where This Data Comes From</h2>
+            <div class="row cf">
+                <div class="col3">
+
+                    <img src="/img/step-1.png"  alt="Report Icon" />
+                    <p>Patients, healthcare providers, and manufacturers submit an Adverse Event Incident Report to the FDA</p>
+
+                </div>
+
+                <div class="col3">
+
+                    <img src="/img/step-2.png"  alt="FDA Icon" />
+                    <p>The FDA removes any identifying information and makes the data available via OpenFDA</p>
+
+                </div>
+
+                <div class="col3">
+
+                    <img src="/img/step-3.png"  alt="Devices Icon" />
+                    <p>The data is sifted, sorted, and visualized to provide you with information and tools to participate in more informed healthcare decisions</p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="conditions">
+        <div class="inner">
+            <h2 class="text-center text-uppercase headline">Learn more about drugs by condition</h2>
+            <ul class="icon-list">
+                <li><a href="/search?term=Asthma">
+                 <i class="icon-i-respiratory"></i> Asthma
+                </a></li>
+                <li><a href="/search?term=Multiple+Sclerosis">
+                 <i class="icon-i-neurology"></i> Multiple Sclerosis
+                </a></li>
+                <li><a href="/search?term=Breast+Cancer">
+                 <i class="icon-i-mammography"></i> Breast Cancer
+                </a></li>
+                <li><a href="/search?term=Mental+Health">
+                 <i class="icon-i-mental-health"></i> Mental Health
+                </a></li>
+                <li><a href="/search?term=Type+1+Diabetes">
+                 <i class="icon-i-diabetes-education"></i> Type 1 Diabetes
+                </a></li>
+                <li><a href="/search?term=Heart+Disease">
+                 <i class="icon-i-cardiology"></i> Heart Disease
+                </a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="drug-approvals">
+        <h2 class="text-center text-uppercase headline">New Drug Approvals</h2>
+
+        <div class="drug-slider cf">
+
+        </div>
+        <p class="subtext text-center">Information sourced from Drugs.com. <a href="http://www.drugs.com/newdrugs.html" target="_blank">View all new drug approvals</a></p>        
+    </section>
+
+	<section id="search-toggle" class="app-search">
+        <div class="inner">
+            <a href="/"><img class="logo" src="/img/logo.svg" alt="Rxpecations Logo" /></a>
+            <a href="#" class="close-btn toggle-view" data-toggle="search-toggle"><i class="fa fa-times"></i></a>
+            <form class="search">
+            	<div class="search-bar">
+            		<input type="text" placeholder="Click here to search Prescription and OTC Drugs" />
+                    <span class="loader"><i class="fa fa-spinner fa-pulse"></i> Loading...</span>
+            	</div>
+            </form>
+            <div class="results">
+
+            </div>
+        </div>
+    </section>
 {/body}
+
+{<script}
+<script src="/js/app.js"></script>
+{/script}

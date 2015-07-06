@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "results": {
+      "skip": 0,
+      "limit": 10,
+      "total": 2
+    }
+  },
+  "results": [
+    {
+      "openfda": {
+        "brand_name": [
+          "Super Hero"
+        ],
+        "generic_name": [
+          "ARNICA MONTANA, GALIUM APARINE, HEPAR SUIS, L-ISOLEUCINE, L-LEUCINE, L-VALINE, PITUITARY, HYALURONIC ACID, IGF-1, ELK VELVET ANTLER,"
+        ]
+      }
+    },
+    {
+      "openfda": {
+        "brand_name": [
+          "Hero"
+        ],
+        "generic_name": [
+          "ARNICA MONTANA, GALIUM APARINE, HEPAR SUIS, L-ISOLEUCINE, L-LEUCINE, L-VALINE, PITUITARY, HYALURONIC ACID, IGF-1, ELK VELVET ANTLER,"
+        ]
+      }
+    }
+  ]
+}

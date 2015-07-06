@@ -1,0 +1,186 @@
+{>"layouts/master" /}
+
+{<body}
+    <h1>Styleguide</h1>
+
+    <h2>Top Bar</h2>
+    <nav class="topbar">
+    	<ul>
+    		<li class="logo"><a href="/"><i class="fa fa-caret-left"></i> Logo</a></li>
+    		<li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+    	</ul>
+    </nav>
+
+    <h2>Filter Menu</h2>
+    <section class="filter-menu">
+    	<header>
+    		<ul class="inline-list">
+    			<li><button class="reset">reset</button></li>
+    			<li><button class="done">done</button></li>
+    		</ul>
+    	</header>
+    	<div class="filter-options">
+    		<h3>Gender</h3>
+    		<div class="inner">
+	    		<div class="option">
+	    			<label for ="gender-male">Male (257)</label>
+	    			<input type="radio" name="gender" id="gender-male" value="male" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="gender-female">Female (180)</label>
+	    			<input type="radio" name="gender" id="gender-female" value="female" />
+	    		</div>
+	    	</div>
+    		<h3>Age</h3>
+    		<div class="inner">
+	    		<div class="option">
+	    			<label for ="age-lessThan5">Under 5 years</label>
+	    			<input type="checkbox" id="age-lessThan5" value="age-lessThan5" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="age-5-9">5 to 9 years</label>
+	    			<input type="checkbox" id="age-5-9" value="age-5-9" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="age-10-14">10 to 14 years</label>
+	    			<input type="checkbox" id="age-10-14" value="age-10-14" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="age-15-19">15 to 19 years</label>
+	    			<input type="checkbox" id="age-15-19" value="age-15-19" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="age-20-24">20 to 24 years</label>
+	    			<input type="checkbox" id="age-20-24" value="age-20-24" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="age-25-30">25 to 30 years</label>
+	    			<input type="checkbox" id="age-25-30" value="age-25-30" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="age-31-34">31 to 34 years</label>
+	    			<input type="checkbox" id="age-31-34" value="age-31-34" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="age-35-40">35 to 40 years</label>
+	    			<input type="checkbox" id="age-35-40" value="age-35-40" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="age-41-44">41 to 44 years</label>
+	    			<input type="checkbox" id="age-41-44" value="age-41-44" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="age-45-50">45 to 50 years</label>
+	    			<input type="checkbox" id="age-45-50" value="age-45-50" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="age-51-54">51 to 54 years</label>
+	    			<input type="checkbox" id="age-51-54" value="age-51-54" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="age-55-60">55 to 60 years</label>
+	    			<input type="checkbox" id="age-55-60" value="age-55-60" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="age-61-64">61 to 64 years</label>
+	    			<input type="checkbox" id="age-61-64" value="age-61-64" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="age-65-70">65 to 70 years</label>
+	    			<input type="checkbox" id="age-65-70" value="age-65-70" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="age-71-74">71 to 74 years</label>
+	    			<input type="checkbox" id="age-71-74" value="age-71-74" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="age-75-80">75 to 80 years</label>
+	    			<input type="checkbox" id="age-75-80" value="age-75-80" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="age-81-84">81 to 84 years</label>
+	    			<input type="checkbox" id="age-81-84" value="age-81-84" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="age-80plus">85 years and older</label>
+	    			<input type="checkbox" id="age-80plus" value="80plus" />
+	    		</div>
+	    	</div>
+    	</div>
+
+    	<div class="filter-options">
+    		<h3>Gender</h3>
+    		<div class="inner">
+	    		<div class="option">
+	    			<label for ="gender-male">Male (257)</label>
+	    			<input type="radio" name="gender" id="gender-male" value="male" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="gender-female">Female (180)</label>
+	    			<input type="radio" name="gender" id="gender-female" value="female" />
+	    		</div>
+	    	</div>
+    		<h3>Age</h3>
+    		<div class="inner">
+	    		<div class="option">
+	    			<label for ="infant">Infant (< 1 year)</label>
+	    			<input type="checkbox" id="infant" value="infant" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="child">Child (1 - 12 years)</label>
+	    			<input type="checkbox" id="child" value="child" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="teenager">Teenager (13 - 17 years)</label>
+	    			<input type="checkbox" id="teenager" value="teenager" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="adult">Adult (18 - 54 years)</label>
+	    			<input type="checkbox" id="adult" value="adult" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="older-adult">Older Adult (55+ years)</label>
+	    			<input type="checkbox" id="older-adult" value="older-adult" />
+	    		</div>
+	    	</div>
+	    	<h3>Weight</h3>
+    		<div class="inner">
+	    		<div class="option">
+	    			<label for ="less10">Under 10 lbs</label>
+	    			<input type="checkbox" id="less10" value="less10" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="w10-49">10-49 lbs</label>
+	    			<input type="checkbox" id="w10-49" value="w10-49" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="w55-99">55 - 99 lbs</label>
+	    			<input type="checkbox" id="w55-99" value="w55-99" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="w100-149">100 - 149 lbs</label>
+	    			<input type="checkbox" id="w100-149" value="w100-149" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="w150-199">150 - 199 lbs</label>
+	    			<input type="checkbox" id="w150-199" value="w150-199" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="w200-249">200 - 249 lbs</label>
+	    			<input type="checkbox" id="w200-249" value="w200-249" />
+	    		</div>
+	    		<div class="option">
+	    			<label for ="over250">over 250 lbs</label>
+	    			<input type="checkbox" id="over250" value="over250" />
+	    		</div>
+	    	</div>
+    	</div>
+    </section>
+
+    <h2>Active Filters</h2>
+    <ul class="active-filters">
+    	<li>Filter 1</li>
+    	<li>Filter 2</li>
+    	<li>Filter 3</li>
+    </ul>
+{/body}

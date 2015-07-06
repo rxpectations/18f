@@ -1,0 +1,83 @@
+.data-description
+	padding 30px 0 0
+	clearfix()
+
+	@media screen and (min-width: 768px)
+		.col3
+			&:first-of-type
+				&:after
+					display block
+					content ''
+					background url(/img/arrow.png) no-repeat
+					width 82px
+					height 29px
+					position absolute
+					left 27%
+					top 180px
+
+			&:last-of-type
+				&:before
+					display block
+					content ''
+					background url(/img/arrow.png) no-repeat
+					width 82px
+					height 29px
+					position absolute
+					left 61%
+					top 180px
+
+	@media screen and (min-width: 900px)
+		.col3
+			&:first-of-type
+				&:after
+					display block
+					content ''
+					background url(/img/arrow.png) no-repeat
+					width 82px
+					height 29px
+					position absolute
+					left 29%
+					top 180px
+
+			&:last-of-type
+				&:before
+					display block
+					content ''
+					background url(/img/arrow.png) no-repeat
+					width 82px
+					height 29px
+					position absolute
+					left 63%
+					top 180px	
+
+	h2
+		margin-bottom 20px
+
+	img
+		display block
+		margin 0 auto
+		text-align center
+		width 35%
+
+		@media screen and (min-width: 768px)
+			width auto	
+
+	p		
+		margin-top 0
+		text-align center
+
+		@media screen and (min-width: 768px)
+			margin-top 10px
+
+		a
+			color $blue
+			transition color .25s
+
+			&:hover, &:focus
+				color $blue-header
+
+	@media screen and (min-width: 768px)
+		padding 30px 0
+
+		p, h2, img
+			padding 0 20px

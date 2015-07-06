@@ -1,0 +1,103 @@
+// ! 18f Prototype
+// Base styles
+// Contains reset styles for base HTML elements
+
+global-reset()
+
+*
+    box-sizing border-box
+    
+html, body 
+    font 14px $font-family
+    line-height 150%
+    font-smoothing antialiased
+    color #121212
+    font-weight: 400
+
+    @media screen and (min-width: 768px)
+        font $font-size $font-family    
+
+a 
+    text-decoration none
+    color inherit
+
+h1, h2, h3
+    margin 0
+    
+h1 
+    font 700 1.75rem/1em $font-family
+    color #121212
+
+h2
+    font 700 1.25rem/1.4em $font-family     
+
+    &.headline
+        font-size 2rem
+
+h3, h4
+    font 700 1.15rem/1.2em $font-family
+
+h4
+    color #121212
+
+p 
+    margin-top 0
+    margin-bottom 1em
+    font-size 1rem
+
+a
+    cursor: pointer
+    
+strong
+    font-weight: 700
+
+.ui-btn
+    padding 10px 30px
+    border 1px solid transparent
+    border-radius 20px
+    transition all .25s
+    cursor pointer
+
+    &.lg
+        padding 15px 60px
+        border-radius 40px
+        font-size 1.25rem
+        display inline-block
+
+    &.blue
+        color $blue
+        border-color $grey
+
+        &:hover, &:focus
+            color white
+            border-color $blue
+            background $blue
+
+    &.orange
+        color $orange
+        border-color $orange
+
+        &:hover, &:focus
+            color white
+            background $orange
+
+        &.lg
+            background $orange
+            color white
+
+            &:hover, &:focus
+                background white
+                color $orange
+
+    &.center
+        margin -20px auto 40px
+        display block
+        text-align center
+        width 225px
+        padding 10px
+
+        @media screen and (min-width: 768px)
+            padding 10px 30px
+
+@import '_fonts' 
+@import '_global'

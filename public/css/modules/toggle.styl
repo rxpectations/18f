@@ -1,0 +1,29 @@
+.toggle
+	inline-list()
+	text-align center
+	margin 10px 0 30px
+	font-size .75rem
+
+	li
+		&:first-child
+			a
+				border-radius 5px 0 0 5px
+				border-right-color transparent
+
+		&:last-child
+			a
+				border-radius 0 5px 5px 0
+
+	a
+		display inline-block
+		padding 5px 30px
+		border 1px solid white
+		transition all .25s
+
+		&:hover, &:focus
+			background rgba(255,255,255,.15)
+			color white
+
+		&.active
+			background $blue
+			color white
