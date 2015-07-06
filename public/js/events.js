@@ -6,6 +6,7 @@ var Donut = require('./modules/chart-donut');
 var Bar = require('./modules/chart-bar');
 var Reactions = require('./modules/reactions');
 var Loader = require('./modules/loader');
+var Adverse = require('./modules/adverse-events');
 
 /* When DOM ready initialize modules */
 $(function() {
@@ -40,8 +41,13 @@ $(function() {
     new Loader(this);
   });
 
+  $('.adverse-effects').each(function instantiateAdverse() {
+
+    new Adverse(this);
+  });
+
   $.ajax({
-    url: '/integrations/openFDA/events?drug='+$('header').data('name')+'&mode=name',
+    url: '/integrations/openFDA/eventsByYear?drug='+$('header').data('name')+'&mode=name',
     type: 'get',
     beforeSend: function beforeSend() {
       $('body').trigger('eventData.start.ajax');

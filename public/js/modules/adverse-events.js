@@ -7,6 +7,8 @@
 /* Module dependencies */
 
 var $ = window.jQuery = require('jquery');
+var dust = require('dustjs-linkedin');
+require('../../../node_modules/dustjs-linkedin/lib/compiler.js');
 
 /**
  * Create new instance of Adverse Events
@@ -21,6 +23,29 @@ var AdverseEvents = function AdverseEvents(element) {
   this.init();
   
   this.bind();
+};
+
+/**
+ * Initialize Adverse Results. This will prepare the dust template
+ */
+AdverseEvents.prototype.init = function() {
+  var self = this;
+  $.ajax({
+    url: '/dust/getTemplate?path=modules/adverse-events',
+    type: 'get',
+    success: self.loadTemplate.bind(self),
+    error: self.error.bind(self)
+  });
+};
+
+/**
+ * Fired when on ajax success event
+ * Loads dust template for adverse results
+ */
+AdverseEvents.prototype.loadTemplate = function(data, status, xhr) {
+  console.log('loadTemplate AdverseEvents');
+  this.compiledTemplate = dust.compile(data, 'results'); 
+  dust.loadSource(this.compiledTemplate);
 };
 
 /**
@@ -49,19 +74,23 @@ AdverseEvents.prototype.clickEvent = function(e) {
   });
   
 };
+
 /**
  * Called on successful response from GET route. Emits success event and
  * updates result pane.
  * @param  {object} response Raw HTTP response data
  */
-AdverseEvents.prototype.success = function(response) {
-
+AdverseEvents.prototype.success = function(response, status, xhr) {
   var self = this;
 
-  //TODO: Load Dust template with adverse-events and show modal
-  // Refer to chart-bar or search results for loading dust templates
-  $('body').trigger('adverseEvents.rx', response);
+  console.log('this is the response');
+  console.log(response);
 
+  //TODO: Load Dust template with adverse-events and show modal
+  // this.compiledTemplate = dust.compile(response, 'results'); 
+  // dust.loadSource(this.compiledTemplate);
+
+  $('body').trigger('adverseEvents.rx', response);
 };
 
 /**
