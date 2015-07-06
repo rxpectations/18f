@@ -100,7 +100,7 @@ Line.prototype.create = function(event, data) {
 
   this._d3Configs.xAxis = d3.svg.axis()
     .scale(this._d3Configs.x)
-    .ticks(5)
+    .ticks(years.length)
     .tickFormat(function(d) { return d;});
 
   this._d3Configs.line = d3.svg.line()
