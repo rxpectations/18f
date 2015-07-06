@@ -11,7 +11,23 @@
            	</div>
         </form>
         <div class="results">
-
+            <header class="search-item">
+                <h2>{term}</h2>
+                <p class="result-number">
+                    {#error}No results found{/error}
+                    {#resultsTotal}{.} Results{/resultsTotal}
+                </p>
+            </header>
+            <section class="search-results">
+                <ul>
+                    {#brandNames}
+                        <li><a href="/events/{url}"><h3>{value}</h3></a></li>
+                    {/brandNames}
+                    {#genericNames}
+                        <li><a href="/events/{url}"><h3>{value}</h3></a></li>
+                    {/genericNames}
+                </ul>
+            </section>
         </div>
     </div>
 </section>

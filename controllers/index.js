@@ -77,8 +77,17 @@ module.exports = function (router) {
 
         var handleSearchResults = function(err, data) {
             var model = JSON.parse(data);
+            model.title = 'Search Condition: ' + req.query.term;
             model.term = req.query.term;
-            model.totalResults = model.results.brandNames.length + model.results.genericNames.length;
+            model.resultsTotal = model.results.brandNames.length + model.results.genericNames.length;
+            for (var r in model.results) {
+              model[r] = model.results[r].map(function(item) {
+                var obj = {};
+                obj.value = item;
+                obj.url = item.replace(/\s/g, '-');
+                return obj;
+              });
+            }
             console.log(model);
             res.render('search', model);
         };
