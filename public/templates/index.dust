@@ -1,5 +1,7 @@
 {>"layouts/master" /}
-
+{<title}
+RxPectations - Weigh the risks & benefits of drugs to better manage your treatment
+{/title}
 {<body}
     <section class="hero">
         <div class="inner">
