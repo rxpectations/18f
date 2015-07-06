@@ -10,6 +10,7 @@
                    <input type="text" value="Condition: {term}" readonly />
                </div>
         </form> -->
+        <a href="/" class="close-btn"><i class="fa fa-times"></i></a>
         <div class="results">
             <header class="search-item">
                 <h2>Condition: {term}</h2>
