@@ -69,12 +69,12 @@ Reactions.prototype.create = function(event, data) {
 Reactions.prototype.update = function(data) {
   var self = this;
   var i = 0
-  for (var event in data.results) {
-    var percent = numeral(data.results[event].count / data.total).format('0.00%');
-    this.$list.append('<div data-term="'+data.results[event].term+'">' +
+  for (var event in data.events) {
+    var percent = numeral(data.events[event].count / data.total).format('0.00%');
+    this.$list.append('<div data-term="'+data.events[event].term+'">' +
       '<div class="c'+i+'">' + 
       '<p class="reaction-percent">'+percent+'</p>' +
-      '<p class="reaction-name"><strong>'+self.toTitleCase(data.results[event].term)+'</strong></p>'+
+      '<p class="reaction-name"><strong>'+self.toTitleCase(data.events[event].term)+'</strong></p>'+
       '</div></div>'
     );
     i++;

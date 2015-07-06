@@ -7,6 +7,7 @@
 /* Module dependencies */
 
 var $ = window.jQuery = require('jquery');
+var jAddress = require("../vendor/jquery.address.js");
 
 /**
  * Create new instance of ToggleView
@@ -42,7 +43,7 @@ ToggleView.prototype.bind = function() {
       }
 
     } else {
-      $('#' + obj).toggleClass('show');
+      //$('#' + obj).toggleClass('show');
       
       if($('#search-toggle').hasClass('show')){
         $('.search-bar input').focus();
@@ -52,9 +53,20 @@ ToggleView.prototype.bind = function() {
     }
   });
 
-  this.$elem.on('click.ToggleView', function(e) {
+  this.$elem.on('click.ToggleView', function(e) {    
     e.preventDefault();
-  });  
+  });
 };
+
+$.address.change(function(event) {
+  if(event.value == "/") {
+    $('#search-toggle').removeClass('show'); 
+  }
+  if(event.value == "/search") {
+    $('#search-toggle').addClass('show'); 
+  }
+});
+
+
 
 module.exports = ToggleView;
