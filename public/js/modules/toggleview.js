@@ -43,18 +43,18 @@ ToggleView.prototype.bind = function() {
 
     } else {
       $('#' + obj).toggleClass('show');
+      
       if($('#search-toggle').hasClass('show')){
         $('.search-bar input').focus();
       } else {
         $('.search-bar input').blur();
-      }
-        
+      }   
     }
   });
 
   this.$elem.on('click.ToggleView', function(e) {
     e.preventDefault();
-  });
+  });  
 };
 
 module.exports = ToggleView;
