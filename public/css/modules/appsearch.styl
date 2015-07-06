@@ -9,6 +9,8 @@
 	left 0
 	opacity 0
 	transition all .15s ease-in
+	overflow-y scroll
+	z-index 999999
 
 	.logo
 		width 150px
@@ -30,6 +32,13 @@
 		top 0
 
 	.results
+		.search-item h2
+			display none!important
+
 
 		li
 			margin-bottom 15px
+
+			a:hover
+				text-decoration underline
+				color rgba(255,255,255,.8)
