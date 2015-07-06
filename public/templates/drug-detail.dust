@@ -5,8 +5,8 @@
 {<body}
 	<header class="drug-detail" data-name="{drugname}">
         <div class="inner">
-    		<h1>{drugname}</h1>
             <a target="_blank" href="https://www.accessdata.fda.gov/scripts/medwatch/index.cfm?action=reporting.home" class="ui-btn orange"><i class="fa fa-exclamation-triangle"></i> Report a Reaction</a>
+    		<h1>{drugname}</h1>            
         </div>
 	</header>
     
