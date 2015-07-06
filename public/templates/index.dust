@@ -69,7 +69,7 @@
         <div class="drug-slider cf">
 
         </div>
-        <p class="subtext text-center">Information sourced from Drugs.com. <a href="http://www.drugs.com/newdrugs.html">View all new drugs here</a></p>        
+        <p class="subtext text-center">Information sourced from Drugs.com. <a href="http://www.drugs.com/newdrugs.html">View all new drug approvals</a></p>        
     </section>
 
 	<section id="search-toggle" class="app-search">
