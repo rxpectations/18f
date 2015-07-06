@@ -61,8 +61,7 @@ ToggleView.prototype.bind = function() {
 $.address.change(function(event) {
   if(event.value == "/") {
     $('#search-toggle').removeClass('show'); 
-  }
-  if(event.value == "/search") {
+  } else if(event.value == "/search") {
     $('#search-toggle').addClass('show'); 
   }
 });

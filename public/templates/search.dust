@@ -1,7 +1,7 @@
 {>"layouts/condition" /}
 
 {<body}
-<section id="search-toggle" class="app-search show">
+<section id="search-toggle" class="app-search persist">
     <div class="inner">
         <a href="/"><img class="logo" src="/img/logo.svg" alt="Rxpecations" /></a>
         <!--<a href="#" class="close-btn toggle-view" data-toggle="search-toggle"><i class="fa fa-times"></i></a>-->
