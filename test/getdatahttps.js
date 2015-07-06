@@ -45,7 +45,7 @@ describe("getDataHTTPS", function() {
     //           return testItem;
     //       }
     //   );
-    });
+    // });
 
     it("it should use second argument as callback if function", function (done) {
       var testItem = 0;
