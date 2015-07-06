@@ -7,7 +7,7 @@ RxPectations - Weigh the risks & benefits of drugs to better manage your treatme
         <div class="inner">
             <h2 class="text-uppercase headline">Learn More About Medicine Safety</h2>
             <h3>Weigh the risks & benefits of drugs to better manage your treatment</h3>
-            <a href="#" class="ui-btn orange lg toggle-view" data-toggle="search-toggle" data-type="Drug">Search Drugs</a>
+            <a href="/" rel="address:/search" class="ui-btn orange lg toggle-view" data-toggle="search-toggle" data-type="Drug">Search Drugs</a>
         </div>
     </section>
 
@@ -77,7 +77,7 @@ RxPectations - Weigh the risks & benefits of drugs to better manage your treatme
 	<section id="search-toggle" class="app-search">
         <div class="inner">
             <a href="/"><img class="logo" src="/img/logo.svg" alt="Rxpecations Logo" /></a>
-            <a href="#" class="close-btn toggle-view" data-toggle="search-toggle"><i class="fa fa-times"></i></a>
+            <a href="#" rel="address:/" class="close-btn toggle-view" data-toggle="search-toggle"><i class="fa fa-times"></i></a>
             <form class="search">
             	<div class="search-bar">
             		<input type="text" placeholder="Click here to search Prescription and OTC Drugs" />
