@@ -5,17 +5,17 @@
     <div class="inner">
         <a href="/"><img class="logo" src="/img/logo.svg" alt="Rxpecations" /></a>
         <!--<a href="#" class="close-btn toggle-view" data-toggle="search-toggle"><i class="fa fa-times"></i></a>-->
-        <form class="search">
-         	<div class="search-bar">
-           		<input type="text" value="Condition: {term}" readonly />
-           	</div>
-        </form>
+        <!-- <form class="search">
+             <div class="search-bar">
+                   <input type="text" value="Condition: {term}" readonly />
+               </div>
+        </form> -->
         <div class="results">
             <header class="search-item">
-                <h2>{term}</h2>
+                <h2>Condition: {term}</h2>
                 <p class="result-number">
                     {#error}No results found{/error}
-                    {#resultsTotal}{.} Results{/resultsTotal}
+                    {#resultsTotal}{.} Medications Found{/resultsTotal}
                 </p>
             </header>
             <section class="search-results">
