@@ -1,5 +1,5 @@
 <header class="search-item">
-    <h2>{term}</h2>
+    <!--<h2>{term}</h2>-->
     <p class="result-number">
         {#error}No results found{/error}
         {#resultsTotal}{.} Results{/resultsTotal}

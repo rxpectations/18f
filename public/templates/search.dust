@@ -7,7 +7,7 @@
         <!--<a href="#" class="close-btn toggle-view" data-toggle="search-toggle"><i class="fa fa-times"></i></a>-->
         <!-- <form class="search">
              <div class="search-bar">
-                   <input type="text" value="Condition: {term}" readonly />
+                   <input type="text" value="{term}" />
                </div>
         </form> -->
         <a href="/" class="close-btn"><i class="fa fa-times"></i></a>
