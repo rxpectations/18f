@@ -19,10 +19,10 @@ module.exports = function (router) {
     		protocol: 'https:',
     		hostname: req.app.kraken.get('integrations').openFDA.hostname, //'api.fda.gov',
     		pathname: req.app.kraken.get('integrations').openFDA.endpoints.drug.label,
-    		search: model.query()
+    		search: model.exactQuery()
     	};
         var formattedUrl = url.format(options);
-        //console.info(formattedUrl);
+        console.info(formattedUrl);
 
         var replyCount = 0;
         var repliesExpected = 2;
