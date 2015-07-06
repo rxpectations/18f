@@ -1,4 +1,4 @@
-{>"layouts/master" /}
+{>"layouts/interior" /}
 
 {<body}
 <section class="errors 503-error">
@@ -12,3 +12,7 @@
 	</div>
 </section>
 {/body}
+{<script}
+<script src="/js/events.js"></script>
+<script src="/js/app.js"></script>
+{/script}
