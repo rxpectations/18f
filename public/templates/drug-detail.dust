@@ -3,12 +3,11 @@
 {drugname} | Events
 {/title}
 {<body}
-	<header class="inner" data-name="{drugname}">
-		<h1>{drugname}</h1>
-        <ul class="toolbar">
-            <li class="popular"><!--<i class="fa fa-line-chart"></i> <em>Popular this week</em>--></li>
-            <li><a target="_blank" href="https://www.accessdata.fda.gov/scripts/medwatch/index.cfm?action=reporting.home" class="ui-btn orange"><i class="fa fa-exclamation-triangle"></i> Report a Reaction</a></li>
-        </ul>
+	<header class="drug-detail" data-name="{drugname}">
+        <div class="inner">
+    		<h1>{drugname}</h1>
+            <a target="_blank" href="https://www.accessdata.fda.gov/scripts/medwatch/index.cfm?action=reporting.home" class="ui-btn orange"><i class="fa fa-exclamation-triangle"></i> Report a Reaction</a>
+        </div>
 	</header>
     
     <div class="inner">
