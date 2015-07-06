@@ -6,7 +6,7 @@ var Donut = require('./modules/chart-donut');
 var Bar = require('./modules/chart-bar');
 var Reactions = require('./modules/reactions');
 var Loader = require('./modules/loader');
-var Adverse = require('./modules/adverse-events');
+var AdverseEvents = require('./modules/adverse-events');
 
 /* When DOM ready initialize modules */
 $(function() {
@@ -43,7 +43,7 @@ $(function() {
 
   $('.adverse-effects').each(function instantiateAdverse() {
 
-    new Adverse(this);
+    new AdverseEvents(this);
   });
 
   $.ajax({

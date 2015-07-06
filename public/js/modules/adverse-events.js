@@ -19,6 +19,8 @@ require('../../../node_modules/dustjs-linkedin/lib/compiler.js');
 var AdverseEvents = function AdverseEvents(element) {
 
   this.$el = $(element);
+  this.$container = $('.adverse-events-container');
+  
   
   this.init();
   
@@ -42,9 +44,9 @@ AdverseEvents.prototype.init = function() {
  * Fired when on ajax success event
  * Loads dust template for adverse results
  */
-AdverseEvents.prototype.loadTemplate = function(data, status, xhr) {
+AdverseEvents.prototype.loadTemplate = function(data, callback) {
   console.log('loadTemplate AdverseEvents');
-  this.compiledTemplate = dust.compile(data, 'results'); 
+  this.compiledTemplate = dust.compile(data, 'adverse-events'); 
   dust.loadSource(this.compiledTemplate);
 };
 
@@ -63,7 +65,7 @@ AdverseEvents.prototype.bind = function() {
 AdverseEvents.prototype.clickEvent = function(e) {
   var self = this;
 
-  var route = '/integrations/openFDA/events?drug='+self.term+'&mode=all';
+  var route = '/integrations/openFDA/events?drug='+$('header').data('name')+'&mode=all';
   $.ajax({
     url: route || '/',
     type: 'get',
@@ -86,10 +88,14 @@ AdverseEvents.prototype.success = function(response, status, xhr) {
   console.log('this is the response');
   console.log(response);
 
+  
   //TODO: Load Dust template with adverse-events and show modal
   // this.compiledTemplate = dust.compile(response, 'results'); 
   // dust.loadSource(this.compiledTemplate);
-
+  dust.render('adverse-events', response, function(err, out){
+    if(err) console.error(err);
+    self.$container.html(out);
+  });
   $('body').trigger('adverseEvents.rx', response);
 };
 
