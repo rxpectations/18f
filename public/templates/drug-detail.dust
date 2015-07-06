@@ -83,13 +83,13 @@
                 </article>
                 {/drugInfo.contraindications}
 
-                <!-- Removing since there is no content for this section
+                <!-- Removing since there is no content for this section but will add in later so keeping it here for structure
                 <article class="tab-content">
                     <h4>What's New</h4>
                     <p>Lorem ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis et duo ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis platonem an eam, quod eros Lorem ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis et duo ipsum dolor sit amet, verterem platonem an eam, quod eros maiestatis platonem an eam, quod eros</p>
-                </article>-->
+                </article>
 
-                <!--<article class="tab-content">
+                <article class="tab-content">
                     <h4>Resources & Community</h4>
                     
                     <div class="twitter-wrapper">
