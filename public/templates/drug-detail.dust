@@ -7,7 +7,7 @@
 		<h1>{drugname}</h1>
         <ul class="toolbar">
             <li class="popular"><!--<i class="fa fa-line-chart"></i> <em>Popular this week</em>--></li>
-            <li><a href="" class="ui-btn orange"><i class="fa fa-exclamation-triangle"></i> Report a Reaction</a></li>
+            <li><a target="_blank" href="https://www.accessdata.fda.gov/scripts/medwatch/index.cfm?action=reporting.home" class="ui-btn orange"><i class="fa fa-exclamation-triangle"></i> Report a Reaction</a></li>
         </ul>
 	</header>
     
@@ -67,7 +67,7 @@
 
                 {@ne key="{recallsTotal}" value="0"}                    
                     <article class="tab-content">
-                        <h4>Recall History({recallsTotal})</h4>
+                        <h4>Recall History ({recallsTotal})</h4>
                         {#recalls}
                         <p>{reportDate} - {city}, {state}<br/>
                             {reason}<br/>

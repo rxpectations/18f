@@ -8,11 +8,14 @@ global-reset()
     box-sizing border-box
     
 html, body 
-    font $font-size $font-family
+    font 14px $font-family
     line-height 150%
     font-smoothing antialiased
     color #121212
     font-weight: 400
+
+    @media screen and (min-width: 768px)
+        font $font-size $font-family    
 
 a 
     text-decoration none
@@ -90,7 +93,7 @@ strong
         margin -20px auto 40px
         display block
         text-align center
-        width 275px
+        width 300px
 
 
 
