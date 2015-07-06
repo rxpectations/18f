@@ -20,10 +20,14 @@
                 </p>
             </header>
             <section class="search-results">
+                <h3>Brand Names</h3>
                 <ul>
                     {#brandNames}
                         <li><a href="/events/{url}"><h3>{value}</h3></a></li>
                     {/brandNames}
+                </ul>
+                <h3>Generic</h3>
+                <ul>
                     {#genericNames}
                         <li><a href="/events/{url}"><h3>{value}</h3></a></li>
                     {/genericNames}
