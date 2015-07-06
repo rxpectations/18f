@@ -1,0 +1,8 @@
+{#results}
+    <div class="bar-group row">
+        <div class="bar col" data-total="{count}">{count}</div>
+        <div class="bar-label col" >
+            {term}
+        </div>        
+    </div>
+{/results}
