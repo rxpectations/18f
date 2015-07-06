@@ -101,7 +101,7 @@ Donut.prototype.create = function(event, data) {
 Donut.prototype.update = function(data) {
   var self = this;
   this.arcs = this.svgChart.selectAll('.arc')
-    .data(this._d3Configs.donut(data.results))
+    .data(this._d3Configs.donut(data.events))
     .enter().append('g')
       .attr('class', 'arc');
 
