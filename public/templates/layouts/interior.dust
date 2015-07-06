@@ -30,7 +30,7 @@
 <body>
 <nav class="topbar">
   <ul class="inner">
-  	<li class="logo"><a href="/"><img src="/img/logo.svg" alt="Rxpecations" /></a></li>
+  	<li class="logo"><a href="/"><img src="/img/logo.svg" alt="Rxpecations Logo" /></a></li>
   	<li class="search"><a href="#" class="toggle-view" data-toggle="search-toggle" data-type="Drug"><i class="fa fa-search"></i></a></li>
   </ul>
 </nav>
@@ -45,7 +45,7 @@
 </footer>
 <section id="search-toggle" class="app-search">
   <div class="inner">
-    <img class="logo" src="/img/logo.svg" alt="Rxpecations" />
+    <img class="logo" src="/img/logo.svg" alt="Rxpecations Logo" />
     <a href="#" class="close-btn toggle-view" data-toggle="search-toggle"><i class="fa fa-times"></i></a>
     <form class="search">
       <div class="search-bar">
