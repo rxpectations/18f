@@ -1,6 +1,6 @@
 # 18f
 
-Bad-ass prototype using data from open.fda.gov.  Built using [kraken.js](http://krakenjs.com/)
+Hackathon prototype using data from open.fda.gov. Built using [kraken.js](http://krakenjs.com/)
 
 
 This project requires that NodeJs is installed on your machine http://nodejs.org
@@ -88,4 +88,4 @@ build: {
 
 ## License
 
-RxPectations is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+Rxpectations is released under the [MIT License](http://www.opensource.org/licenses/MIT).
