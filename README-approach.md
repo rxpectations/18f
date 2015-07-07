@@ -2,7 +2,7 @@ Rxpectations [18F Agile BPA RFQ-Response]
 ======
 Link to prototype: http://rxpectations.herokuapp.com/ 
 
-Rxpectations Agile Design and Development Approach
+Agile Design and Development Approach
 --------------------------------------------------
 
 Thousands of prescription and over-the-counter medications, each with the potential to cause side effects, are on the market today. An enormous amount of information and data from many disparate sources, both reliable and unreliable, are available for each of these drugs. Even the most informed healthcare provider or consumer is challenged to keep up with the data. Rxpectations is a responsive mobile and web application that enables patients and their caregivers to review the risks of FDA-approved drugs, view recalls, report adverse events and, ultimately, participate in more informed decisions about their healthcare and treatment.
