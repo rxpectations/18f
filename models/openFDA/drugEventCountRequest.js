@@ -52,7 +52,7 @@ var FDASearchModel = function (requestQueryData, apiKey) {
 
         search += '+AND+(' + timeSearchValue + ')' + countValue + apiKeyValue;
 
-        console.log('Test: ' + search);
+        //console.log('Test: ' + search);
 
     	return search;
     }
