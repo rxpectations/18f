@@ -22,8 +22,8 @@
                     </div>
                 </div>
                 <div class="graph all">
-                    <p class="chart-title">All adverse reactions in 2015</p>
-                    <div class="bar-chart"></div>
+                    <p class="chart-title">All adverse reactions</p>
+                    <div class="bar-chart adverse-events-container"></div>
                 </div>
                 <a href="" class="toggle-view ui-btn blue content-switch adverse-effects" data-toggle="graph-toggle">View All Reactions</a>
             </section>
@@ -103,6 +103,9 @@
 
             </div>
         </div>
+    </section>
+    <section class="adverse-events-modal">
+    
     </section>
 
 {/body}
