@@ -53,7 +53,7 @@ Our approach to building digital services combines the best of a creative agency
 
 Built using [kraken.js](http://krakenjs.com/)
 
-This project requires that NodeJs is installed on your machine (http://nodejs.org)
+This project requires that [NodeJs](http://nodejs.org) is installed on your machine 
 
 This project also makes use of the following technologies
 * Grunt
