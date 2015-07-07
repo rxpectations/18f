@@ -1,8 +1,9 @@
-Rxpectations 
+Rxpectations [18F Agile BPA RFQ-Response]
 ======
-[18F Agile BPA RFQ-Response]
+Link to prototype: http://rxpectations.herokuapp.com/ 
 
-Link to live prototype: http://rxpectations.herokuapp.com/ 
+Agile Design and Development Approach
+--------------------------------------------------
 
 Thousands of prescription and over-the-counter medications, each with the potential to cause side effects, are on the market today. An enormous amount of information and data from many disparate sources, both reliable and unreliable, are available for each of these drugs. Even the most informed healthcare provider or consumer is challenged to keep up with the data. Rxpectations is a responsive mobile and web application that enables patients and their caregivers to review the risks of FDA-approved drugs, view recalls, report adverse events and, ultimately, participate in more informed decisions about their healthcare and treatment.
 
@@ -12,7 +13,7 @@ Rxpectations was developed during a hackathon to demonstrate our agile design an
 
 *A video overview of our journey can be found at https://github.com/rxpectations/18f/blob/master/_artifacts/Rxpectations%20Build%20Video.mp4* 
 
-##**Agile Design and Development Approach**
+##**Approach**
 
 Planning for the hackathon started with understanding the challenge and assembling a team of digital strategists, designers, developers, data analysts, and subject matter specialists. First, the team established baseline operations based on our experience delivering successful digital products and services. The team defined roles and responsibilities (e.g., Product Manager sets the product vision and business priorities and advocates on behalf of the customer) [16]; agreed on a common set of collaboration tools (i.e., Basecamp, GitHub, Google Hangouts, etc.); developed a project schedule; and cataloged the OpenFDA dataset. [9]
 
@@ -47,95 +48,3 @@ Additionally, application monitoring (i.e., New Relic) and baseline analytics (i
 ##**Conclusion**
 
 Our approach to building digital services combines the best of a creative agency model with a global strategy-to-execution consultancy that puts the customer at the core of all our digital products and services. For this effort, as with all our digital products, we not only brought in resources with digital and technical expertise, but also colleagues that are specialists in the subject industries – in this case the medical, pharmaceutical, healthcare provider and public health fields. We had so much fun building Rxpectations and we encourage you to download, edit, remix, and build upon [35] the application so that patients, healthcare practitioners, caregivers and others are empowered to make better healthcare decisions.
-
-
-##**Getting Started with the Project**
-
-Built using [kraken.js](http://krakenjs.com/)
-
-This project requires that [NodeJS](http://nodejs.org) is installed on your machine 
-
-This project also makes use of the following technologies
-* Grunt
-* CSS Preprocessor: [Stylus](http://learnboost.github.io/stylus/)
-* Server side templating: [DustJS](http://www.dustjs.com/)
-* JS Module Management: [Browserify](http://browserify.org/)
-
-## Build Process
-
-### Install Node Dependencies
-
-This command will download all dependencies or any missing dependencies that have been added in **package.json**
-```
-npm install
-```
-
-### Run The Application
-
-#### Development
-
-Once Node is installed and dependencies are downloaded, run the following command
-```
-npm start
-```
-
-Alternately, you can run the process with **nodemon** to continously watch for file changes and automatically restart the server
-```
-npm install nodemon -g
-nodemon server.js
-```
-
-#### Production
-
-The follow commands can be used to start this application in production mode:
-
-```
-NODE_ENV=production npm start 
-```
-
-To view the site locally, navigate to [http://localhost:8000](http://localhost:8000)
-
-### Browserify with Kraken
-
-#### Development
-See [kraken-devtools-browseriy](http://github.com/iantocristian/kraken-devtools-browserify) for more information of configuring the use of browserify in development
-
-### Stylus Libraries
-
-#### Development
-To make use of any stylus libraries such as [nib](http://tj.github.io/nib/) or [jeet](http://jeet.gs/) in development, require them in `lib/stylus.js` and add them to the `use` array.
-```
-var config = {
-    filename: args.context.filePath,
-    paths: args.paths,
-    use: [nib(), jeet()]
-};
-```
-
-#### Production
-To make use of any stylus libraries in production, add them to the `use` array in the stylus grunt tasks.  Please note that some libraries may require you to tell Grunt the path to the specific module. 
-```
-build: {
-    options: {
-        compress: true
-    },
-    use: [
-      require('jeet'),
-      require('nib')
-    ],
-    paths: [
-      './node_modules/jeet/stylus'
-    ]
-    files: [{
-        expand: true,
-        cwd: 'public/css',
-        src: ['**/*.styl'],
-        dest: '.build/css/',
-        ext: '.css'
-    }]
-}
-```
-
-## License
-
-Rxpectations is released under the [MIT License](http://www.opensource.org/licenses/MIT).

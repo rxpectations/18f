@@ -22,6 +22,7 @@ var DrugLabelModel = function (searchResponse) {
             }
             if (responseObject.results[idx].openfda.generic_name !== undefined &&
                 genericNames.indexOf(toCleanString(responseObject.results[idx].openfda.generic_name)) === -1) {
+                //&& brandNames.indexOf(toCleanString(responseObject.results[idx].openfda.generic_name)) === -1) {
                 genericNames.push(toCleanString(responseObject.results[idx].openfda.generic_name));
             }
         } 

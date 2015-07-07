@@ -1,4 +1,15 @@
 {
     "verbose": true,
-    "ignore": ["/.build/*", "/public/*", "/.*", "*.md","*.css",".git", "node_modules"]
+    "ignore": [
+    	"/.build/*", 
+    	"/public/*", 
+    	"/.*", 
+    	"*.md",
+    	"*.css",
+    	".git", 
+    	"node_modules", 
+    	"_artifacts/*.*", 
+    	"*.log",
+    	".DS_Store"
+    ]
 }

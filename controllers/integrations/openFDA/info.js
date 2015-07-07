@@ -22,7 +22,7 @@ module.exports = function (router) {
     		search: model.exactQuery()
     	};
         var formattedUrl = url.format(options);
-        console.info(formattedUrl);
+        //console.info(formattedUrl);
 
         var replyCount = 0;
         var repliesExpected = 2;
