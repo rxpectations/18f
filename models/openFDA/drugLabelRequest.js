@@ -5,7 +5,7 @@ var FDASearchModel = function (requestQueryData, apiKey, infoDetail) {
     var term = requestQueryData.drug;
     var mode = requestQueryData.mode;
 
-    function toSearchQueryString() {
+    function toSearchQueryString(useStrictQuotes) {
     	var searchValue = '';
         var resultsLimit = (infoDetail === true) ? 1 : DEFAULT_LIMIT;
 
@@ -13,13 +13,20 @@ var FDASearchModel = function (requestQueryData, apiKey, infoDetail) {
             mode = 'name';
         }
 
+        var nameSearchValue;
+        if (useStrictQuotes === true) {
+            nameSearchValue = 'openfda.brand_name:"' + term + '"+' + 'openfda.generic_name:"' + term + '"';
+        } else {
+            nameSearchValue = 'openfda.brand_name:' + term + '+' + 'openfda.generic_name:' + term;
+        }
+
     	if (mode === 'name') {
-			  searchValue = 'openfda.brand_name:' + term + '+' + 'openfda.generic_name:' + term;
+			  searchValue = nameSearchValue;
     	} else if (mode === 'use') {
     		searchValue = 'purpose:' + term + '+' + 'indications_and_usage:' + term;
     	} else if (mode === 'all') {
             searchValue = 'purpose:' + term + '+' + 'indications_and_usage:' + term + '+' + 
-                'openfda.brand_name:' + term + '+' + 'openfda.generic_name:' + term;    
+                nameSearchValue;
     	} else {
 
         }
@@ -28,10 +35,19 @@ var FDASearchModel = function (requestQueryData, apiKey, infoDetail) {
     	return '?search=' + searchValue + '&limit=' + resultsLimit + apiKeyValue;
     }
 
+    function toLiberalSearchQueryString() {
+        return toSearchQueryString(false);
+    }
+
+    function toStrictSearchQueryString() {
+        return toSearchQueryString(true);
+    }
+
     return {
         term: term,
         mode: mode,
-        query: toSearchQueryString
+        query: toSearchQueryString, 
+        exactQuery: toStrictSearchQueryString
     };
 };
 
