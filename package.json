@@ -11,11 +11,12 @@
     "postinstall": "./node_modules/.bin/grunt build"
   },
   "engines": {
-   "node": "0.12.6",
-   "npm": "2.11.2"
+    "node": "0.12.6",
+    "npm": "2.11.2"
   },
   "dependencies": {
     "adaro": "^0.1.5",
+    "compression": "^1.5.1",
     "dustjs-helpers": "~1.6.2",
     "dustjs-linkedin": "~2.6.2",
     "engine-munger": "^0.2.0",

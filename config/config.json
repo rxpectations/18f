@@ -23,7 +23,7 @@
             }
         }
     },
-    
+
 
     "i18n": {
         "contentPath": "path:./locales",
@@ -69,6 +69,18 @@
                 "arguments": [ "errors/500" ]
             }
         }
+
+        ,"compress": {
+            "enabled": true,
+            "module": {
+                "name": "compression",
+                "arguments": [
+                    {
+                        "threshold": 512
+                    }
+                ]
+            }
+        }
     },
 
     "integrations": {
@@ -93,6 +105,6 @@
         "feeds": {
             "new-drugs": "http://www.drugs.com/feeds/new_drug_approvals.xml",
             "clinical-trials": "http://www.drugs.com/feeds/clinical_trials.xml"
-        } 
+        }
     }
 }
