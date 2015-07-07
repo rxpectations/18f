@@ -10,6 +10,7 @@ module.exports = function browserify(grunt) {
 		build: {
 			files: {
 				'.build/js/app.js': ['public/js/app.js'],
+				'.build/js/events.js': ['public/js/events.js']
 			},
 			options: {}
 		}
