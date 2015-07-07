@@ -53,7 +53,7 @@ Our approach to building digital services combines the best of a creative agency
 
 Built using [kraken.js](http://krakenjs.com/)
 
-This project requires that [NodeJs](http://nodejs.org) is installed on your machine 
+This project requires that [NodeJS](http://nodejs.org) is installed on your machine 
 
 This project also makes use of the following technologies
 * Grunt
@@ -70,7 +70,7 @@ This command will download all dependencies or any missing dependencies that hav
 npm install
 ```
 
-### To Run Application
+### Run The Application
 
 #### Development
 
