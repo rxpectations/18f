@@ -11,7 +11,7 @@
     "postinstall": "./node_modules/.bin/grunt build"
   },
   "engines": {
-   "node": "5.x.x",
+   "node": "6.11.1",
    "npm": "2.11.2"
   },
   "dependencies": {
