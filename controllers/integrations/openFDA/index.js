@@ -21,7 +21,7 @@ module.exports = function (router) {
     		search: model.query()
     	};
     	var formattedUrl = url.format(options);
-        //console.info(formattedUrl);
+        console.info('openFDA:[label search] ' + formattedUrl);
 
         console.time('openFDA:[label search]');
     	var fdaReq = https.get(formattedUrl, function(searchRes) {

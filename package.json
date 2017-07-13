@@ -11,8 +11,8 @@
     "postinstall": "./node_modules/.bin/grunt build"
   },
   "engines": {
-    "node": "0.12.6",
-    "npm": "2.11.2"
+   "node": "6.11.1",
+   "npm": "^2.11.2"
   },
   "dependencies": {
     "adaro": "^0.1.5",
